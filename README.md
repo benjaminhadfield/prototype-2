@@ -4,16 +4,15 @@
 ## Installation
 
 ```sh
-$ npm install --save prototype-2
+$ cd /path/to/dir
+$ npm clone https://github.com/benjaminhadfield/prototype-2.git
+$ npm install
 ```
 
-## Usage
+## Development
 
-```js
-var prototype2 = require('prototype-2');
+Start the development server by running `gulp dev`.
 
-prototype2('Rainbow');
-```
 ## License
 
 ISC © [Ben Hadfield]()
