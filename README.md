@@ -1,5 +1,7 @@
-# prototype-2 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> COMP204P Team 35
+# prototype-2
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
+COMP204P Team 35. UCL Peach.
 
 ## Installation
 
