@@ -13,10 +13,6 @@ $ npm install
 
 Start the development server by running `gulp dev`.
 
-## License
-
-ISC © [Ben Hadfield]()
-
 
 [npm-image]: https://badge.fury.io/js/prototype-2.svg
 [npm-url]: https://npmjs.org/package/prototype-2
