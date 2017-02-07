@@ -2,16 +2,16 @@
   "assetsByChunkName": {
     "main": [
       "main.bundle.dev.js",
-      "style.70151fae0f50b040cacc.css",
+      "style.629a908d7c798f4c7306.css",
       "main.style.css",
       "main.bundle.dev.js.map",
-      "style.70151fae0f50b040cacc.css.map",
+      "style.629a908d7c798f4c7306.css.map",
       "main.style.css.map"
     ],
     "sw-registration": [
-      "70151fae0f50b040cacc.sw-registration.js",
-      "483f362808bad77eff89.sw-registration.js",
-      "483f362808bad77eff89.sw-registration.js.map"
+      "629a908d7c798f4c7306.sw-registration.js",
+      "7b790a4f0043f1201ef4.sw-registration.js",
+      "7b790a4f0043f1201ef4.sw-registration.js.map"
     ]
   },
   "assets": [
@@ -316,7 +316,7 @@
     },
     {
       "name": "main.bundle.dev.js",
-      "size": 976694,
+      "size": 981088,
       "chunks": [
         0
       ],
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "name": "70151fae0f50b040cacc.sw-registration.js",
+      "name": "629a908d7c798f4c7306.sw-registration.js",
       "size": 2345,
       "chunks": [
         1
@@ -336,8 +336,8 @@
       "emitted": true
     },
     {
-      "name": "style.70151fae0f50b040cacc.css",
-      "size": 162,
+      "name": "style.629a908d7c798f4c7306.css",
+      "size": 235,
       "chunks": [
         0
       ],
@@ -347,7 +347,7 @@
     },
     {
       "name": "main.style.css",
-      "size": 146,
+      "size": 219,
       "chunks": [
         0
       ],
@@ -356,7 +356,7 @@
       ]
     },
     {
-      "name": "483f362808bad77eff89.sw-registration.js",
+      "name": "7b790a4f0043f1201ef4.sw-registration.js",
       "size": 2410,
       "chunks": [
         1
@@ -367,7 +367,7 @@
       "emitted": false
     },
     {
-      "name": "483f362808bad77eff89.sw-registration.js.map",
+      "name": "7b790a4f0043f1201ef4.sw-registration.js.map",
       "size": 3731,
       "chunks": [
         1
@@ -379,7 +379,7 @@
     },
     {
       "name": "main.bundle.dev.js.map",
-      "size": 1172364,
+      "size": 1174937,
       "chunks": [
         0
       ],
@@ -388,7 +388,7 @@
       ]
     },
     {
-      "name": "style.70151fae0f50b040cacc.css.map",
+      "name": "style.629a908d7c798f4c7306.css.map",
       "size": 107,
       "chunks": [
         0
