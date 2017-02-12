@@ -1,0 +1,46 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  box-sizing: border-box;
+  background: #233a60;
+  color: white;
+  padding: 0;
+  margin: 0 0 20px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .2);
+}
+
+.nav__brand {
+  margin: 0;
+  padding: 20px;
+}
+
+.nav__links {
+  display: inherit;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__links__link {
+  padding: 0;
+}
+
+.nav__links__link:hover {
+  background: rgba(0, 0, 0, .1)
+}
+
+.nav__links__link a,
+.nav__links__link a:link,
+.nav__links__link a:visited,
+.nav__links__link a:hover,
+.nav__links__link a:active,
+.nav__links__link a:focus {
+  display: flex;
+  align-self: stretch;
+  color: white;
+  text-decoration: none;
+  padding: 25px;
+}

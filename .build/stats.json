@@ -2,15 +2,15 @@
   "assetsByChunkName": {
     "main": [
       "main.bundle.dev.js",
-      "style.43bcdd2867d55cca5331.css",
+      "style.363cdd1c4c1d79661667.css",
       "main.style.css",
       "main.bundle.dev.js.map",
-      "style.43bcdd2867d55cca5331.css.map",
+      "style.363cdd1c4c1d79661667.css.map",
       "main.style.css.map"
     ],
     "sw-registration": [
-      "43bcdd2867d55cca5331.sw-registration.js",
-      "43bcdd2867d55cca5331.sw-registration.js.map"
+      "363cdd1c4c1d79661667.sw-registration.js",
+      "363cdd1c4c1d79661667.sw-registration.js.map"
     ]
   },
   "assets": [
@@ -315,7 +315,7 @@
     },
     {
       "name": "main.bundle.dev.js",
-      "size": 976661,
+      "size": 979586,
       "chunks": [
         0
       ],
@@ -325,7 +325,7 @@
       "emitted": true
     },
     {
-      "name": "43bcdd2867d55cca5331.sw-registration.js",
+      "name": "363cdd1c4c1d79661667.sw-registration.js",
       "size": 2410,
       "chunks": [
         1
@@ -336,8 +336,8 @@
       "emitted": true
     },
     {
-      "name": "style.43bcdd2867d55cca5331.css",
-      "size": 162,
+      "name": "style.363cdd1c4c1d79661667.css",
+      "size": 1441,
       "chunks": [
         0
       ],
@@ -347,7 +347,7 @@
     },
     {
       "name": "main.style.css",
-      "size": 146,
+      "size": 1425,
       "chunks": [
         0
       ],
@@ -357,7 +357,7 @@
     },
     {
       "name": "main.bundle.dev.js.map",
-      "size": 1172361,
+      "size": 1173419,
       "chunks": [
         0
       ],
@@ -367,7 +367,7 @@
       "emitted": true
     },
     {
-      "name": "43bcdd2867d55cca5331.sw-registration.js.map",
+      "name": "363cdd1c4c1d79661667.sw-registration.js.map",
       "size": 3731,
       "chunks": [
         1
@@ -378,7 +378,7 @@
       "emitted": true
     },
     {
-      "name": "style.43bcdd2867d55cca5331.css.map",
+      "name": "style.363cdd1c4c1d79661667.css.map",
       "size": 107,
       "chunks": [
         0
