@@ -13,11 +13,23 @@
   color: white;
 }
 
-.nav__masthead {
+.masthead {
   padding: 25px;
 }
 
-.nav__brand {
+.user {
+  position: relative;
+}
+
+.button {
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.brand {
   font-size: 1rem;
   margin: 0;
 }

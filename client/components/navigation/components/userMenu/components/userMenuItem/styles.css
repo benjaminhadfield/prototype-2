@@ -1,0 +1,14 @@
+.link,
+.link:link,
+.link:visited {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 5px;
+}
+
+.link:hover,
+.link:active,
+.link:focus {
+  background: rgba(0, 0, 0, .1);
+}
