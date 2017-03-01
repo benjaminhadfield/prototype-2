@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 import styles from './styles.css';
 
-
 const Job = ({title, description, assignee, dueDate, ...props}) => {
   return (
     <article className={styles.container}>

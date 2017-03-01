@@ -1,8 +1,7 @@
 import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import styles from './styles.css';
-
-import Job from '../job';
+import Job from './components/job';
 
 
 const JobsList = ({jobs, ...props}) => {

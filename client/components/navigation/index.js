@@ -5,20 +5,25 @@ import {Link} from 'react-router';
 const Navigation = () => {
   return (
     <nav className={styles.nav}>
-        <h1 className={styles.nav__brand}>Peach</h1>
+      <div className={styles.nav__masthead}>
+        <h1 className={styles.nav__brand}>PEACH Cancer</h1>
+        <p>User</p>
+      </div>
 
-        <ul className={styles.nav__links}>
-
+      <ul className={styles.nav__links}>
+      {
+        ['Jobs', 'Scheduler'].map(item => (
           <li className={styles.nav__links__link}>
-            <Link to="/jobs">Jobs</Link>
+            <Link
+              activeClassName={styles.nav__links__link__active}
+              to={`/${item.toLowerCase()}`}
+              children={item}/>
           </li>
-
-          <li className={styles.nav__links__link}>
-            <Link to="/scheduler">Scheduler</Link>
-          </li>
-
-        </ul>
-      </nav>
+          )
+        )
+      }
+      </ul>
+    </nav>
   );
 };
 
