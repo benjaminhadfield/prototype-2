@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   position: relative;
   box-sizing: border-box;
   background: #233a60;
@@ -13,6 +13,7 @@
 }
 
 .nav__brand {
+  font-size: 1rem;
   margin: 0;
   padding: 20px;
 }
@@ -43,4 +44,5 @@
   color: white;
   text-decoration: none;
   padding: 25px;
+  margin: 0;
 }

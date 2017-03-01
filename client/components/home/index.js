@@ -11,7 +11,7 @@ class Home extends React.Component {
       <div>
         <Notifications />
         <Navigation/>
-        <div children={children}/>
+        <div className={styles.page} children={children}/>
       </div>
     );
   }
