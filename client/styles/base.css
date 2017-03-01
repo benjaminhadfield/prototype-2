@@ -38,3 +38,7 @@ p {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+
+.job__container {
+  border: 1px solid #eee;
+}
