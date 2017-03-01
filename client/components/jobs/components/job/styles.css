@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
+.container:last-child {
+  margin-bottom: 0;
+}
+
+.container + .container {
+  margin-top: 10px;
+}
+
+.description {
+  margin: 0;
+}
+
+.details {
+  text-align: right;
+  color: #999;
+}
+
+.details__detail {
+  margin-bottom: 5px;
+}
+
+.container a,
+.container a:link,
+.container a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+}
+
+.container a:hover,
+.container a:active,
+.container a:focus {
+  color: inherit;
+  text-decoration: underline;
+}

@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "if test \"$NODE_ENV\" = \"production\"; then npm run prod; else gulp dev; fi",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Warning: no test specified.\" && exit 0",
     "coverage": "gulp check",
     "prod": "echo 'Starting standalone server in PROD mode'; node .",
     "heroku-postbuild": "gulp build"

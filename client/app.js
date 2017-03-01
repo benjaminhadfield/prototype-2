@@ -10,7 +10,9 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {notify} from "react-notify-toast";
 import rootReducer from "./reducers";
+
 import "./styles/base.css";
+
 
 // Add the client app start up code to a function as window.webappStart.
 // The webapp's full HTML will check and call it once the js-content
@@ -23,9 +25,10 @@ require.ensure(["./sw-registration"], (require) => {
 window.webappStart = () => {
   const initialState = window.__PRELOADED_STATE__;
   const store = createStore(rootReducer, initialState);
+
   render(
     <Provider store={store}>
-      <Router history={browserHistory}>{routes}</Router>
+      <Router history={browserHistory} children={routes}/>
     </Provider>,
     document.querySelector(".js-content")
   );
