@@ -19,14 +19,19 @@
 
 .user {
   position: relative;
+  margin: 10px 0 0;
 }
 
 .button {
+  display: block;
+  text-align: left;
+  width: 100%;
   color: inherit;
   background: none;
   border: none;
   padding: 5px 0;
   cursor: pointer;
+  font-size: 1.05rem;
 }
 
 .brand {

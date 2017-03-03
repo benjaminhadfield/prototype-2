@@ -3,6 +3,16 @@ import styles from './styles.css';
 import {Link} from 'react-router';
 import UserMenu from './components/userMenu';
 
+const navigationItems = [
+  'Home',
+  'Referrals',
+  'Triage',
+  'Case Preparation',
+  'Live MDT',
+  'Confirmation',
+  'Jobs'
+]
+
 class Navigation extends React.Component {
   constructor(props) {
     super(props)
@@ -34,7 +44,7 @@ class Navigation extends React.Component {
 
         <ul className={styles.nav__links}>
         {
-          ['Jobs', 'Scheduler'].map(item => (
+          navigationItems.map(item => (
             <li className={styles.nav__links__link}>
               <Link
                 activeClassName={styles.nav__links__link__active}

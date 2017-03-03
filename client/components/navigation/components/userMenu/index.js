@@ -6,8 +6,8 @@ import UserMenuItem from './components/userMenuItem'
 const UserMenu = ({open, ...props}) => {
   return (
     <div className={classNames(styles.userMenu, {[styles.open]: open})}>
-      <UserMenuItem to={`/account`}>Account</UserMenuItem>
-      <UserMenuItem to={`/logout`}>Logout</UserMenuItem>
+      <UserMenuItem className={styles.userMenu__item} to={`/account`}>Account</UserMenuItem>
+      <UserMenuItem className={styles.userMenu__item} to={`/logout`}>Logout</UserMenuItem>
     </div>
   )
 }

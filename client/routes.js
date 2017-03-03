@@ -8,6 +8,6 @@ import Scheduler from "./containers/Scheduler";
 export const routes = (
   <Route path="/" component={Home}>
     <Route path="/jobs" component={Jobs}/>
-    <Route path="/scheduler" component={Scheduler}/>
+    <Route path="/triage" component={Scheduler}/>
   </Route>
 );
