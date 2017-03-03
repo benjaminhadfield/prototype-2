@@ -18,6 +18,11 @@ module.exports = function(app){
         res.json({ message: "Initialization queries executed." });
     });
 
+     router.post('/',function(req,res,next){
+       console.log(req.body);
+     });
+
+
     //other routes..
 
     //Add api routes to app

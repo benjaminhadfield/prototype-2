@@ -10,7 +10,7 @@ const defaultConfig = require("electrode-confippet").config;
 const Confippet = require("electrode-confippet");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 //Require routes of the API
 require('../server/api/routes')(app);
 

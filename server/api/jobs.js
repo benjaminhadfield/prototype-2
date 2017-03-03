@@ -2,6 +2,8 @@ var db = require('./database');
 var express = require("express");
 var router = express.Router();
 
+
+
 // ---------JOBS CRUD Functions-----------
 
 var Job = {
@@ -15,14 +17,15 @@ var Job = {
     return db.query("select * from jobs where job_id=?",[id],callback);
   },
   addJob:function(Job,callback){
+    return db.query('INSERT INTO jobs SET ?', Job,callback);
+  },
+  deleteJob:function(id,callback){
+    return db.query("delete from jobs where job_id=?",[id],callback);
+  },
+  updateJob:function(id,Job,callback){
+    Job.job_id = parseInt(id);
     console.log(Job);
-    return db.query("Insert into jobs values(?,?,?,?,?,?,?,?,?)",[null,Job.title,0,Job.comment,Job.assigned_by_id,Job.assigned_to_id,Job.patient_id,null,null],callback);
-  },
-  deleteTask:function(id,callback){
-    return db.query("delete from jobs where Id=?",[id],callback);
-  },
-  updateTask:function(id,Task,callback){
-    return db.query("update jobs set Title=?,Status=? where Id=?",[Task.Title,Task.Status,id],callback);
+    return db.query("UPDATE jobs SET title=?,status=?,comment=?,assigned_to_id=?,patient_id=?,due_date=? WHERE job_id= ?",[Job.title,Job.status,Job.comment,Job.assigned_to_id,Job.patient_id,Job.due_date,Job.job_id],callback);
   },
   initTable:function(){
     var init = db.query(`CREATE TABLE IF NOT EXISTS jobs
@@ -63,12 +66,35 @@ router.get('/:id?',function(req,res,next){
 
 // Insert job
 router.post('/',function(req,res,next){
-  console.log(req.body);
-  Job.addJob(req.body,function(err,count){
+  Job.addJob(req.body.Job,function(err,result){
     if(err) {
       res.json(err);
     } else{
-      res.json(req.body);
+      res.json(result);
+    }
+  });
+ });
+
+// Delete job
+router.delete('/:id',function(req,res,next){
+ Job.deleteJob(req.params.id,function(err,result){
+   if(err) {
+     console.log(err);
+     res.json(err);
+   } else{
+     res.json(result);
+   }
+ });
+});
+
+// Update job
+router.put('/:id',function(req,res,next){
+  Job.updateJob(req.params.id,req.body.Job,function(err,result){
+    if(err) {
+      console.log(err);
+      res.json(err);
+    } else{
+      res.json(result);
     }
   });
  });
