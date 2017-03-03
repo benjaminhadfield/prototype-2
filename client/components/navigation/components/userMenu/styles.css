@@ -1,0 +1,33 @@
+.userMenu {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+  background: white;
+  color: #222;
+  border-radius: 3px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
+  will-change: display;
+}
+
+.userMenu.open {
+  display: block;
+  visibility: visible;
+}
+
+.userMenu__item {
+  display: block;
+  padding: 8px;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.userMenu__item:hover {
+  background: rgba(0, 0, 0, .1);
+}
+
+.userMenu__item + .userMenu__item {
+  border-top: 1px solid #d6d6d6;
+}

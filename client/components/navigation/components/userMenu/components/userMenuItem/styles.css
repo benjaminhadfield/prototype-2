@@ -1,0 +1,12 @@
+.link,
+.link:link,
+.link:visited,
+.link:hover,
+.link:active,
+.link:focus {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 5px;
+}
+

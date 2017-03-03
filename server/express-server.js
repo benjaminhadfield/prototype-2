@@ -38,6 +38,17 @@ const setRouteHandler = () => new Promise((resolve, reject) => {
   );
 });
 
+//Define api here
+
+//TODO: put API in a seperate file (see routes in another files with node.js)
+var router = express.Router();              // get an instance of the express Router
+
+router.get('/', function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!' });   
+});
+
+app.use('/api', router);
+
 const startServer = () => new Promise((resolve, reject) => {
   app.listen(defaultConfig.$("connections.default.port"), (err) => {
     if (err) {
