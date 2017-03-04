@@ -1,0 +1,127 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Peach",
+		"_postman_id": "4eeda80a-1c36-1c26-1b25-b85649ee0211",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Jobs",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/jobs",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get All jobs."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/{{job_id}}",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/2",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get a job by id"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Job\":{\n\t\t\"title\":\"title job\",\n\t\t\"comment\":\"comment job\",\n\t\t\"assigned_by_id\":2,\n\t\t\"assigned_to_id\":4,\n\t\t\"patient_id\":234,\n\t\t\"due_date\": \"2017-03-05 11:25:50\"\n\t}\n}"
+						},
+						"description": "Add a Job."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/1",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Delete jobs."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/2",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/4",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Job\":{\n\t\t\"title\":\"title job updated\",\n\t\t\"comment\":\"comment job\",\n\t\t\"status\":1,\n\t\t\"assigned_by_id\":2,\n\t\t\"assigned_to_id\":4,\n\t\t\"patient_id\":234,\n\t\t\"due_date\": \"2017-03-05 11:25:50\"\n\t}\n}"
+						},
+						"description": "Update Job\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://localhost:3000/api/",
+			"request": {
+				"url": "http://localhost:3000/api/",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "Home of API"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/init",
+			"request": {
+				"url": "http://localhost:3000/api/init",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "Create database tables if don't exist."
+			},
+			"response": []
+		}
+	]
+}
