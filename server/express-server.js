@@ -2,11 +2,17 @@
 
 const Promise = require("bluebird");
 const express = require("express");
+const bodyParser = require('body-parser');
 const app = express();
 const path = require("path");
 const _ = require("lodash");
 const defaultConfig = require("electrode-confippet").config;
 const Confippet = require("electrode-confippet");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+//Require routes of the API
+require('../server/api/routes')(app);
 
 const loadConfigs = function (userConfig) {
   //use confippet to merge user config and default config
@@ -37,17 +43,6 @@ const setRouteHandler = () => new Promise((resolve, reject) => {
     }
   );
 });
-
-//Define api here
-
-//TODO: put API in a seperate file (see routes in another files with node.js)
-var router = express.Router();              // get an instance of the express Router
-
-router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
-});
-
-app.use('/api', router);
 
 const startServer = () => new Promise((resolve, reject) => {
   app.listen(defaultConfig.$("connections.default.port"), (err) => {
