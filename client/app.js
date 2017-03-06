@@ -18,9 +18,9 @@ import "./styles/base.css";
 // The webapp's full HTML will check and call it once the js-content
 // DOM is created.
 
-// require.ensure(["./sw-registration"], (require) => {
-//   require("./sw-registration")(notify);
-// }, "sw-registration");
+require.ensure(["./sw-registration"], (require) => {
+  require("./sw-registration")(notify);
+}, "sw-registration");
 
 window.webappStart = () => {
   const initialState = window.__PRELOADED_STATE__;
