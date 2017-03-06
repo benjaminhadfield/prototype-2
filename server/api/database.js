@@ -2,13 +2,14 @@
 
 //Mysql setup + connection
 
-var connect = function(){
+var connect = function() {
   var mysql = require('mysql');
   var pool  = mysql.createPool({
     host     : 'localhost',
-    user     : 'root',
+    user     : 'prototype-2',
     password : 'root',
-    database : 'peach'
+    database : 'peach',
+    post: 8888
   });
   pool.getConnection(function(err, connection) {
     if (err) {

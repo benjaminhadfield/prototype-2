@@ -45,12 +45,11 @@ class Navigation extends React.Component {
         <ul className={styles.nav__links}>
         {
           navigationItems.map(item => (
-            <li className={styles.nav__links__link}>
               <Link
+                className={styles.nav__links__link}
                 activeClassName={styles.nav__links__link__active}
                 to={`/${item.toLowerCase()}`}
                 children={item}/>
-            </li>
             )
           )
         }
