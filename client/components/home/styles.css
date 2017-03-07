@@ -3,3 +3,8 @@
   margin: 0 auto;
   padding: 10px 10px 10px 220px;
 }
+
+.title {
+  padding: 0;
+  margin: 0 0 10px;
+}
