@@ -1,0 +1,19 @@
+.primary,
+.primary:link,
+.primary:visited {
+  font-size: 1em;
+  font-weight: bold;
+  display: inline-block;
+  padding: 5px 12px;
+  background: #202D38;
+  border: 0;
+  color: white;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.primary:hover,
+.primary:active,
+.primary:focus {
+  background: #404D58;
+}

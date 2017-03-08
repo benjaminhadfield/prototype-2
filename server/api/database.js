@@ -9,7 +9,7 @@ var connect = function() {
     user     : 'prototype-2',
     password : 'root',
     database : 'peach',
-    post: 8888
+    port: 8889
   });
   pool.getConnection(function(err, connection) {
     if (err) {

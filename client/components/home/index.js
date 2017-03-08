@@ -8,9 +8,7 @@ class Home extends React.Component {
     const {children, checked, value, location} = this.props;
     const title = location.pathname.slice(1)
 
-    function ucFirst(str) {
-      return str.slice(0, 1).toUpperCase() + str.slice(1)
-    }
+    const ucFirst = str => str.slice(0, 1).toUpperCase() + str.slice(1)
 
     return (
       <div>

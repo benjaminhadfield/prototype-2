@@ -8,7 +8,7 @@ const JobsList = ({jobs, ...props}) => {
   return (
     <section className={styles.container}>
       {
-        jobs.map((item) => <Job {...item}/>)
+        jobs.map((item) => <Job key={item.job_id} {...item}/>)
       }
     </section>
   )

@@ -1,5 +1,5 @@
 import React from 'react';
-import SchedulerComponent from '../components/scheduler';
+import SchedulerComponent from '../../components/scheduler';
 
 
 class Scheduler extends React.Component {
