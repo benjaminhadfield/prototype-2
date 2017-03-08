@@ -19,16 +19,16 @@ class Jobs extends React.Component {
     const {jobs, loading} = this.props;
 
     const spinner = <p>Loading...</p>;
-    const jobsList = (
+    const jobsList = <JobsList jobs={jobs}/>;
+
+    return (
       <div>
         <div className={styles.masthead}>
-          <Button onClick={this.getJobsList.bind(this)}>Refresh</Button>
+          <Button disabled={loading} onClick={this.getJobsList.bind(this)}>Refresh</Button>
         </div>
-        <JobsList jobs={jobs}/>
+        {loading ? spinner : jobsList}
       </div>
     );
-
-    return loading ? spinner : jobsList;
   }
 }
 

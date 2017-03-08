@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
     case actionTypes.JOBS_LIST_FAILURE:
       return {
         ...state,
-        error: error,
+        error: action.error.message,
         loading: false
       }
     default:

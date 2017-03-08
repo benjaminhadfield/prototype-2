@@ -6,6 +6,7 @@
   display: inline-block;
   padding: 5px 12px;
   background: #202D38;
+  outline: 0;
   border: 0;
   color: white;
   box-sizing: border-box;
@@ -16,4 +17,10 @@
 .primary:active,
 .primary:focus {
   background: #404D58;
+}
+
+.primary:disabled {
+  cursor: default;
+  background: #aaa;
+  color: #eee;
 }

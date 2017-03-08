@@ -11,6 +11,7 @@
   align-items: stretch;
   background: #202D38;
   color: white;
+  overflow-y: auto;
 }
 
 .masthead {
