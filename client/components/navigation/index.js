@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.css';
 import {Link} from 'react-router';
 import UserMenu from './components/userMenu';
+const brandImg = require('../../assets/brand/logo.png');
 
 const navigationItems = [
   'Home',
@@ -33,10 +34,11 @@ class Navigation extends React.Component {
     return (
       <nav className={styles.nav}>
         <div className={styles.masthead}>
-          <h1 className={styles.brand}>PEACH Cancer</h1>
+          <div className={styles.separater}></div>
+          <h1 className={styles.brand}><img src={brandImg} width="120px"/></h1>
           <div className={styles.user}>
             <button className={styles.button} onClick={this.toggleUserMenu.bind(this)}>
-              Username
+              Navin
             </button>
             <UserMenu open={userMenuOpen}/>
           </div>
@@ -45,12 +47,11 @@ class Navigation extends React.Component {
         <ul className={styles.nav__links}>
         {
           navigationItems.map(item => (
-            <li className={styles.nav__links__link}>
               <Link
+                className={styles.nav__links__link}
                 activeClassName={styles.nav__links__link__active}
                 to={`/${item.toLowerCase()}`}
                 children={item}/>
-            </li>
             )
           )
         }

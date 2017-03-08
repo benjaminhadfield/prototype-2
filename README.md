@@ -11,6 +11,10 @@ $ npm clone https://github.com/benjaminhadfield/prototype-2.git
 $ npm install
 ```
 
+###Database
+
+You need to run a mysql database locally. Create a database named 'peach'. Set your database user name and password in "server/api/database.js". Then simply visit [http://localhost:3000/api/init](http://localhost:3000/api/init) and the app will create the required tables. A Postman files containing all API calls is available in "Postman/Peach.postman_collection.json".
+
 ## Development
 
 Start the development server by running `gulp dev`.

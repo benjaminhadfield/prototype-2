@@ -1,0 +1,10 @@
+{
+	"Job":{
+		"title":"title job",
+		"comment":"comment job",
+		"assigned_by_id":2,
+		"assigned_to_id":4,
+		"patient_id":234,
+		"due_date": "2017-03-05 11:25:50"
+	}
+}

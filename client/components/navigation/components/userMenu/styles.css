@@ -27,7 +27,3 @@
 .userMenu__item:hover {
   background: rgba(0, 0, 0, .1);
 }
-
-.userMenu__item + .userMenu__item {
-  border-top: 1px solid #d6d6d6;
-}
