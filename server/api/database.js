@@ -8,8 +8,7 @@ var connect = function() {
     host     : 'localhost',
     user     : 'prototype-2',
     password : 'root',
-    database : 'peach',
-    port: 8889
+    database : 'peach'
   });
   pool.getConnection(function(err, connection) {
     if (err) {
