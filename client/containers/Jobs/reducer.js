@@ -38,6 +38,7 @@ export default (state = initialState, action) => {
     case actionTypes.DELETE_JOB_SUCCESS:
       return {
         ...state,
+        jobs: state.jobs.filter(item => item.job_id !== action.id),
         deleting: false
       }
     case actionTypes.DELETE_JOB_FAILURE:

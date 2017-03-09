@@ -3,6 +3,7 @@ import styles from './styles.css'
 import {connect} from 'react-redux';
 import {createNewJob} from './actions';
 import {CreateJobForm} from './components/createJobForm';
+import {SelectMeeting} from './components/selectMeeting';
 import {SelectPatient} from './components/selectPatient';
 
 class Confirmation extends React.Component {
@@ -16,6 +17,7 @@ class Confirmation extends React.Component {
     return (
       <div>
         <div className={styles.select}>
+          <SelectMeeting/>
           <SelectPatient/>
         </div>
         <div className={styles.form}>

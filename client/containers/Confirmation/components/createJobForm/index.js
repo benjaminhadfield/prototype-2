@@ -38,7 +38,6 @@ export class CreateJobForm extends React.Component {
 
     // deal with invalid form
     if (!this.validateForm()) {
-      console.log('invalid');
       return;
     }
 
@@ -65,7 +64,7 @@ export class CreateJobForm extends React.Component {
         <Input value={title} name="title" onChange={this.handleInputChange}/>
         <LongText value={comment} name="comment" onChange={this.handleInputChange}/>
         <Date value={due_date} name="due_date" onChange={this.handleInputChange}/>
-        <Button disabled={loading} type="submit">Create Job</Button>
+        <Button disabled={loading || !this.validateForm()} type="submit">Create Job</Button>
       </form>
     );
   }

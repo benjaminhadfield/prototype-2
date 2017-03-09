@@ -19,7 +19,6 @@ class Jobs extends React.Component {
 
   handleDeleteJob(id) {
     this.props.deleteJob(id);
-    this.getJobsList();
   }
 
   getJobsList() {

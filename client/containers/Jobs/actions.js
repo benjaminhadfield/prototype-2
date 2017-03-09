@@ -15,7 +15,7 @@ const jobsListRequest = () => ({type: JOBS_LIST_REQUEST})
 const jobsListSuccess = (response) => ({type: JOBS_LIST_SUCCESS, response})
 const jobsListFailure = (error) => ({type: JOBS_LIST_FAILURE, error})
 const deleteJobRequest = () => ({type: DELETE_JOB_REQUEST})
-const deleteJobSuccess = (response) => ({type: DELETE_JOB_SUCCESS})
+const deleteJobSuccess = (id) => ({type: DELETE_JOB_SUCCESS, id})
 const deleteJobFailure = (error) => ({type: DELETE_JOB_FAILURE})
 
 export const getJobsList = () => {
@@ -31,7 +31,7 @@ export const deleteJob = (id) => {
   return dispatch => {
     dispatch(deleteJobRequest());
     axios.delete(`/api/jobs/${id}`)
-      .then(res => dispatch(deleteJobSuccess(res)))
+      .then(_ => dispatch(deleteJobSuccess(id)))
       .catch(err => dispatch(deleteJobFailure(err)))
   }
 }

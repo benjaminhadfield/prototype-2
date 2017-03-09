@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.css';
-import {Select} from '../../../../components/form';
+// import {Select} from '../../../../components/form';
+import Select from 'react-select';
 
 export class SelectPatient extends React.Component {
   render() {
@@ -16,7 +17,7 @@ export class SelectPatient extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.header}>
-          <h4>Select Patient</h4>
+          <h5 className={styles.title}>Select Patient</h5>
         </div>
         <div className={styles.body}>
           <Select onChange={(e) => console.log(e)} options={options}/>

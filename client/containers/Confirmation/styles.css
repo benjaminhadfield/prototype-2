@@ -1,0 +1,7 @@
+.select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: stretch;
+  margin: 0 0 10px;
+}

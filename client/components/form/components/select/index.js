@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.css';
-import {default as _Select} from 'react-select';
+const _Select = require('react-select');
 
 export const Select = ({options, onChange, ...props}) => {
   return (
