@@ -7,7 +7,8 @@ import * as actionTypes from './actions'
 const initialState = {
   jobs: [],
   loading: false,
-  error: false
+  error: false,
+  deleting: false
 }
 
 export default (state = initialState, action) => {
@@ -28,6 +29,21 @@ export default (state = initialState, action) => {
         ...state,
         error: action.error.message,
         loading: false
+      }
+    case actionTypes.DELETE_JOB_REQUEST:
+      return {
+        ...state,
+        deleting: true
+      }
+    case actionTypes.DELETE_JOB_SUCCESS:
+      return {
+        ...state,
+        deleting: false
+      }
+    case actionTypes.DELETE_JOB_FAILURE:
+      return {
+        ...state,
+        deleting: false
       }
     default:
       return state
