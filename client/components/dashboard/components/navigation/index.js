@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.css';
 import {Link} from 'react-router';
 import UserMenu from './components/userMenu';
-const brandImg = require('../../assets/brand/logo.png');
+const brandImg = require('../../../../assets/brand/logo.png');
 
 const navigationItems = [
   'Home',
@@ -13,6 +13,10 @@ const navigationItems = [
   'Confirmation',
   'Jobs'
 ]
+
+const makeLink = (name) => {
+  return name.toLowerCase().replace(' ', '-')
+}
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -50,7 +54,7 @@ class Navigation extends React.Component {
               <Link
                 className={styles.nav__links__link}
                 activeClassName={styles.nav__links__link__active}
-                to={`/${item.toLowerCase()}`}
+                to={`/${makeLink(item)}`}
                 children={item}/>
             )
           )

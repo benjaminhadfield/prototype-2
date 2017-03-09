@@ -1,9 +1,9 @@
 import React from "react";
 import Notifications from "react-notify-toast";
 import styles from './styles.css'
-import Navigation from '../navigation'
+import Navigation from './components/navigation'
 
-class Home extends React.Component {
+class Dashboard extends React.Component {
   render() {
     const {children, checked, value, location} = this.props;
     const title = location.pathname.slice(1)
@@ -23,4 +23,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Dashboard;
