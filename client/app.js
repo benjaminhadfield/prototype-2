@@ -14,6 +14,7 @@ import {notify} from "react-notify-toast";
 import {default as rootReducer} from "./reducers";
 
 import "./styles/base.css";
+import 'react-select/dist/react-select.css'; // for React-Select
 
 const loggerMiddleware = createLogger()
 const middleware = applyMiddleware(thunkMiddleware, loggerMiddleware)

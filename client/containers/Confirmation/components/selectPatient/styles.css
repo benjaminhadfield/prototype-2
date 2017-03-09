@@ -1,0 +1,11 @@
+.container {
+  display: block;
+  position: relative;
+  width: 100%;
+  border: 1px solid #eee;
+}
+
+.header {
+  background: #202D38;
+  color: white;
+}
