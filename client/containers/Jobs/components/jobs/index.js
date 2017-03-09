@@ -3,12 +3,11 @@ import {connect} from "react-redux";
 import styles from './styles.css';
 import Job from './components/job';
 
-
-const JobsList = ({jobs, ...props}) => {
+const JobsList = ({jobs, deleteCallback, ...props}) => {
   return (
     <section className={styles.container}>
       {
-        jobs.map((item) => <Job key={item.job_id} {...item}/>)
+        jobs.map((item) => <Job key={item.job_id} deleteCallback={deleteCallback} {...item}/>)
       }
     </section>
   )

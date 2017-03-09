@@ -42,3 +42,13 @@
   color: inherit;
   text-decoration: underline;
 }
+
+.done {
+  color: #999;
+  background: #eee;
+}
+
+.working {
+  color: #999;
+  background: #eee;
+}

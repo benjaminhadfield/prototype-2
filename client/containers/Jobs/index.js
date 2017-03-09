@@ -1,13 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import JobsList from '../../components/jobs';
-import {getJobsList} from './actions';
+import JobsList from './components/jobs';
+import {getJobsList, deleteJob} from './actions';
 const spinner = require('../../assets/ui/spinner.gif');
 import {Button} from '../../components/button'
 import styles from './styles.css'
 
 class Jobs extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleDeleteJob = this.handleDeleteJob.bind(this)
+    this.getJobsList = this.getJobsList.bind(this)
+  }
+
   componentWillMount() {
+    this.getJobsList();
+  }
+
+  handleDeleteJob(id) {
+    this.props.deleteJob(id);
     this.getJobsList();
   }
 
@@ -19,12 +30,12 @@ class Jobs extends React.Component {
     const {jobs, loading} = this.props;
 
     const spinner = <p>Loading...</p>;
-    const jobsList = <JobsList jobs={jobs}/>;
+    const jobsList = <JobsList jobs={jobs} deleteCallback={this.handleDeleteJob}/>;
 
     return (
       <div>
         <div className={styles.masthead}>
-          <Button disabled={loading} onClick={this.getJobsList.bind(this)}>Refresh</Button>
+          <Button disabled={loading} onClick={this.getJobsList}>Refresh</Button>
         </div>
         {loading ? spinner : jobsList}
       </div>
@@ -38,7 +49,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getJobsList: () => dispatch(getJobsList())
+  getJobsList: () => dispatch(getJobsList()),
+  deleteJob: (id) => dispatch(deleteJob(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jobs);
