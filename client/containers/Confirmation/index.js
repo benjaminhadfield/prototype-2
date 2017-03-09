@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 class Confirmation extends React.Component {
   render() {
     return (
-      <div>Confirmation Page</div>
+      <div>Confirmation Pageedwde</div>
     )
   }
 }
