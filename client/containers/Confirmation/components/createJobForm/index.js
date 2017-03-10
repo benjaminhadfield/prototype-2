@@ -6,11 +6,12 @@ import {Button} from '../../../../components/button';
 export class CreateJobForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.initialState = {
       title: '',
       comment: '',
       due_date: '',
     }
+    this.state = this.initialState;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -18,7 +19,6 @@ export class CreateJobForm extends React.Component {
   handleInputChange(e) {
     const inputEl = e.target.name;
     const value = e.target.value;
-    console.log(inputEl, ':', value)
     this.setState({[inputEl]: value});
   }
 
@@ -35,12 +35,10 @@ export class CreateJobForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let {title, comment, due_date} = this.state;
-
     // deal with invalid form
     if (!this.validateForm()) {
       return;
     }
-
     // we have a valid form
     const data = {
       Job: {
@@ -53,6 +51,8 @@ export class CreateJobForm extends React.Component {
       }
     }
     this.props.submitCallback(data);
+    // reset the form
+    this.setState(this.initialState);
   }
 
   render() {

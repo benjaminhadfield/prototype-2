@@ -8,7 +8,6 @@ import {SelectPatient} from './components/selectPatient';
 
 class Confirmation extends React.Component {
   handleSubmit(data) {
-    console.log('got data:', data)
     this.props.createNewJob(data);
   }
 

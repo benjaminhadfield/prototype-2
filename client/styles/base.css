@@ -1,6 +1,4 @@
-:global {
-  @import "../../node_modules/react-select/dist/react-select.css";
-}
+:global {}
 
 :root {
   --black: #000;
