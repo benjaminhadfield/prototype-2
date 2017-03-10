@@ -20,14 +20,17 @@ const Job = ({job_id, title, comment, assigned_by_id, due_date, status, deleteCa
         <p className={styles.description}>{comment}</p>
       </div>
 
-      <div className={styles.details}>
-        <p className={styles.details__detail}>Assigned by <Link className={styles.assignee} to="#">{assigned_by_id}</Link></p>
-        <p className={styles.details__detail}>Due on {due_date}</p>
+      <div className={styles.right_panel}>
+          <div className={styles.details}>
+            <p className={styles.details__detail}>Assigned by <Link className={styles.assignee} to="#">{assigned_by_id}</Link></p>
+            <p className={styles.details__detail}>Due on {due_date}</p>
+          </div>
+
+          <div className={styles.actions}>
+            <Button onClick={handleDelete}>x</Button>
+          </div>
       </div>
 
-      <div className={styles.actions}>
-        <Button onClick={handleDelete}>x</Button>
-      </div>
     </article>
   );
 };
