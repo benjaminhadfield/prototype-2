@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 class Referrals extends React.Component {
   render() {
     return (
-      <div>Referrals Page</div>
+      <div>Referrals Form</div>
+
     )
   }
 }

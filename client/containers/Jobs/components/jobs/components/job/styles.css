@@ -22,10 +22,19 @@
 .details {
   text-align: right;
   color: #999;
+  margin-right: 10px;
 }
 
 .details__detail {
   margin-bottom: 5px;
+}
+
+.actions{
+    width: 30px;
+}
+
+.right_panel{
+    display: flex;
 }
 
 .container a,
