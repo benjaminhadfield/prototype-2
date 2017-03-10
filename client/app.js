@@ -10,7 +10,6 @@ import {createStore, applyMiddleware} from "redux";
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import {Provider} from "react-redux";
-import {notify} from "react-notify-toast";
 import {default as rootReducer} from "./reducers";
 
 import "./styles/base.css";

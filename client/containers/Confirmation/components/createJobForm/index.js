@@ -28,7 +28,7 @@ export class CreateJobForm extends React.Component {
 
   validateForm() {
     return Object.values(this.state).reduce(
-      (prev, current) => {console.log(prev, current, this.validateInput(current)); return prev && this.validateInput(current)}, true
+      (prev, current) => prev && this.validateInput(current), true
     );
   }
 

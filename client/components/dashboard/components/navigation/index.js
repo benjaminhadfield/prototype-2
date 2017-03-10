@@ -52,6 +52,7 @@ class Navigation extends React.Component {
         {
           navigationItems.map(item => (
               <Link
+                key={makeLink(item)}
                 className={styles.nav__links__link}
                 activeClassName={styles.nav__links__link__active}
                 to={`/${makeLink(item)}`}

@@ -6,7 +6,7 @@ export const Select = ({options, onChange, ...props}) => {
     <select className={styles.input} {...props}>
       <option value="-1">Select...</option>
       {
-        options.map(item => <option value={item.value} children={item.label}/>)
+        options.map(item => <option key={item.value} value={item.value} children={item.label}/>)
       }
     </select>
   );

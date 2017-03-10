@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <Notifications />
+        <Notifications/>
         <Navigation/>
         <div className={styles.page}>
           <h1 className={styles.title}>{ucFirst(title)}</h1>
