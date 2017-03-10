@@ -6,7 +6,7 @@ import Grid from './Grid';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {DragDropContext} from 'react-dnd';
 import Calendar from './calendar';
-import './calendar.css';
+import styles from './calendar.css';
 import patients from './patients'
 
 var Scheduler = React.createClass({
