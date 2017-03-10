@@ -14,7 +14,6 @@ import {notify} from "react-notify-toast";
 import {default as rootReducer} from "./reducers";
 
 import "./styles/base.css";
-import 'react-dates/lib/css/_datepicker.css';
 
 const loggerMiddleware = createLogger()
 const middleware = applyMiddleware(thunkMiddleware, loggerMiddleware)
