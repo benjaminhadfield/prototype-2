@@ -11,10 +11,13 @@ class Confirmation extends React.Component {
   constructor(props) {
     super(props);
     this.show = notify.createShowQueue();
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.onSuccess = this.onSuccess.bind(this)
+    this.onFailure = this.onFailure.bind(this)
   }
 
   handleSubmit(data) {
-    this.props.createNewJob(data, this.onSuccess.bind(this), this.onFailure.bind(this));
+    this.props.createNewJob(data, this.onSuccess, this.onFailure);
   }
 
   onSuccess() {
@@ -35,7 +38,9 @@ class Confirmation extends React.Component {
           <SelectPatient/>
         </div>
         <div className={styles.form}>
-          <CreateJobForm loading={loading} submitCallback={this.handleSubmit.bind(this)}/>
+          <CreateJobForm
+            loading={loading}
+            submitCallback={this.handleSubmit.bind(this)}/>
         </div>
       </div>
     );
@@ -50,4 +55,4 @@ const mapDispatchToProps = (dispatch) => ({
   createNewJob: (data, successCallback, failureCallback) => dispatch(createNewJob(data, successCallback, failureCallback))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Confirmation)
+export default connect(mapStateToProps, mapDispatchToProps)(Confirmation);

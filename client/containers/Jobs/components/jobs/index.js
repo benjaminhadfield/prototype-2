@@ -4,6 +4,7 @@ import styles from './styles.css';
 import Job from './components/job';
 
 const JobsList = ({jobs, deleteCallback, ...props}) => {
+  jobs = Array.isArray(jobs) ? jobs : []
   return (
     <section className={styles.container}>
       {

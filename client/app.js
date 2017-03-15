@@ -5,6 +5,7 @@
 import React from "react";
 import {render} from "react-dom";
 import {routes} from "./routes";
+import {notify} from 'react-notify-toast';
 import {Router, browserHistory} from "react-router";
 import {createStore, applyMiddleware} from "redux";
 import thunkMiddleware from 'redux-thunk'
