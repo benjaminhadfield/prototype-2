@@ -15,7 +15,7 @@ export const routes = (
     <Route path="/home" component={Home}/>
     <Route path="/referrals" component={Referrals}/>
     <Route path="/case-preparation" component={CasePreparation}/>
-
+    <Route path="/triage" component={Scheduler}/>
     <Route path="/live-mdt" component={LiveMdt}/>
     <Route path="/confirmation" component={Confirmation}/>
     <Route path="/jobs" component={Jobs}/>
