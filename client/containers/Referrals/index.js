@@ -3,11 +3,16 @@ import styles from './styles.css';
 import {connect} from 'react-redux';
 import {Tabs} from '../../components/tabs';
 import {CreateNew} from './components/createNew';
+import {ReviewPrevious} from './components/reviewPrevious';
 
 const sections = [
   {
     title: 'Form',
     body: <CreateNew/>
+  },
+  {
+    title: 'Review Previous',
+    body: <ReviewPrevious/>
   }
 ]
 
