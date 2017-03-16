@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import styles from './styles.css';
 import classNames from 'classnames';
-import {Button} from '../../../../../../components/button'
+import {Button} from '../../../../../../components/button';
 
 const Job = ({job_id, title, comment, assigned_by_id, due_date, status, deleteCallback, ...props}) => {
   let deleting = false;
@@ -27,7 +27,7 @@ const Job = ({job_id, title, comment, assigned_by_id, due_date, status, deleteCa
           </div>
 
           <div className={styles.actions}>
-            <Button onClick={handleDelete}>x</Button>
+            <Button onClick={handleDelete} children="x"/>
           </div>
       </div>
 
