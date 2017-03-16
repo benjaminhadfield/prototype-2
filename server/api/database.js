@@ -6,10 +6,10 @@ var connect = function() {
   var mysql = require('mysql');
   var pool  = mysql.createPool({
     host     : 'localhost',
-    user     : 'prototype-2',
-    password : 'root',
+    user     : 'root',
+    password : '',
     database : 'peach',
-    port : 8889
+    port : 3306
 
   });
   pool.getConnection(function(err, connection) {

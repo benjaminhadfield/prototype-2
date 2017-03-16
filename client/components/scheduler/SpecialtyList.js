@@ -8,16 +8,16 @@ var SpecialtyList = React.createClass({
 		};
 	},
 
-	addAndRemovePatient: function(patient, index, specialty){ // Removes patient, and adds it to the main patient list again.
+	addAndRemovePatient: function(patient, index, specialty, year, month, day){ // Removes patient, and adds it to the main patient list again.
 		this.props.addPatient(patient);
-		this.props.removeFromList(index, specialty);
+		this.props.removeFromGrid(index, specialty, year, month, day);
 	},
 
 	render: function(){
 		if(this.props.patients.length === 0){
 			return (
 				<div>
-					<h3>{this.props.specialty}</h3>
+					<h3>Specialty {this.props.specialty}</h3>
 					<h3> - </h3>
 				</div>
 			)
@@ -28,13 +28,13 @@ var SpecialtyList = React.createClass({
 				return(
 					<div>
 						<li id={i}>{patient.name}</li>
-						<button onClick={()=>this.addAndRemovePatient(patient,i,this.props.specialty)}> X </button>
+						<button onClick={()=>this.addAndRemovePatient(patient,i,this.props.specialty, this.props.year, this.props.month, this.props.day)}> X </button>
 					</div>
 				);
 			});
 			return (
 				<div>
-					<h3>{this.props.specialty}</h3>
+					<h3>Specialty {this.props.specialty}</h3>
 					{patientlisting}
 				</div>
 			);

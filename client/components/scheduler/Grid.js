@@ -31,10 +31,7 @@ function collect(connect,monitor){
 var Grid = React.createClass({
 	getInitialState: function(){
 		return{
-			specialtyA: [],
-			specialtyB: [],
-			specialtyC: [],
-			specialtyModalIsOpen: false,
+			specialtyModalIsOpen: (this.props.dayEvent.specialtyA === 0 && this.props.dayEvent.specialtyB === 0 && this.props.dayEvent.specialtyC === 0),    //false
 			choiceModalIsOpen: false,
 			currentPatient: null,
 			day: this.props.day,
@@ -43,86 +40,13 @@ var Grid = React.createClass({
 		};
 	},
 
-	addPatients: function(patient, specialty){
-		switch(specialty){
-			case "A":
-				this.state.specialtyA.push(patient);
-				this.setState({
-					specialtyA: this.state.specialtyA
-
-				});
-				break;
-			case "B":
-				this.state.specialtyB.push(patient);
-				this.setState({
-					specialtyB: this.state.specialtyB
-
-				});
-				break;
-			case "C":
-				this.state.specialtyC.push(patient);
-				this.setState({
-					specialtyC: this.state.specialtyC
-
-				});
-				break;
-		}
+	addPatientsToGrid: function(patient, specialty,year,month,day){
+		this.props.addPatients(patient, specialty,year,month,day);
 		this.setState({
 			currentPatient: null,
 			choiceModalIsOpen: false
 		})
-	},
-
-	removeFromList: function(index, specialty){
-		switch(specialty){
-			case "Specialty A":
-				var newArray = this.state.specialtyA;
-				newArray.splice(index,1);
-				if(newArray.length === 0 && this.state.specialtyB.length === 0 && this.state.specialtyC.length === 0){
-					this.setState({
-						specialtyA: newArray,
-						specialtyModalIsOpen: false
-					});
-				}
-				else{
-					this.setState({
-						specialtyA: newArray
-					});
-				}
-				break;
-			case "Specialty B":
-				newArray = this.state.specialtyB;
-				newArray.splice(index,1);
-				if(newArray.length === 0 && this.state.specialtyA.length === 0 && this.state.specialtyC.length === 0){
-					this.setState({
-						specialtyB: newArray,
-						specialtyModalIsOpen: false
-					});
-				}
-				else{
-					this.setState({
-						specialtyB: newArray
-					});
-				}
-				break;
-			case "Specialty C":
-				newArray = this.state.specialtyC;
-				newArray.splice(index,1);
-				if(newArray.length === 0 && this.state.specialtyB.length === 0 && this.state.specialtyA.length === 0){
-					this.setState({
-						specialtyC: newArray,
-						specialtyModalIsOpen: false
-					});
-				}
-				else{
-					this.setState({
-						specialtyC: newArray
-					});
-				}
-				break;
-		}
-
-	},
+	}, 
 
 	choiceToggleModal: function(){
 		this.setState({
@@ -139,15 +63,20 @@ var Grid = React.createClass({
 
 	renderGrid: function(){
 		var currentPatient = this.state.currentPatient;
-		if(this.state.specialtyA.length === 0 && this.state.specialtyB.length === 0 && this.state.specialtyC.length === 0){
+		var dayEvent = this.props.dayEvent;
+		if(dayEvent.specialtyA.length === 0 && dayEvent.specialtyB.length === 0 && dayEvent.specialtyC.length === 0){
+			this.state.specialtyModalIsOpen = false;
+		}
+
+		if(dayEvent.specialtyA.length === 0 && dayEvent.specialtyB.length === 0 && dayEvent.specialtyC.length === 0){
 			return (
 				<div>
-					{this.props.children}
-					<Modal show={this.state.choiceModalIsOpen} onClose={this.choiceToggleModal}>
-						<button onClick={()=>this.addPatients(currentPatient, "A")}>Specialty A</button>
-						<button onClick={()=>this.addPatients(currentPatient, "B")}>Specialty B</button>
-						<button onClick={()=>this.addPatients(currentPatient, "C")}>Specialty C</button>
-					</Modal>
+				{this.props.children}
+				<Modal show={this.state.choiceModalIsOpen} onClose={this.choiceToggleModal}>
+					<button onClick={()=>this.addPatientsToGrid(currentPatient, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</button>
+					<button onClick={()=>this.addPatientsToGrid(currentPatient, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</button>
+					<button onClick={()=>this.addPatientsToGrid(currentPatient, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</button>
+				</Modal>
 				</div>
 			);
 		}
@@ -157,14 +86,14 @@ var Grid = React.createClass({
 					{this.props.children}
 					<button onClick={this.toggleModal}>Click here to view patient</button>
 					<Modal show={this.state.specialtyModalIsOpen} onClose={this.toggleModal}>
-						<SpecialtyList patients={this.state.specialtyA} specialty="Specialty A" removeFromList={this.removeFromList} addPatient={this.props.addPatient}/>
-						<SpecialtyList patients={this.state.specialtyB} specialty="Specialty B" removeFromList={this.removeFromList} addPatient={this.props.addPatient}/>
-						<SpecialtyList patients={this.state.specialtyC} specialty="Specialty C" removeFromList={this.removeFromList} addPatient={this.props.addPatient}/>
+						<SpecialtyList patients={dayEvent.specialtyA} specialty="A" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
+						<SpecialtyList patients={dayEvent.specialtyB} specialty="B" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
+						<SpecialtyList patients={dayEvent.specialtyC} specialty="C" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
 					</Modal>
 					<Modal show={this.state.choiceModalIsOpen} onClose={this.choiceToggleModal}>
-						<button onClick={()=>this.addPatients(currentPatient, "A")}>Specialty A</button>
-						<button onClick={()=>this.addPatients(currentPatient, "B")}>Specialty B</button>
-						<button onClick={()=>this.addPatients(currentPatient, "C")}>Specialty C</button>
+						<button onClick={()=>this.addPatientsToGrid(currentPatient, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</button>
+						<button onClick={()=>this.addPatientsToGrid(currentPatient, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</button>
+						<button onClick={()=>this.addPatientsToGrid(currentPatient, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</button>
 					</Modal>
 				</div>
 			);

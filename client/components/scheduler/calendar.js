@@ -54,7 +54,8 @@ var Calendar = React.createClass({
             monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             monthNamesFull: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             firstOfMonth: null,
-            daysInMonth: null
+            daysInMonth: null,
+            events: []
         };
     },
     getPrev: function () {
@@ -94,13 +95,88 @@ var Calendar = React.createClass({
             selectedElement: element.target
         });
     },
+
+    addPatients: function(patient, specialty,year,month,day){
+        var events = this.state.events;
+        var found = 0;
+        for(var i = 0; i < events.length; i++){
+            if(events[i].year === year && events[i].month === month && events[i].day === day){
+                switch(specialty){
+                    case "A":
+                        events[i].specialtyA.push(patient);
+                        break;
+                    case "B":
+                        events[i].specialtyB.push(patient);
+                        break;
+                    case "C":
+                        events[i].specialtyC.push(patient);
+                        break;
+                }
+                found = 1;
+            }
+        }
+        if(found === 0){
+            var newEvent = {
+                year : year,
+                month: month,
+                day: day,
+                specialtyA: [],
+                specialtyB: [],
+                specialtyC: []
+            }
+            switch(specialty){
+                case "A":
+                    newEvent.specialtyA.push(patient);
+                    break;
+                case "B":
+                    newEvent.specialtyB.push(patient);
+                    break;
+                case "C":
+                    newEvent.specialtyC.push(patient);
+                    break;
+            }
+            events.push(newEvent);
+        }
+        console.log(patient);
+        console.log(specialty);
+        console.log(year);
+        console.log(month);
+        console.log(day);
+        
+        this.setState({
+            events : events
+        })
+    },
+
+    removeFromGrid: function(index, specialty, year, month, day){
+        var events = this.state.events;
+        for(var i = 0; i < events.length; i++){
+            if(events[i].year === year && events[i].month === month && events[i].day === day){
+                switch(specialty){
+                    case "A":
+                        events[i].specialtyA.splice(index,1);
+                        break;
+                    case "B":
+                        events[i].specialtyB.splice(index,1);
+                        break;
+                    case "C":
+                        events[i].specialtyC.splice(index,1);
+                        break;
+                }
+            }     
+        }
+        this.setState({
+            events : events
+        })
+    },
+
     render: function () {
         return (
             <div className={styles.rcalendar}>
                 <div className={styles.rinner}>
                     <Header monthNames={this.state.monthNamesFull} month={this.state.month} year={this.state.year} onPrev={this.getPrev} onNext={this.getNext} />
                     <WeekDays dayNames={this.state.dayNames} startDay={this.state.startDay} weekNumbers={this.state.weekNumbers} />
-                    <MonthDates addPatient={this.props.addPatient} month={this.state.month} year={this.state.year} daysInMonth={this.state.daysInMonth} firstOfMonth={this.state.firstOfMonth} startDay={this.state.startDay} onSelect={this.selectDate} weekNumbers={this.state.weekNumbers} disablePast={this.state.disablePast} minDate={this.state.minDate} />
+                    <MonthDates events={this.state.events} removeFromGrid={this.removeFromGrid} addPatients={this.addPatients} addPatient={this.props.addPatient} month={this.state.month} year={this.state.year} daysInMonth={this.state.daysInMonth} firstOfMonth={this.state.firstOfMonth} startDay={this.state.startDay} onSelect={this.selectDate} weekNumbers={this.state.weekNumbers} disablePast={this.state.disablePast} minDate={this.state.minDate} />
                 </div>
             </div>
         );
@@ -198,6 +274,21 @@ var MonthDates = React.createClass({
                                 className += " " + styles.rpast;
                             }
 
+                            var dayEvent = {
+                                year : 0,
+                                month: 0,
+                                day: 0,
+                                specialtyA: [],
+                                specialtyB: [],
+                                specialtyC: []
+                            }
+                            var events = that.props.events;
+                            for(var i = 0; i < events.length; i++){
+                                if(events[i].year === that.props.year && events[i].month === that.props.month && events[i].day === d){
+                                    dayEvent = events[i];
+                                }
+                            }
+
                             if (/r-past/.test(className)) {
                                 return (
                                     <div className={className} role="button" tabIndex="0"><Grid year={that.props.year} month={that.props.month} day={d} addPatient={that.props.addPatient}>{d}</Grid></div>
@@ -205,7 +296,7 @@ var MonthDates = React.createClass({
                             }
 
                             return (
-                                <div className={className} role="button" tabIndex="0" onClick={that.props.onSelect.bind(that, that.props.year, that.props.month, d)}><Grid year={that.props.year} month={that.props.month} day={d} addPatient={that.props.addPatient}>{d}</Grid></div>
+                                <div className={className} role="button" tabIndex="0" onClick={that.props.onSelect.bind(that, that.props.year, that.props.month, d)}><Grid dayEvent={dayEvent} removeFromGrid={that.props.removeFromGrid} addPatients={that.props.addPatients} year={that.props.year} month={that.props.month} day={d} addPatient={that.props.addPatient}>{d}</Grid></div>
 
                             );
                         }
