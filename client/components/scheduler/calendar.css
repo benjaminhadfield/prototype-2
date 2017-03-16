@@ -1,4 +1,4 @@
-.r-calendar{
+.rcalendar{
     background-color: #eee;
     -moz-box-shadow: 0 0 5px #ccc;
     -webkit-box-shadow: 0 0 5px #ccc;
@@ -6,7 +6,7 @@
     font: normal 15px Helvetica Neue, Helvetica, Arial, sans-serif;
     min-width: 280px;
 }
-.r-calendar *{
+.rcalendar *{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -15,13 +15,13 @@
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
-.r-calendar .r-row{
+.rcalendar .rrow{
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
     justify-content: center;
 }
-.r-calendar .r-cell{
+.rcalendar .rcell{
     background-color: #ffffff;
     align-items: center;
     display: flex;
@@ -32,18 +32,18 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
-.r-calendar .r-head{
+.rcalendar .rhead{
     flex-grow: 1;
     flex-basis: 0;
 }
-.r-calendar .r-prev,
-.r-calendar .r-next{
+.rcalendar .rprev,
+.rcalendar .rnext{
     background-color: #ffffff;
     cursor: pointer;
     outline: none;
 }
-.r-calendar .r-prev:before,
-.r-calendar .r-next:before{
+.rcalendar .rprev:before,
+.rcalendar .rnext:before{
     position: relative;
     top: 0;
     content: "";
@@ -53,91 +53,91 @@
     border-top: 0.2em solid #222222;
     transform: rotate(-45deg);
 }
-.r-calendar .r-prev:before{
+.rcalendar .rprev:before{
     border-left: 0.2em solid #222222;
     transform: rotate(-45deg);
     margin-left: 0.3em;
 }
-.r-calendar .r-prev:hover:before{
+.rcalendar .rprev:hover:before{
     border-left-color: #ffffff;
     border-top-color: #ffffff;
 }
-.r-calendar .r-next:before{
-    border-right: 0.2em solid #222222;
+.rcalendar .rnext:before{
+    borderright: 0.2em solid #222222;
     transform: rotate(45deg);
     margin-right: 0.3em;
 }
-.r-calendar .r-next:hover:before{
-    border-right-color: #ffffff;
+.rcalendar .rnext:hover:before{
+    borderright-color: #ffffff;
     border-top-color: #ffffff;
 }
-.r-calendar .r-prev:hover,
-.r-calendar .r-next:hover{
+.rcalendar .rprev:hover,
+.rcalendar .rnext:hover{
     background-color: #0066CC;
 }
-.r-calendar .r-title{
+.rcalendar .r-title{
     flex-grow: 5;
     flex-basis: max-content;
 }
-.r-calendar .r-weekdays{
+.rcalendar .rweekdays{
     flex-grow: 1;
     flex-basis: 0;
 }
-.r-calendar .r-weekdays .r-cell{
+.rcalendar .rweekdays .rcell{
     font-weight: bold;
 }
-.r-calendar .r-dates{
+.rcalendar .rdates{
     display: flex;
     flex-flow: column nowrap;
     flex-grow: 6;
     flex-basis: 0;
 }
-.r-calendar .r-dates.r-fix{
+.rcalendar .rdates.r-fix{
     flex-grow: 5;
 }
-.r-calendar .r-dates .r-row{
+.rcalendar .rdates .rrow{
     flex-grow: 1;
 }
-.r-calendar .r-dates .r-cell{
+.rcalendar .rdates .rcell{
     background-color: #ffffff;
     border: solid 1px #ffffff;
 }
-.r-calendar .r-cell.r-date{
+.rcalendar .rcell.rdate{
     cursor: pointer;
     outline: none;
 }
-.r-calendar .r-cell.r-date.r-today{
+.rcalendar .rcell.rdate.r-today{
     background-color: #ffffff;
     border: solid 1px #0066CC;
 }
-.r-calendar .r-cell.r-date:not(.r-past):hover{
+.rcalendar .rcell.rdate:not(.rpast):hover{
     background-color: #0066CC;
     border: solid 1px #0066CC;
-    
+
 }
-.r-calendar .r-cell.r-date.r-selected{
+.rcalendar .rcell.rdate.rselected{
     background-color: #000000;
     border: solid 1px #000000;
     color: #fff;
 }
-.r-calendar .r-cell.r-date.r-past{
+.rcalendar .rcell.rdate.rpast{
     color: #999999;
     cursor: not-allowed;
 }
-.r-calendar .r-weeknum{
+.rcalendar .rweeknum{
     color: #999999;
     font-size: 0.8em;
 }
-.r-calendar{
+.rcalendar{
     position: relative;
-    width: 50%;
+    width: 100%;
 }
-.r-calendar:after{
+.rcalendar:after{
     content: "";
     display: block;
     padding-bottom: 100%;
 }
-.r-calendar .r-inner{
+.rcalendar .rinner{
     position: absolute;
     width: 100%;
     height: 100%;

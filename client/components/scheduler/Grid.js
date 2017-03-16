@@ -4,6 +4,7 @@ import {DropTarget} from 'react-dnd';
 import Modal from './Modal';
 import PatientList from './PatientList';
 import SpecialtyList from './SpecialtyList';
+import styles from './styles.css';
 
 var gridTarget = {
 	drop: function(props, monitor, component){
@@ -48,21 +49,21 @@ var Grid = React.createClass({
 				this.state.specialtyA.push(patient);
 				this.setState({
 					specialtyA: this.state.specialtyA
-					
+
 				});
 				break;
 			case "B":
 				this.state.specialtyB.push(patient);
 				this.setState({
 					specialtyB: this.state.specialtyB
-			
+
 				});
 				break;
 			case "C":
 				this.state.specialtyC.push(patient);
 				this.setState({
 					specialtyC: this.state.specialtyC
-		
+
 				});
 				break;
 		}
@@ -87,7 +88,7 @@ var Grid = React.createClass({
 					this.setState({
 						specialtyA: newArray
 					});
-				}	
+				}
 				break;
 			case "Specialty B":
 				newArray = this.state.specialtyB;
@@ -102,7 +103,7 @@ var Grid = React.createClass({
 					this.setState({
 						specialtyB: newArray
 					});
-				}	
+				}
 				break;
 			case "Specialty C":
 				newArray = this.state.specialtyC;
@@ -117,10 +118,10 @@ var Grid = React.createClass({
 					this.setState({
 						specialtyC: newArray
 					});
-				}	
+				}
 				break;
 		}
-		
+
 	},
 
 	choiceToggleModal: function(){
@@ -173,13 +174,7 @@ var Grid = React.createClass({
 		var connectDropTarget = this.props.connectDropTarget;
 		var isOver = this.props.isOver;
 		return connectDropTarget(
-			<div style={{
-				backgroundColor: 'yellow',
-        		height: '100px',
-        		width: '100px',
-        		float: 'right',
-        		
-      		}}>
+			<div className={styles.cell} data-test="ddddd">
       		{this.renderGrid()}
       		</div>
       	);
