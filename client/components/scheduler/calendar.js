@@ -142,7 +142,7 @@ var Calendar = React.createClass({
         console.log(year);
         console.log(month);
         console.log(day);
-        
+
         this.setState({
             events : events
         })
@@ -163,7 +163,7 @@ var Calendar = React.createClass({
                         events[i].specialtyC.splice(index,1);
                         break;
                 }
-            }     
+            }
         }
         this.setState({
             events : events
@@ -187,9 +187,9 @@ var Header = React.createClass({
     render: function () {
         return (
             <div className={styles.rrow +" "+ styles.rhead}>
-                <div className={styles.rcell +" "+ styles.rprev} onClick={this.props.onPrev.bind(this)} role="button" tabIndex="0"></div>
+                <div className={styles.rcell +" "+ styles.bluehover} onClick={this.props.onPrev.bind(this)} role="button" tabIndex="0"><i className="fa fa-caret-left" aria-hidden="true"></i></div>
                 <div className={styles.rcell +" "+ styles.rtitle}>{this.props.monthNames[this.props.month]}&nbsp;{this.props.year}</div>
-                <div className={styles.rcell +" "+ styles.rnext} onClick={this.props.onNext.bind(this)} role="button" tabIndex="0"></div>
+                <div className={styles.rcell +" "+ styles.bluehover} onClick={this.props.onNext.bind(this)} role="button" tabIndex="0"><i className="fa fa-caret-right" aria-hidden="true"></i></div>
             </div>
         );
     }

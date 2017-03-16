@@ -35,7 +35,9 @@ var Scheduler = React.createClass({
     return (
       <div className="App">
         <PatientList patients={this.state.patients} name="List of Patients" removeFromList={this.removeFromList}/>
-        <Calendar addPatient={this.addPatient}/>
+        <div className="col-xs-12 col-sm-10 col-sm-offset-1">
+            <Calendar addPatient={this.addPatient}/>
+        </div>
       </div>
     );
   }

@@ -19,7 +19,9 @@ const sections = [
 class Referrals extends React.Component {
   render() {
     return (
+
       <Tabs sections={sections} sectionIndex={0}/>
+
     );
   }
 }
