@@ -1,7 +1,29 @@
 .tab {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-sizing: border-box;
   flex: 1;
   margin: 0;
   padding: 10px;
+  color: #aaa;
+  cursor: pointer;
+  flex: 0;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.tab:hover,
+.tab:focus {
+  color: black;
+  background: #f6f6f6;
+}
+
+.active,
+.active:hover,
+.active:focus {
+  background: dodgerblue;
+  color: white;
+  cursor: default;
+  pointer-events: none;
 }
