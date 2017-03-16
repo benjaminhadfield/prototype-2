@@ -7,10 +7,8 @@ var connect = function() {
   var pool  = mysql.createPool({
     host     : 'localhost',
     user     : 'root',
-    password : '',
+    password : 'root',
     database : 'peach',
-    port : 3306
-
   });
   pool.getConnection(function(err, connection) {
     if (err) {

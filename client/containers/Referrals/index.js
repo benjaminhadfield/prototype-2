@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './styles.css';
 import {connect} from 'react-redux';
 import {Input, Select} from '../../components/form';
-import {Button} from '../../components/button';
+// import {Button} from '../../components/button';
+import { Button } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
+
+
 
 const options = [
   {
@@ -33,10 +37,18 @@ class Referrals extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <Input name="Field A"/>
-        <Input name="Field B"/>
+      <FormControl
+                  type="text"
+                  placeholder="Enter text"
+                  name="Field A"
+                />
+    <FormControl
+                type="text"
+                placeholder="Enter text"
+                name="Field A"
+              />
         <Select name="abc" options={options}/>
-        <Button type="submit" children="Submit"/>
+        <Button bsStyle="primary" type="submit" children="Submit"/>
       </form>
     );
   }
