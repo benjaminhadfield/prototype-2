@@ -4,6 +4,21 @@ import {connect} from 'react-redux';
 import {Input, Select} from '../../components/form';
 import {Button} from '../../components/button';
 
+const options = [
+  {
+    value: 1,
+    label: 'Value 1'
+  },
+  {
+    value: 2,
+    label: 'Value 2'
+  },
+  {
+    value: 3,
+    label: 'Value 3'
+  },
+]
+
 class Referrals extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +35,7 @@ class Referrals extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <Input name="Field A"/>
         <Input name="Field B"/>
-        <Select name="abc" options={[{label: 'values', value: 1}, 'values2']}/>
+        <Select name="abc" options={options}/>
         <Button type="submit" children="Submit"/>
       </form>
     );
