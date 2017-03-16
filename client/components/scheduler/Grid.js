@@ -141,17 +141,20 @@ var Grid = React.createClass({
 		var currentPatient = this.state.currentPatient;
 		if(this.state.specialtyA.length === 0 && this.state.specialtyB.length === 0 && this.state.specialtyC.length === 0){
 			return (
-				<Modal show={this.state.choiceModalIsOpen} onClose={this.choiceToggleModal}>
-					<button onClick={()=>this.addPatients(currentPatient, "A")}>Specialty A</button>
-					<button onClick={()=>this.addPatients(currentPatient, "B")}>Specialty B</button>
-					<button onClick={()=>this.addPatients(currentPatient, "C")}>Specialty C</button>
-				</Modal>
+				<div>
+					{this.props.children}
+					<Modal show={this.state.choiceModalIsOpen} onClose={this.choiceToggleModal}>
+						<button onClick={()=>this.addPatients(currentPatient, "A")}>Specialty A</button>
+						<button onClick={()=>this.addPatients(currentPatient, "B")}>Specialty B</button>
+						<button onClick={()=>this.addPatients(currentPatient, "C")}>Specialty C</button>
+					</Modal>
+				</div>
 			);
 		}
 		else{
 			return (
 				<div>
-
+					{this.props.children}
 					<button onClick={this.toggleModal}>Click here to view patient</button>
 					<Modal show={this.state.specialtyModalIsOpen} onClose={this.toggleModal}>
 						<SpecialtyList patients={this.state.specialtyA} specialty="Specialty A" removeFromList={this.removeFromList} addPatient={this.props.addPatient}/>
