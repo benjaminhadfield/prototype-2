@@ -17,9 +17,9 @@ export class CreateJobForm extends React.Component {
   }
 
   handleInputChange(e) {
-    const inputEl = e.target.name;
-    const value = e.target.value;
-    this.setState({[inputEl]: value});
+    console.log(e.target.name, e.target.value)
+    this.setState({[e.target.name]: e.target.value});
+    console.log(this.state)
   }
 
   validateInput(value) {

@@ -10,7 +10,7 @@ export const Input = ({name, ...props}) => {
         id={name}
         className={styles.input}
         type="text"
-        nam={name}
+        name={name}
         placeholder={name}
         {...props}/>
     </div>

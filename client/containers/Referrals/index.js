@@ -1,43 +1,20 @@
 import React from 'react';
 import styles from './styles.css';
 import {connect} from 'react-redux';
-import {Input, Select} from '../../components/form';
-import {Button} from '../../components/button';
+import {Tabs} from '../../components/tabs';
+import {CreateNew} from './components/createNew';
 
-const options = [
+const sections = [
   {
-    value: 1,
-    label: 'Value 1'
-  },
-  {
-    value: 2,
-    label: 'Value 2'
-  },
-  {
-    value: 3,
-    label: 'Value 3'
-  },
+    title: 'Form',
+    body: <CreateNew/>
+  }
 ]
 
 class Referrals extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    // post to API..
-  }
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <Input name="Field A"/>
-        <Input name="Field B"/>
-        <Select name="abc" options={options}/>
-        <Button type="submit" children="Submit"/>
-      </form>
+      <Tabs sections={sections} sectionIndex={0}/>
     );
   }
 }
