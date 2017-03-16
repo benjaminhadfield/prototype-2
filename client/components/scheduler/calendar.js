@@ -200,12 +200,12 @@ var MonthDates = React.createClass({
 
                             if (/r-past/.test(className)) {
                                 return (
-                                    <div className={className} role="button" tabIndex="0">{d}<Grid year={that.props.year} month={that.props.month} day={d} addPatient={that.props.addPatient}/></div>
+                                    <div className={className} role="button" tabIndex="0"><Grid year={that.props.year} month={that.props.month} day={d} addPatient={that.props.addPatient}>{d}</Grid></div>
                                 );
                             }
 
                             return (
-                                <div className={className} role="button" tabIndex="0" onClick={that.props.onSelect.bind(that, that.props.year, that.props.month, d)}>{d}<Grid year={that.props.year} month={that.props.month} day={d} addPatient={that.props.addPatient}/></div>
+                                <div className={className} role="button" tabIndex="0" onClick={that.props.onSelect.bind(that, that.props.year, that.props.month, d)}><Grid year={that.props.year} month={that.props.month} day={d} addPatient={that.props.addPatient}>{d}</Grid></div>
 
                             );
                         }
