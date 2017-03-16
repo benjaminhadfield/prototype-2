@@ -10,6 +10,7 @@
 
 import React from 'react';
 import Grid from './Grid';
+import styles from './calendar.css';
 
 var Calendar = React.createClass({
     calc: function (year, month) {
@@ -95,8 +96,8 @@ var Calendar = React.createClass({
     },
     render: function () {
         return (
-            <div className="r-calendar">
-                <div className="r-inner">
+            <div className={styles.rcalendar}>
+                <div className={styles.rinner}>
                     <Header monthNames={this.state.monthNamesFull} month={this.state.month} year={this.state.year} onPrev={this.getPrev} onNext={this.getNext} />
                     <WeekDays dayNames={this.state.dayNames} startDay={this.state.startDay} weekNumbers={this.state.weekNumbers} />
                     <MonthDates addPatient={this.props.addPatient} month={this.state.month} year={this.state.year} daysInMonth={this.state.daysInMonth} firstOfMonth={this.state.firstOfMonth} startDay={this.state.startDay} onSelect={this.selectDate} weekNumbers={this.state.weekNumbers} disablePast={this.state.disablePast} minDate={this.state.minDate} />
@@ -109,10 +110,10 @@ var Calendar = React.createClass({
 var Header = React.createClass({
     render: function () {
         return (
-            <div className="r-row r-head">
-                <div className="r-cell r-prev" onClick={this.props.onPrev.bind(this)} role="button" tabIndex="0"></div>
-                <div className="r-cell r-title">{this.props.monthNames[this.props.month]}&nbsp;{this.props.year}</div>
-                <div className="r-cell r-next" onClick={this.props.onNext.bind(this)} role="button" tabIndex="0"></div>
+            <div className={styles.rrow +" "+ styles.rhead}>
+                <div className={styles.rcell +" "+ styles.rprev} onClick={this.props.onPrev.bind(this)} role="button" tabIndex="0"></div>
+                <div className={styles.rcell +" "+ styles.rtitle}>{this.props.monthNames[this.props.month]}&nbsp;{this.props.year}</div>
+                <div className={styles.rcell +" "+ styles.rnext} onClick={this.props.onNext.bind(this)} role="button" tabIndex="0"></div>
             </div>
         );
     }
@@ -123,17 +124,17 @@ var WeekDays = React.createClass({
         var that = this,
             haystack = Array.apply(null, {length: 7}).map(Number.call, Number);
         return (
-            <div className="r-row r-weekdays">
+            <div className={styles.rrow +" "+ styles.rweekdays}>
                 {(() => {
                     if (that.props.weekNumbers) {
                         return (
-                            <div className="r-cell r-weeknum">wn</div>
+                            <div className={styles.rcell +" "+ styles.rweeknum}>wn</div>
                         );
                     }
                 })()}
                 {haystack.map(function (item, i) {
                     return (
-                        <div className="r-cell">{that.props.dayNames[(that.props.startDay + i) % 7]}</div>
+                        <div className={styles.rcell}>{that.props.dayNames[(that.props.startDay + i) % 7]}</div>
                     );
                 })}
             </div>
@@ -163,7 +164,7 @@ var MonthDates = React.createClass({
             rows = 6;
         }
 
-        className = rows === 6 ? 'r-dates' : 'r-dates r-fix';
+        className = rows === 6 ? styles.rdates : styles.rdates +" "+ styles.rfix;   // todo:check
         haystack = Array.apply(null, {length: rows}).map(Number.call, Number);
         day = this.props.startDay + 1 - first;
         while (day > 1) {
@@ -175,12 +176,12 @@ var MonthDates = React.createClass({
             {haystack.map(function (item, i) {
                 d = day + i * 7;
                 return (
-                    <div className="r-row">
+                    <div className={styles.rrow}>
                     {(() => {
                         if (that.props.weekNumbers) {
                             var wn = Math.ceil((((new Date(that.props.year, that.props.month, d) - janOne) / 86400000) + janOne.getDay() + 1) / 7);
                             return (
-                                <div className="r-cell r-weeknum">{wn}</div>
+                                <div className={styles.rcell +" "+ styles.rweeknum}>{wn}</div>
                             );
                         }
                     })()}
@@ -190,11 +191,11 @@ var MonthDates = React.createClass({
 
                         if (isDate) {
                             current = new Date(that.props.year, that.props.month, d);
-                            className = current != that.constructor.today ? 'r-cell r-date' : 'r-cell r-date r-today';
+                            className = current != that.constructor.today ? styles.rcell +" "+ styles.rdate : styles.rcell +" "+ styles.rdate + " "+styles.rtoday;
                             if (that.props.disablePast && current < that.constructor.today) {
-                                className += ' r-past';
+                                className += " " + styles.rpast;
                             } else if (that.props.minDate !== null && current < that.props.minDate) {
-                                className += ' r-past';
+                                className += " " + styles.rpast;
                             }
 
                             if (/r-past/.test(className)) {
@@ -210,7 +211,7 @@ var MonthDates = React.createClass({
                         }
 
                         return (
-                            <div className="r-cell"></div>
+                            <div className={styles.rcell}></div>
                         );
                     })}
                     </div>
