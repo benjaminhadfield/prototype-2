@@ -2,7 +2,7 @@ import React from 'react';
 import {ItemTypes} from './Constants';
 import {DropTarget} from 'react-dnd';
 //import Modal from './Modal';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal, Button, ListGroup} from 'react-bootstrap';
 import PatientList from './PatientList';
 import SpecialtyList from './SpecialtyList';
 import styles from './styles.css';
@@ -71,38 +71,38 @@ var Grid = React.createClass({
 
 		if(dayEvent.specialtyA.length === 0 && dayEvent.specialtyB.length === 0 && dayEvent.specialtyC.length === 0){
 			return (
-				<div>
-				{this.props.children}
+				<div className={styles.grid_pos}>
+					<div className="text-center">{this.props.children}</div>
 
-				<Modal
-				      show={this.state.choiceModalIsOpen}
-				      onHide={this.choiceToggleModal}
-				      container={this}
-				      aria-labelledby="contained-modal-title"
-				    >
-				      <Modal.Header closeButton>
-				        	<Modal.Title id="contained-modal-title">
-								Choose Patient
-							</Modal.Title>
-				      </Modal.Header>
-				      <Modal.Body>
-						  <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</Button>
-						  <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</Button>
-						  <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</Button>
-				      </Modal.Body>
-				      <Modal.Footer>
-				        	<Button onClick={this.choiceToggleModal}>Close</Button>
-				      </Modal.Footer>
-				</Modal>
+					<Modal
+					      show={this.state.choiceModalIsOpen}
+					      onHide={this.choiceToggleModal}
+					      container={this}
+					      aria-labelledby="contained-modal-title"
+					    >
+					      <Modal.Header closeButton>
+					        	<Modal.Title id="contained-modal-title">
+									Choose Patient
+								</Modal.Title>
+					      </Modal.Header>
+					      <Modal.Body>
+							  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</Button>
+							  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</Button>
+							  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</Button>
+					      </Modal.Body>
+					      <Modal.Footer>
+					        	<Button onClick={this.choiceToggleModal}>Close</Button>
+					      </Modal.Footer>
+					</Modal>
 
 				</div>
 			);
 		}
 		else{
 			return (
-				<div>
-					{this.props.children}
-					<button onClick={this.toggleModal}>Click here to view patient</button>
+				<div className={styles.grid_pos}>
+					<div className="text-center">{this.props.children}</div>
+					<Button className={styles.grid_btn} bsStyle="primary" bsSize="xsmall" onClick={this.toggleModal}><i className="fa fa-eye" aria-hidden="true"></i></Button>
 					<Modal
 					      show={this.state.specialtyModalIsOpen}
 					      onHide={this.toggleModal}
@@ -115,12 +115,12 @@ var Grid = React.createClass({
 								</Modal.Title>
 					      </Modal.Header>
 					      <Modal.Body>
-								 <SpecialtyList patients={dayEvent.specialtyA} specialty="A" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
+								<SpecialtyList patients={dayEvent.specialtyA} specialty="A" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
 								<SpecialtyList patients={dayEvent.specialtyB} specialty="B" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
 								<SpecialtyList patients={dayEvent.specialtyC} specialty="C" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
 						</Modal.Body>
 					      <Modal.Footer>
-					        	<Button onClick={this.toggleModal}>Close</Button>
+					        	<Button className={styles.btn_marg} onClick={this.toggleModal}>Close</Button>
 					      </Modal.Footer>
 					</Modal>
 					<Modal
@@ -135,9 +135,9 @@ var Grid = React.createClass({
 								</Modal.Title>
 					      </Modal.Header>
 					      <Modal.Body>
-							  <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</Button>
-							 <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</Button>
-							 <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</Button>
+							  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</Button>
+							 <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</Button>
+							 <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</Button>
 					 	 </Modal.Body>
 					      <Modal.Footer>
 					        	<Button onClick={this.choiceToggleModal}>Close</Button>

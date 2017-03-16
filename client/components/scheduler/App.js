@@ -8,6 +8,7 @@ import {DragDropContext} from 'react-dnd';
 import Calendar from './calendar';
 import styles from './calendar.css';
 import patients from './patients'
+import {Col} from 'react-bootstrap';
 
 var Scheduler = React.createClass({
   getInitialState: function(){
@@ -34,10 +35,12 @@ var Scheduler = React.createClass({
   render: function() {
     return (
       <div className="App">
-        <PatientList patients={this.state.patients} name="List of Patients" removeFromList={this.removeFromList}/>
-        <div className="col-xs-12 col-sm-10 col-sm-offset-1">
+        <Col xs={12} sm={10} md={4} smOffset={1} mdOffset={0}>
+            <PatientList patients={this.state.patients} name="List of Patients" removeFromList={this.removeFromList}/>
+        </Col>
+        <Col xs={12} sm={10} md={8} smOffset={1} mdOffset={0}>
             <Calendar addPatient={this.addPatient}/>
-        </div>
+        </Col>
       </div>
     );
   }
