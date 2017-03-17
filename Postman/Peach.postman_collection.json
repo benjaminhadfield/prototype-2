@@ -1,0 +1,357 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Peach",
+		"_postman_id": "4eeda80a-1c36-1c26-1b25-b85649ee0211",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Jobs",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/jobs",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get All jobs."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/{{job_id}}",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/2",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get a job by id"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Job\":{\n\t\t\"title\":\"title job\",\n\t\t\"comment\":\"comment job\",\n\t\t\"assigned_by_id\":2,\n\t\t\"assigned_to_id\":4,\n\t\t\"patient_id\":234,\n\t\t\"due_date\": \"2017-03-05 11:25:50\"\n\t}\n}"
+						},
+						"description": "Add a Job."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/1",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Delete jobs."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/jobs/2",
+					"request": {
+						"url": "http://localhost:3000/api/jobs/4",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Job\":{\n\t\t\"title\":\"title job updated\",\n\t\t\"comment\":\"comment job\",\n\t\t\"status\":1,\n\t\t\"assigned_by_id\":2,\n\t\t\"assigned_to_id\":4,\n\t\t\"patient_id\":234,\n\t\t\"due_date\": \"2017-03-05 11:25:50\"\n\t}\n}"
+						},
+						"description": "Update Job\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Meetings",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/meetings/",
+					"request": {
+						"url": "http://localhost:3000/api/meetings/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get meetings"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/meetings/",
+					"request": {
+						"url": "http://localhost:3000/api/meetings/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Meeting\":{\n\t\t\"title\":\"Meeting title\",\n\t\t\"starting_time\": \"11:25:50\",\n\t\t\"ending_time\": \"11:25:50\"\n\t}\n}"
+						},
+						"description": "Post and create meeting"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/meetings/2",
+					"request": {
+						"url": "http://localhost:3000/api/meetings/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Delete meeting\n"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/meetings/1",
+					"request": {
+						"url": "http://localhost:3000/api/meetings/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Meeting\":{\n\t\t\"title\": \"Meeting titledwedwedwedwedwededw\",\n\t    \"starting_time\": \"11:21:50\",\n\t    \"ending_time\": \"11:25:50\"\n\t}\n}"
+						},
+						"description": "Update Meeting\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Meetings Occurences",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/meetings_occurences/",
+					"request": {
+						"url": "http://localhost:3000/api/meetings_occurences/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get all meetings occurences"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/meetings_occurences/05/2017",
+					"request": {
+						"url": "http://localhost:3000/api/meetings_occurences/05/2017",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get meeting occurences by months"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/meetings_occurences/",
+					"request": {
+						"url": "http://localhost:3000/api/meetings_occurences/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"MeetingOccurence\":{\n\t\t\"meeting_id\": \"1\",\n\t\t\"occurence_date\": \"2017-05-15\"\n\t}\n}"
+						},
+						"description": "Post and create meeting occurences"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/meetings_occurences/3",
+					"request": {
+						"url": "http://localhost:3000/api/meetings_occurences/3",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"MeetingOccurence\":{\n\t\t\"meeting_id\": \"11\",\n\t\t\"occurence_date\": \"2017-05-15\"\n\t}\n}"
+						},
+						"description": "Update a meeting occurences"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/meetings_occurences/1",
+					"request": {
+						"url": "http://localhost:3000/api/meetings_occurences/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Delete a meeting occurence"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Specialities",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/specialities/",
+					"request": {
+						"url": "http://localhost:3000/api/specialities/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Speciality\":{\n\t\t\"speciality_id\": \"1\",\n\t\t\"name\": \"romsite\"\n\t}\n}"
+						},
+						"description": "Post a  speciality"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/specialities/",
+					"request": {
+						"url": "http://localhost:3000/api/specialities/",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "get all specialities"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/specialities/1",
+					"request": {
+						"url": "http://localhost:3000/api/specialities/1",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Speciality\":{\n\t\t\"name\": \"romeeeesite\"\n\t}\n}"
+						},
+						"description": "Update speciality\n"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/specialities/1",
+					"request": {
+						"url": "http://localhost:3000/api/specialities/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Delete speciality"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://localhost:3000/api/",
+			"request": {
+				"url": "http://localhost:3000/api/",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "Home of API"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/init",
+			"request": {
+				"url": "http://localhost:3000/api/init",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "Create database tables if don't exist."
+			},
+			"response": []
+		}
+	]
+}

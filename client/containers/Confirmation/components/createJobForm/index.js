@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './styles.css';
 import {Input, LongText, Date} from '../../../../components/form';
 import {Button} from '../../../../components/button';
+import {Col} from 'react-bootstrap';
 
 export class CreateJobForm extends React.Component {
   constructor(props) {
@@ -60,12 +61,14 @@ export class CreateJobForm extends React.Component {
     let {title, comment, due_date} = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit} className={styles.container}>
-        <Input value={title} name="title" onChange={this.handleInputChange}/>
-        <LongText value={comment} name="comment" onChange={this.handleInputChange}/>
-        <Date value={due_date} name="due_date" onChange={this.handleInputChange}/>
-        <Button disabled={loading || !this.validateForm()} type="submit">Create Job</Button>
-      </form>
+      <Col xs={12}>
+          <form onSubmit={this.handleSubmit} className={styles.container}>
+            <Input className="form-control" value={title} name="title" onChange={this.handleInputChange}/>
+            <LongText className="form-control" value={comment} name="comment" onChange={this.handleInputChange}/>
+            <Date value={due_date} name="due_date" onChange={this.handleInputChange}/>
+            <Button disabled={loading || !this.validateForm()} type="submit">Create Job</Button>
+          </form>
+     </Col>
     );
   }
 };

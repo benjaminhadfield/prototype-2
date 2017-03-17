@@ -4,32 +4,32 @@ var router = express.Router();
 
 
 
-// ---------Meetings CRUD Functions-----------
+// ---------Specialties CRUD Functions-----------
 
 var Speciality = {
 
   // speciality_id, name
 
   getAllSpecialities:function(callback){
-    return db.query("Select * from meetings",callback);
+    return db.query("Select * from specialities",callback);
   },
   getSpecialityById:function(id,callback){
-    return db.query("select * from meetings where meeting_id=?",[id],callback);
+    return db.query("select * from specialities where speciality_id=?",[id],callback);
   },
-  addSpeciality:function(Meeting,callback){
-    return db.query('INSERT INTO meetings SET ?', Meeting,callback);
+  addSpeciality:function(Speciality,callback){
+    return db.query('INSERT INTO specialities SET ?', Speciality,callback);
   },
   deleteSpeciality:function(id,callback){
-    return db.query("delete from meetings where meeting_id=?",[id],callback);
+    return db.query("delete from specialities where speciality_id=?",[id],callback);
   },
-  updateSpeciality:function(id,Meeting,callback){
-    Meeting.meeting_id = parseInt(id);
-    console.log(Meeting);
-    return db.query("UPDATE meetings SET title=?,starting_time=?,ending_time=? WHERE meeting_id= ?",[Meeting.title,Meeting.starting_time,Meeting.ending_time,Meeting.meeting_id],callback);
+  updateSpeciality:function(id,Speciality,callback){
+    Speciality.speciality_id = parseInt(id);
+    console.log(Speciality);
+    return db.query("UPDATE specialities SET name=? WHERE speciality_id= ?",[Speciality.name,Speciality.speciality_id],callback);
   },
   initTable:function(){
-    var init = db.query(`CREATE TABLE IF NOT EXISTS meetings
-    (meeting_id MEDIUMINT NOT NULL AUTO_INCREMENT, title varchar(500) NOT NULL, starting_time TIME, ending_time TIME, created_at TIMESTAMP, PRIMARY KEY (meeting_id))
+    var init = db.query(`CREATE TABLE IF NOT EXISTS specialities
+    (speciality_id MEDIUMINT NOT NULL AUTO_INCREMENT, name varchar(500) NOT NULL, PRIMARY KEY (speciality_id))
      ENGINE=InnoDB DEFAULT CHARSET=latin1;` , function (error, results, fields) {
       if (error) {
         console.log(error);
@@ -39,13 +39,13 @@ var Speciality = {
 
 };
 
-// ----------Meetings ROUTES----------
+// ----------Specialities ROUTES----------
 
-// Get a meeting by id - Get all meetings if id not specified
+// Get a Speciality by id - Get all Specialities if id not specified
 router.get('/:id?',function(req,res,next){
 
   if(req.params.id){
-    Meeting.getMeetingById(req.params.id,function(err,rows){
+    Speciality.getSpecialityById(req.params.id,function(err,rows){
       if(err) {
         res.json(err);
       } else {
@@ -53,7 +53,7 @@ router.get('/:id?',function(req,res,next){
       }
     });
   } else{
-    Meeting.getAllMeetings(function(err,rows){
+    Speciality.getAllSpecialities(function(err,rows){
       if(err){
         res.json(err);
       } else {
@@ -63,61 +63,47 @@ router.get('/:id?',function(req,res,next){
   }
 });
 
-// Insert Meeting
+// Insert Speciality
 router.post('/',function(req,res,next){
-    //Make sure starting time is before ending time
-    var starting_date = '01/01/2017 '+req.body.Meeting.starting_time;
-    var ending_date = '01/01/2017  '+req.body.Meeting.ending_time;
 
-    if (Date.parse(starting_date) >= Date.parse(ending_date)){
-        res.status(400);
-        res.json({"err":"Starting time must be before ending time."});
-    } else {
-        Meeting.addMeeting(req.body.Meeting,function(err,result){
-            if(err) {
-              res.json(err);
-            } else{
-                res.status(201);
-                res.json(result);
-            }
-        });
-    }
+    Speciality.addSpeciality(req.body.Speciality,function(err,result){
+        if(err) {
+          res.json(err);
+        } else{
+            res.status(201);
+            res.json(result);
+        }
+    });
+
  });
 
-// Delete Meeting
+// Delete Speciality
 router.delete('/:id',function(req,res,next){
- Meeting.deleteMeeting(req.params.id,function(err,result){
-   if(err) {
-     console.log(err);
-     res.json(err);
-   } else{
-     res.json(result);
-   }
- });
+     Speciality.deleteSpeciality(req.params.id,function(err,result){
+       if(err) {
+         console.log(err);
+         res.json(err);
+       } else{
+         res.json(result);
+       }
+     });
 });
 
-// Update Meeting
+// Update Speciality
 router.put('/:id',function(req,res,next){
-    //Make sure starting time is before ending time
-    var starting_date = '01/01/2017 '+req.body.Meeting.starting_time;
-    var ending_date = '01/01/2017  '+req.body.Meeting.ending_time;
 
-    if (Date.parse(starting_date) >= Date.parse(ending_date)){
-        res.status(400);
-        res.json({"err":"Starting time must be before ending time."});
-    } else {
-      Meeting.updateMeeting(req.params.id,req.body.Meeting,function(err,result){
+   Speciality.updateSpeciality(req.params.id,req.body.Speciality,function(err,result){
         if(err) {
           console.log(err);
           res.json(err);
         } else{
           res.json(result);
         }
-      });
-    }
+   });
+
  });
 
 
 
-module.exports=Meeting;
+module.exports=Speciality;
 module.exports.router = router;
