@@ -16,6 +16,10 @@ var MeetingOccurence = {
   getMeetingOccurenceById:function(id,callback){
     return db.query("select * from meetings_occurences LEFT JOIN meetings ON meetings_occurences.meeting_id=meetings.meeting_id where meeting_occurence_id=?",[id],callback);
   },
+  getMeetingOccurenceInMonth:function(month,year,callback){
+    console.log("select * from meetings_occurences LEFT JOIN meetings ON meetings_occurences.meeting_id=meetings.meeting_id where MONTH(occurence_date)="+month+" AND YEAR(occurence_date)="+year);
+    return db.query("select * from meetings_occurences LEFT JOIN meetings ON meetings_occurences.meeting_id=meetings.meeting_id where MONTH(occurence_date)=? AND YEAR(occurence_date)=? ",[month,year],callback);
+  },
   addMeetingOccurence:function(MeetingOccurence,callback){
     return db.query('INSERT INTO meetings_occurences SET ?', MeetingOccurence,callback);
   },
@@ -60,6 +64,17 @@ router.get('/:id?',function(req,res,next){
       }
     });
   }
+});
+
+router.get('/:month/:year',function(req,res,next){
+
+    MeetingOccurence.getMeetingOccurenceInMonth(req.params.month,req.params.year,function(err,rows){
+      if(err) {
+        res.json(err);
+      } else {
+        res.json(rows);
+      }
+    });
 });
 
 // Insert Meeting
