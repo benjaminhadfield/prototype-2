@@ -4,3 +4,35 @@
     width: 100%;
     /*float: right;*/
 }
+
+.peach_panel{
+    border-radius: 3px;
+}
+
+.peach_panel .panel_heading{
+    background-color: rgb(32, 45, 56);
+    color: white;
+}
+
+.btn_delete_patient {
+    position: absolute;
+    right: 6px;
+    width: 22px;
+    top: 6px;
+    border-radius: 3px;
+}
+
+.btn_marg{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.grid_pos {
+    position: relative;
+}
+
+.grid_btn {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}

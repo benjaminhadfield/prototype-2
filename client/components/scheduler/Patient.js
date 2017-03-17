@@ -1,6 +1,7 @@
 import React from 'react';
 import {ItemTypes} from './Constants';
 import {DragSource} from 'react-dnd';
+import {ListGroupItem} from 'react-bootstrap';
 
 var patientSource = {
 	beginDrag: function(props){
@@ -44,7 +45,7 @@ var Patient = React.createClass({
 
 		return connectDragSource(
 			<div>
-				<li>{this.props.name}</li>
+				{this.props.name}
 			</div>
 		);
 	}

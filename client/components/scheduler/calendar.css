@@ -1,10 +1,13 @@
 .rcalendar{
     background-color: #eee;
-    -moz-box-shadow: 0 0 5px #ccc;
-    -webkit-box-shadow: 0 0 5px #ccc;
-    box-shadow: 0 0 5px #ccc;
+    /*-moz-box-shadow: 0 0 5px #ccc;
+    -webkit-box-shadow: 0 0 5px #ccc;*/
+    /*box-shadow: 0 0 5px #ccc;*/
     font: normal 15px Helvetica Neue, Helvetica, Arial, sans-serif;
     min-width: 280px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    margin-bottom: 25PX;
 }
 .rcalendar *{
     -moz-box-sizing: border-box;
@@ -146,5 +149,7 @@
 }
 
 .bluehover:hover{
-    background-color: #0066CC;
+    background-color: rgb(32, 45, 56);
+    border-radius: 3px;
+    color: white;
 }

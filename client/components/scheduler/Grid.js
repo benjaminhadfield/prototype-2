@@ -2,7 +2,7 @@ import React from 'react';
 import {ItemTypes} from './Constants';
 import {DropTarget} from 'react-dnd';
 //import Modal from './Modal';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal, Button, ListGroup} from 'react-bootstrap';
 import PatientList from './PatientList';
 import SpecialtyList from './SpecialtyList';
 import styles from './styles.css';
@@ -99,6 +99,7 @@ var Grid = React.createClass({
 			this.state.specialtyModalIsOpen = false;
 		}
 
+
 			var modalMeetingA;
 			var modalMeetingB;
 			var modalMeetingC;
@@ -122,9 +123,9 @@ var Grid = React.createClass({
 								<SpecialtyList patients={dayEvent.meetingA.specialtyA} meeting={this.state.interestedMeeting} specialty="A" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
 								<SpecialtyList patients={dayEvent.meetingA.specialtyB} meeting={this.state.interestedMeeting} specialty="B" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
 								<SpecialtyList patients={dayEvent.meetingA.specialtyC} meeting={this.state.interestedMeeting} specialty="C" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-						  </Modal.Body>
+						</Modal.Body>
 					      <Modal.Footer>
-					        	<Button onClick={this.toggleModal}>Close</Button>
+					        	<Button className={styles.btn_marg} onClick={this.toggleModal}>Close</Button>
 					      </Modal.Footer>
 						</Modal>
 						</div>
@@ -226,9 +227,9 @@ var Grid = React.createClass({
 								</Modal.Title>
 					      </Modal.Header>
 					      <Modal.Body>
-							 <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</Button>
-							 <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</Button>
-							 <Button bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</Button>
+							  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</Button>
+							 <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</Button>
+							 <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</Button>
 					 	 </Modal.Body>
 					      <Modal.Footer>
 					        	<Button onClick={this.choiceToggleModal}>Close</Button>

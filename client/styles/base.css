@@ -44,3 +44,7 @@ p {
 .job__container {
   border: 1px solid #eee;
 }
+
+.btn-primary {
+    background-color: #202D38;
+}

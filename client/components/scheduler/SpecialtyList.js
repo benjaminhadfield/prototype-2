@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {ListGroupItem, ListGroup} from 'react-bootstrap';
+import styles from './styles.css';
 
 var SpecialtyList = React.createClass({
 	getDefaultProps: function(){
@@ -18,24 +19,33 @@ var SpecialtyList = React.createClass({
 			return (
 				<div>
 					<h3>Specialty {this.props.specialty}</h3>
-					<h3> - </h3>
+					<ListGroup fill>
+						<ListGroupItem> None </ListGroupItem>
+					</ListGroup>
+
 				</div>
 			)
 		}
-		else 
+		else
 			{
 				var patientlisting = this.props.patients.map((patient, i)=>{
 				return(
 					<div>
-						<li id={i}>{patient.name}</li>
-						<button onClick={()=>this.addAndRemovePatient(patient,i,this.props.meeting, this.props.specialty, this.props.year, this.props.month, this.props.day)}> X </button>
+						<ListGroupItem>
+							<div id={i}>{patient.name}</div>
+							<button className={"btn btn-danger btn-xs "+styles.btn_delete_patient} onClick={()=>this.addAndRemovePatient(patient,i,this.props.meeting, this.props.specialty, this.props.year, this.props.month, this.props.day)}> <i className="fa fa-trash-o" aria-hidden="true"></i> </button>
+						</ListGroupItem>
+
 					</div>
 				);
 			});
 			return (
 				<div>
 					<h3>Specialty {this.props.specialty}</h3>
-					{patientlisting}
+					<ListGroup fill>
+						{patientlisting}
+					</ListGroup>
+
 				</div>
 			);
 		}
