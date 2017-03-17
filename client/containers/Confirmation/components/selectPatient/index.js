@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.css';
-import {Select} from '../../../../components/form';
-import {Panel} from 'react-bootstrap';
+import {Panel,FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 
 
 export class SelectPatient extends React.Component {
@@ -17,7 +16,13 @@ export class SelectPatient extends React.Component {
 
     return (
       <Panel header="Select Patient">
-          <Select options={options}/>
+          <FormGroup controlId="title">
+            <FormControl name="patient" placeholder="Select patient" componentClass="select" >
+                {options.map(function(option){
+                    return <option value={option.value}>{option.label}</option>;
+                  })}
+            </FormControl>
+          </FormGroup>
       </Panel>
     );
   }
