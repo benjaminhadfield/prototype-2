@@ -6,6 +6,7 @@ import {createNewJob} from './actions';
 import {CreateJobForm} from './components/createJobForm';
 import {SelectMeeting} from './components/selectMeeting';
 import {SelectPatient} from './components/selectPatient';
+import {Col} from 'react-bootstrap';
 
 class Confirmation extends React.Component {
   constructor(props) {
@@ -33,9 +34,13 @@ class Confirmation extends React.Component {
 
     return (
       <div>
-        <div className={styles.select}>
-          <SelectMeeting/>
-          <SelectPatient/>
+        <div>
+            <Col xs={12} sm={6}>
+              <SelectMeeting/>
+            </Col>
+            <Col xs={12} sm={6}>
+              <SelectPatient/>
+            </Col>
         </div>
         <div className={styles.form}>
           <CreateJobForm

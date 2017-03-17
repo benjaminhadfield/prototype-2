@@ -103,7 +103,7 @@ var Grid = React.createClass({
 			var modalMeetingA;
 			var modalMeetingB;
 			var modalMeetingC;
-		
+
 				if(!emptyMeeting(dayEvent.meetingA)){
 					modalMeetingA = (
 						<div>
@@ -185,7 +185,7 @@ var Grid = React.createClass({
 						</div>
 						);
 				}
-			
+
 
 			return (
 				<div>
@@ -207,9 +207,9 @@ var Grid = React.createClass({
 							</Modal.Title>
 				      </Modal.Header>
 				      <Modal.Body>
-						  <Button bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("A")}>Meeting A</Button>
-						  <Button bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("B")}>Meeting B</Button>
-						  <Button bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("C")}>Meeting C</Button>
+						  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("A")}>Meeting A</Button>
+						  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("B")}>Meeting B</Button>
+						  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("C")}>Meeting C</Button>
 				      </Modal.Body>
 				      <Modal.Footer>
 				        	<Button onClick={this.meetingToggleModal}>Close</Button>

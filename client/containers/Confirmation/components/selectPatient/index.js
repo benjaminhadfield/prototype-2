@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './styles.css';
 import {Select} from '../../../../components/form';
+import {Panel} from 'react-bootstrap';
+
 
 export class SelectPatient extends React.Component {
   render() {
@@ -14,14 +16,9 @@ export class SelectPatient extends React.Component {
     ];
 
     return (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h5 className={styles.title}>Select Patient</h5>
-        </div>
-        <div className={styles.body}>
+      <Panel header="Select Patient">
           <Select options={options}/>
-        </div>
-      </div>
+      </Panel>
     );
   }
 }
