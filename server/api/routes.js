@@ -22,6 +22,10 @@ module.exports = function(app){
     var Speciality = require('./scheduler/specialities');
     var speciality_router = require('./scheduler/specialities').router;
 
+    // ------Speciality Assigment
+    var SpecialityAssigment = require('./scheduler/specialities_assigments');
+    var specialities_assigments_router = require('./scheduler/specialities_assigments').router;
+
 
     router.get('/', function(req, res) {
         res.json({ message: 'Hooray! Welcome to the Peach api!' });
@@ -32,6 +36,7 @@ module.exports = function(app){
         Meetings.initTable();
         MeetingsOccurences.initTable();
         Speciality.initTable();
+        SpecialityAssigment.initTable();
         res.json({ message: "Initialization queries executed." });
     });
 
@@ -48,4 +53,5 @@ module.exports = function(app){
     app.use('/api/meetings', meetings_router);
     app.use('/api/meetings_occurences', meetings_occurences_router);
     app.use('/api/specialities', speciality_router);
+    app.use('/api/specialities_assigments', specialities_assigments_router);
 }
