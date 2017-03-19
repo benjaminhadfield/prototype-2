@@ -42,7 +42,7 @@ class Navigation extends React.Component {
           <h1 className={styles.brand}><img src={brandImg} width="120px"/></h1>
           <div className={styles.user}>
             <button className={styles.button} onClick={this.toggleUserMenu.bind(this)}>
-              Navin
+              Navin Ramachandran  <i className="fa fa-caret-down" aria-hidden="true"></i>
             </button>
             <UserMenu open={userMenuOpen}/>
           </div>
