@@ -258,6 +258,26 @@
 			]
 		},
 		{
+			"name": "Scheduler",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/scheduler/06/2017",
+					"request": {
+						"url": "http://localhost:3000/api/scheduler/06/2017",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get all meetings in a month for the scheduler"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Specialities",
 			"description": "",
 			"item": [
@@ -320,6 +340,94 @@
 							"formdata": []
 						},
 						"description": "Delete speciality"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Specialities Assigments",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/specialities_assigments",
+					"request": {
+						"url": "http://localhost:3000/api/specialities_assigments",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get all specialities (add /:id) to search one\n"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/specialities_assigments",
+					"request": {
+						"url": "http://localhost:3000/api/specialities_assigments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"SpecialityAssigment\":{\n\t\t\"speciality_id\": \"1\",\n\t\t\"meeting_id\": \"2\"\n\t}\n}"
+						},
+						"description": "Post/Create speciality assigment"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/specialities_assigments/1",
+					"request": {
+						"url": "http://localhost:3000/api/specialities_assigments/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"SpecialityAssigment\":{\n\t\t\"speciality_id\": \"2\",\n\t\t\"meeting_id\": \"2\"\n\t}\n}"
+						},
+						"description": "Put update specialities assigments"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/specialities_assigments/2",
+					"request": {
+						"url": "http://localhost:3000/api/specialities_assigments/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "delete speciality assignment"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/api/specialities_assigments/meeting/1",
+					"request": {
+						"url": "http://localhost:3000/api/specialities_assigments/meeting/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get all specialities involve in a meeting (id of meeting parameter)"
 					},
 					"response": []
 				}

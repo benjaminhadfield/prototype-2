@@ -14,10 +14,10 @@ var SpecialityAssigment = {
     return db.query("Select * from specialities_assigments LEFT JOIN specialities ON specialities.speciality_id=specialities_assigments.speciality_id",callback);
   },
   getSpecialityAssigmentById:function(id,callback){
-    return db.query("select * from specialities_assigments where speciality_assigment_id=?",[id],callback);
+    return db.query("select * from specialities_assigments LEFT JOIN specialities ON specialities.speciality_id=specialities_assigments.speciality_id where speciality_assigment_id=?",[id],callback);
   },
   getSpecialityAssigmentByMeetingId:function(id,callback){
-    return db.query("select * from specialities_assigments where meeting_id=?",[id],callback);
+    return db.query("select * from specialities_assigments LEFT JOIN specialities ON specialities.speciality_id=specialities_assigments.speciality_id where meeting_id=?",[id],callback);
   },
   addSpecialityAssigment:function(SpecialityAssigment,callback){
     return db.query('INSERT INTO specialities_assigments SET ?', SpecialityAssigment,callback);

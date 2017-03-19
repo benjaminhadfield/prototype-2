@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.css';
-import {Button} from '../../../../components/button';
-import {Input, Select} from '../../../../components/form';
+import {FormGroup,ControlLabel,FormControl,Button} from 'react-bootstrap';
 
 const options = [
   {
@@ -32,10 +31,11 @@ export class CreateNew extends React.Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <Input name="Field A"/>
-          <Input name="Field B"/>
-          <Select name="abc" options={options}/>
-          <Button type="submit" children="Submit"/>
+            <FormGroup controlId="title">
+              <ControlLabel>Title</ControlLabel>
+              <FormControl  name="title" type="text" placeholder="Job title goes here..."  />
+            </FormGroup>
+          <Button bsStyle="primary" type="submit" children="Submit"/>
         </form>
      )
   }

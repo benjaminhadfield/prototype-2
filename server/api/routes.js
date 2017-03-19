@@ -10,6 +10,8 @@ module.exports = function(app){
     var jobs_router = require('./jobs').router;
 
     // -- Scheduler
+    var Scheduler = require('./scheduler/scheduler');
+    var scheduler_router = require('./scheduler/scheduler').router;
     // ------Meetings
     var Meetings = require('./scheduler/meetings');
     var meetings_router = require('./scheduler/meetings').router;
@@ -50,8 +52,10 @@ module.exports = function(app){
     //Add api routes to app
     app.use('/api', router);
     app.use('/api/jobs', jobs_router);
+    app.use('/api/scheduler', scheduler_router);
     app.use('/api/meetings', meetings_router);
     app.use('/api/meetings_occurences', meetings_occurences_router);
     app.use('/api/specialities', speciality_router);
     app.use('/api/specialities_assigments', specialities_assigments_router);
+
 }
