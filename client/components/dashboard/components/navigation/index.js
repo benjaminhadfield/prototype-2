@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import styles from './styles.css';
 import {Link} from 'react-router';
 import UserMenu from './components/userMenu';
@@ -34,6 +35,7 @@ class Navigation extends React.Component {
 
   render() {
     let {userMenuOpen} = this.state;
+    const {firstName, lastName, role} = this.props;
 
     return (
       <nav className={styles.nav}>
@@ -42,7 +44,7 @@ class Navigation extends React.Component {
           <h1 className={styles.brand}><img src={brandImg} width="120px"/></h1>
           <div className={styles.user}>
             <button className={styles.button} onClick={this.toggleUserMenu.bind(this)}>
-              Navin
+              {`${firstName} ${lastName} (${role})`}
             </button>
             <UserMenu open={userMenuOpen}/>
           </div>
@@ -66,4 +68,9 @@ class Navigation extends React.Component {
   }
 };
 
-export default Navigation;
+const mapStateToProps = (state) => {
+  const {firstName, lastName, role} = state.data.user;
+  return {firstName, lastName, role}
+}
+
+export default connect(mapStateToProps)(Navigation);

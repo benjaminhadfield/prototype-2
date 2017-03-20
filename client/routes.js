@@ -1,5 +1,5 @@
 import React from "react";
-import {Router, Route} from "react-router";
+import {Router, Route, IndexRoute} from "react-router";
 
 import Dashboard from "./components/dashboard";
 import Home from "./containers/Home";
@@ -12,7 +12,7 @@ import Confirmation from "./containers/Confirmation";
 
 export const routes = (
   <Route path="/" component={Dashboard}>
-    <Route path="/home" component={Home}/>
+    <IndexRoute component={Home}/>
     <Route path="/referrals" component={Referrals}/>
     <Route path="/case-preparation" component={CasePreparation}/>
     <Route path="/triage" component={Scheduler}/>

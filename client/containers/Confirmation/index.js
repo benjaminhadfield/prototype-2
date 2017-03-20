@@ -6,6 +6,7 @@ import {createNewJob} from './actions';
 import {CreateJobForm} from './components/createJobForm';
 import {SelectMeeting} from './components/selectMeeting';
 import {SelectPatient} from './components/selectPatient';
+import {isAdminOrAbove} from '../../services/permissions'
 
 class Confirmation extends React.Component {
   constructor(props) {
@@ -29,26 +30,38 @@ class Confirmation extends React.Component {
   }
 
   render() {
-    const {loading} = this.props;
+    const {loading, role} = this.props;
 
     return (
       <div>
-        <div className={styles.select}>
-          <SelectMeeting/>
-          <SelectPatient/>
-        </div>
-        <div className={styles.form}>
-          <CreateJobForm
-            loading={loading}
-            submitCallback={this.handleSubmit.bind(this)}/>
-        </div>
+        {
+          // display create form to admins or higher
+          isAdminOrAbove(role)
+            ? (
+              <div>
+                <div className={styles.select}>
+                  <SelectMeeting/>
+                  <SelectPatient/>
+                </div>
+                <div className={styles.form}>
+                  <CreateJobForm
+                    loading={loading}
+                    submitCallback={this.handleSubmit.bind(this)}/>
+                </div>
+              </div>
+            )
+            : (
+              <div>Please <a href="#">login</a></div>
+            )
+        }
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.containers.confirmation.loading
+  loading: state.containers.confirmation.loading,
+  role: state.data.user.role
 })
 
 const mapDispatchToProps = (dispatch) => ({
