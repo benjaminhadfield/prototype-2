@@ -258,26 +258,6 @@
 			]
 		},
 		{
-			"name": "Scheduler",
-			"description": "",
-			"item": [
-				{
-					"name": "http://localhost:3000/api/scheduler/06/2017",
-					"request": {
-						"url": "http://localhost:3000/api/scheduler/06/2017",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"description": "Get all meetings in a month for the scheduler"
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Specialities",
 			"description": "",
 			"item": [

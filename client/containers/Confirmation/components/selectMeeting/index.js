@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './styles.css';
+import {Panel} from 'react-bootstrap';
 
 export const SelectMeeting = (props) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h5 className={styles.title}>Select Meeting</h5>
-      </div>
-      <div className={styles.body}>
-        <p>Select meeting form...</p>
-      </div>
-    </div>
+
+    <Panel header="Select Meeting">
+        <div className={styles.panel_content}>
+            Select meeting form...
+        </div>
+    </Panel>
+
   )
 }

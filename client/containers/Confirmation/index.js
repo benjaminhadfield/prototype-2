@@ -7,6 +7,7 @@ import {CreateJobForm} from './components/createJobForm';
 import {SelectMeeting} from './components/selectMeeting';
 import {SelectPatient} from './components/selectPatient';
 import {isAdminOrAbove} from '../../services/permissions'
+import {Col} from 'react-bootstrap';
 
 class Confirmation extends React.Component {
   constructor(props) {
@@ -39,10 +40,12 @@ class Confirmation extends React.Component {
           isAdminOrAbove(role)
             ? (
               <div>
-                <div className={styles.select}>
+                <Col xs={12} sm={6}>
                   <SelectMeeting/>
+                </Col>
+                <Col xs={12} sm={6}>
                   <SelectPatient/>
-                </div>
+                </Col>
                 <div className={styles.form}>
                   <CreateJobForm
                     loading={loading}

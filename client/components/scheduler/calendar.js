@@ -140,9 +140,9 @@ var Calendar = React.createClass({
                                 events[i].meetingC.specialtyC.push(patient);
                                 break;
                         }
-                        break; 
-                }  
-                found = 1; 
+                        break;
+                }
+                found = 1;
             }
         }
         if(found === 0){
@@ -206,8 +206,8 @@ var Calendar = React.createClass({
                             break;
                     }
                     break;
-  
-            }  
+
+            }
             events.push(newEvent);
         }
         this.setState({
@@ -259,7 +259,7 @@ var Calendar = React.createClass({
                                 break;
                         }
                         break;
-                }  
+                }
             }
         }
         this.setState({
@@ -284,9 +284,9 @@ var Header = React.createClass({
     render: function () {
         return (
             <div className={styles.rrow +" "+ styles.rhead}>
-                <div className={styles.rcell +" "+ styles.bluehover} onClick={this.props.onPrev.bind(this)} role="button" tabIndex="0"><i className="fa fa-caret-left" aria-hidden="true"></i></div>
+                <div className={styles.rcell +" "+ styles.greyhover} onClick={this.props.onPrev.bind(this)} role="button" tabIndex="0"><i className="fa fa-caret-left" aria-hidden="true"></i></div>
                 <div className={styles.rcell +" "+ styles.rtitle}>{this.props.monthNames[this.props.month]}&nbsp;{this.props.year}</div>
-                <div className={styles.rcell +" "+ styles.bluehover} onClick={this.props.onNext.bind(this)} role="button" tabIndex="0"><i className="fa fa-caret-right" aria-hidden="true"></i></div>
+                <div className={styles.rcell +" "+ styles.greyhover} onClick={this.props.onNext.bind(this)} role="button" tabIndex="0"><i className="fa fa-caret-right" aria-hidden="true"></i></div>
             </div>
         );
     }

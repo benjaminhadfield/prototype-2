@@ -45,6 +45,7 @@ class Navigation extends React.Component {
           <div className={styles.user}>
             <button className={styles.button} onClick={this.toggleUserMenu.bind(this)}>
               {`${firstName} ${lastName} (${role})`}
+              <i className="fa fa-caret-down" aria-hidden="true"></i>
             </button>
             <UserMenu open={userMenuOpen}/>
           </div>

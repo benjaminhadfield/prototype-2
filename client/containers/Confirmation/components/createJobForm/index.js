@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './styles.css';
-import {Input, LongText, Date} from '../../../../components/form';
-import {Button} from '../../../../components/button';
+import {Col,FormGroup,ControlLabel,FormControl,Button} from 'react-bootstrap';
 
 export class CreateJobForm extends React.Component {
   constructor(props) {
@@ -55,17 +54,35 @@ export class CreateJobForm extends React.Component {
     this.setState(this.initialState);
   }
 
+
   render() {
     const {submitCallback, loading} = this.props;
     let {title, comment, due_date} = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit} className={styles.container}>
-        <Input value={title} name="title" onChange={this.handleInputChange}/>
-        <LongText value={comment} name="comment" onChange={this.handleInputChange}/>
-        <Date value={due_date} name="due_date" onChange={this.handleInputChange}/>
-        <Button disabled={loading || !this.validateForm()} type="submit">Create Job</Button>
-      </form>
+      <Col xs={12}>
+          <form onSubmit={this.handleSubmit} className={styles.container}>
+
+              <FormGroup controlId="title">
+                <ControlLabel>Title</ControlLabel>
+                <FormControl value={title} name="title" type="text" placeholder="Job title goes here..."  onChange={this.handleInputChange} />
+              </FormGroup>
+
+              <FormGroup controlId="comment">
+                <ControlLabel>Job comment</ControlLabel>
+                <FormControl className={styles.vertical_textarea} value={comment} name="comment" componentClass="textarea" placeholder="Job comment goes here..." onChange={this.handleInputChange} />
+              </FormGroup>
+
+              <FormGroup controlId="due_date">
+                <ControlLabel>Due date</ControlLabel>
+                <FormControl value={due_date} name="due_date" type="date"  onChange={this.handleInputChange} />
+              </FormGroup>
+
+              <Button bsStyle="primary" disabled={loading || !this.validateForm()} type="submit">
+                <i className="fa fa-plus" aria-hidden="true"></i> Create Job
+              </Button>
+          </form>
+     </Col>
     );
   }
 };

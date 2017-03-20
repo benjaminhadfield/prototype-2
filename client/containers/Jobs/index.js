@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import JobsList from './components/jobs';
 import {getJobsList, deleteJob} from './actions';
 const spinner = require('../../assets/ui/spinner.gif');
-import {Button} from '../../components/button'
+import {Button} from 'react-bootstrap'
 import styles from './styles.css'
 
 class Jobs extends React.Component {
@@ -34,7 +34,9 @@ class Jobs extends React.Component {
     return (
       <div>
         <div className={styles.masthead}>
-          <Button disabled={loading} onClick={this.getJobsList}>Refresh</Button>
+          <Button bsStyle="primary" disabled={loading} onClick={this.getJobsList}>
+            <i className="fa fa-refresh" aria-hidden="true"></i> Refresh
+          </Button>
         </div>
         {loading ? spinner : jobsList}
       </div>
