@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(setHardcodedUser(user))
 })
 
-export default connect(() => {}, mapDispatchToProps)(UserMenu);
+export default connect(() => ({}), mapDispatchToProps)(UserMenu);
