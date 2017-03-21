@@ -27,7 +27,7 @@ router.get('/:month/:year?',function(req,res,next){
         res.json(err);
       } else {
             var pending = rows.length;
-            if (pending==0 || rows = []){
+            if (pending==0 || rows == []){
                 callback([]);
             }
 

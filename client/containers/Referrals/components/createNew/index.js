@@ -33,17 +33,17 @@ export class CreateNew extends React.Component {
 
                 <FormGroup controlId="mdt_meeting">
                   <ControlLabel>* MDT meeting</ControlLabel>
-                  <FormControl  name="mdt_meeting" type="text" placeholder="Identification of the service requested, by name."  />
+                  <FormControl  name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/mdt_meeting" type="text" placeholder="Identification of the service requested, by name."  />
                 </FormGroup>
 
                 <FormGroup controlId="specific_questions_for_mdt">
                   <ControlLabel>Specific questions for MDT</ControlLabel>
-                  <FormControl  name="specific_questions_for_mdt" type="text" placeholder="Narrative description of the service requested."  />
+                  <FormControl  name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/specific_questions_for_mdt" type="text" placeholder="Narrative description of the service requested."  />
                 </FormGroup>
 
                 <FormGroup controlId="reason_for_referral">
                   <ControlLabel>Reason for referral</ControlLabel>
-                  <FormControl name="reason_for_referral" placeholder="A short phrase describing the reason for the request." componentClass="select" >
+                  <FormControl name="rmdt_referral/general/cancer_mdt_-_urology_referral/request:0/reason_for_referral" placeholder="A short phrase describing the reason for the request." componentClass="select" >
                         <option value="Diagnosis and staging">Diagnosis and staging</option>
                         <option value="Management during or following treatment">Management during or following treatment</option>
                   </FormControl>
@@ -51,12 +51,12 @@ export class CreateNew extends React.Component {
 
                 <FormGroup controlId="clinical_details">
                   <ControlLabel>Clinical details</ControlLabel>
-                  <FormControl  name="clinical_details" type="text" placeholder="Narrative description about the reason for request."  />
+                  <FormControl  name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/clinical_details" type="text" placeholder="Narrative description about the reason for request."  />
                 </FormGroup>
 
                 <FormGroup controlId="mdt_review_priority">
                   <ControlLabel>MDT review priority</ControlLabel>
-                  <FormControl name="mdt_review_priority" placeholder="Urgency of the request for service." componentClass="select" >
+                  <FormControl name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/mdt_review_priority" placeholder="Urgency of the request for service." componentClass="select" >
                         <option value="Standard">Standard</option>
                         <option value="Urgent">Urgent</option>
                         <option value="Target 31/62">Target 31/62</option>;
@@ -65,7 +65,7 @@ export class CreateNew extends React.Component {
 
                 <FormGroup controlId="specific_date_for_mdt_review">
                   <ControlLabel>Specific date for MDT review</ControlLabel>
-                  <FormControl  name="specific_date_for_mdt_review" type="datetime-local" placeholder="The date/time, or acceptable interval of date/time, for provision of the service."  />
+                  <FormControl  name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/specific_date_for_mdt_review" type="datetime-local" placeholder="The date/time, or acceptable interval of date/time, for provision of the service."  />
                 </FormGroup>
 
                 <h2>Cancer MDT referral details</h2>
