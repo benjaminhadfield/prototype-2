@@ -35,6 +35,8 @@ class Navigation extends React.Component {
     let {userMenuOpen} = this.state;
     const {firstName, lastName, role} = this.props;
 
+
+
     return (
       <nav className={styles.nav}>
         <div className={styles.masthead}>

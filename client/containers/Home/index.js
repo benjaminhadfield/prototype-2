@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 class Home extends React.Component {
   render() {
     return (
-      <div>Home Page</div>
+      <h1>Home Page</h1>
 
     )
   }

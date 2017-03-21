@@ -1,5 +1,8 @@
 import * as actionTypes from './actions';
 
+/**
+ * ROLE: 'normal' | 'admin' | 'executive'
+ */
 const initialState = {
   id: null,
   firstName: '',

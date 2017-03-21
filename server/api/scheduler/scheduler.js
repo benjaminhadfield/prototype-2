@@ -1,8 +1,6 @@
 var db = require('../database');
 var express = require("express");
 var router = express.Router();
-var Q = require("q");
-
 
 
 // ---------Scheduler CRUD Functions-----------
@@ -28,6 +26,9 @@ router.get('/:month/:year?',function(req,res,next){
         res.json(err);
       } else {
             var pending = rows.length;
+            if (pending==0 || rows == []){
+                callback([]);
+            }
 
             var clearSpecialities = function (specialities){
                 for (var speciality of specialities){
@@ -37,28 +38,27 @@ router.get('/:month/:year?',function(req,res,next){
                 return specialities;
             }
 
+
             var getSpecialities = function(row) {
 
-                 console.log("\n \n before- "+JSON.stringify(row));
+                  console.log("\n \n before- "+JSON.stringify(row));
 
-                  var deferred = Q.defer();
                   db.query("select * from specialities_assigments LEFT JOIN specialities ON specialities.speciality_id=specialities_assigments.speciality_id where meeting_id=?",row.meeting_id,function(err,results,fields){
                       if(err) {
                         res.json(err);
                       } else {
                           results = clearSpecialities(results);
                           row.specialities = results;
-                          deferred.resolve();
+
                           if (0 === --pending) {
                                 callback(rows);
                           }
                           console.log("\n \ndone- "+JSON.stringify(row));
                       }
                   });
-                  return deferred.promise;
             }
 
-            var promises = rows.map(getSpecialities);
+            rows.map(getSpecialities);
       }
     });
 
