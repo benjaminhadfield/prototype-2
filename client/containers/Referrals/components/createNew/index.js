@@ -72,7 +72,7 @@ export class CreateNew extends React.Component {
 
                 <FormGroup controlId="mdt_schedule">
                   <ControlLabel>MDT schedule</ControlLabel>
-                  <FormControl name="mdt_schedule" placeholder="Statement about schedule of MDT, whether next available or specific date." componentClass="select" >
+                  <FormControl name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/cancer_mdt_referral_details:0/mdt_schedule|code" placeholder="Statement about schedule of MDT, whether next available or specific date." componentClass="select" >
                         <option value="at0002">Next available</option>
                         <option value="at0003">Specific date</option>
                   </FormControl>
@@ -80,7 +80,7 @@ export class CreateNew extends React.Component {
 
                 <FormGroup controlId="reviews_required">
                   <ControlLabel>MDT schedule</ControlLabel>
-                  <FormControl name="reviews_required" placeholder="Description of required reviews." componentClass="select" >
+                  <FormControl name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/cancer_mdt_referral_details:0/reviews_required:0|code" placeholder="Description of required reviews." componentClass="select" >
                         <option value="at0006">Histology</option>
                         <option value="at0007">Radiology</option>
                         <option value="at0008">Case discussion only</option>
@@ -89,12 +89,12 @@ export class CreateNew extends React.Component {
 
                 <FormGroup controlId="special_mdt_office_instructions">
                   <ControlLabel>Special MDT office instructions</ControlLabel>
-                  <FormControl  name="special_mdt_office_instructions" type="text" placeholder="Narrative to provide optional instructions for the MDT office."  />
+                  <FormControl  name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/cancer_mdt_referral_details:0/special_mdt_office_instructions" type="text" placeholder="Narrative to provide optional instructions for the MDT office."  />
                 </FormGroup>
 
                 <FormGroup controlId="date_symptoms_first_noticed">
                   <ControlLabel>Date symptoms first noticed</ControlLabel>
-                  <FormControl  name="date_symptoms_first_noticed" type="datetime-local" placeholder="Date when patient first experienced symptoms."  />
+                  <FormControl  name="mdt_referral/general/cancer_mdt_-_urology_referral/request:0/cancer_mdt_referral_details:0/date_symptoms_first_noticed" type="datetime-local" placeholder="Date when patient first experienced symptoms."  />
                 </FormGroup>
 
                 <h2>Person Name</h2>
