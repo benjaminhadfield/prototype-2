@@ -12,11 +12,14 @@ var gridTarget = {
 		var item = monitor.getItem();
 	  // item = Patient
 		var index = item.id;
-		item.removeFromList(index);
-		component.setState({
-			meetingChoiceModalIsOpen: true,
-			currentPatient: item
-		});
+		if(component.props.dayEvent.meeting.length !== 0){
+			item.removeFromList(index);
+			component.setState({
+				meetingChoiceModalIsOpen: true,
+				currentPatient: item
+			});
+		}
+		//Only remove if theres a meeting that day
 	}
 }
 
@@ -86,114 +89,70 @@ var Grid = React.createClass({
 		});
 	},
 
+
+
 	renderGrid: function(){
-		function emptyMeeting(meeting){
-			if(meeting.specialtyA.length === 0 && meeting.specialtyB.length === 0 && meeting.specialtyC.length === 0){
-				return true;
-			}
-			else return false;
-		}
+		//map through specialty
 		var currentPatient = this.state.currentPatient;
 		var dayEvent = this.props.dayEvent;
-		if(emptyMeeting(dayEvent.meetingA) && emptyMeeting(dayEvent.meetingB) && emptyMeeting(dayEvent.meetingC)){
-			this.state.specialtyModalIsOpen = false;
+		var that = this;
+
+		var specialtyListing = function(specialty, interestedMeeting, meetingTitle, removeFromGrid, addPatient, year2, month2, day2){
+			var list = [];
+			for(const key of Object.keys(specialty)){
+				list.push(<span><SpecialtyList patients={specialty[key]} meeting={interestedMeeting} specialty={key} removeFromGrid={removeFromGrid} addPatient={addPatient} year={year2} month={month2} day={day2}/></span>)
+			}
+			return list;
 		}
-
-
-			var modalMeetingA;
-			var modalMeetingB;
-			var modalMeetingC;
-
-				if(!emptyMeeting(dayEvent.meetingA)){
-					modalMeetingA = (
-						<div>
-						<button onClick={()=>this.toggleModal2("A")}>Meeting A</button>
-						<Modal
-					      show={this.state.specialtyModalIsOpen && this.state.interestedMeeting === "A"}
-					      onHide={this.toggleModal}
-					      container={this}
-					      aria-labelledby="contained-modal-title"
-					    >
-					      <Modal.Header closeButton>
-					        	<Modal.Title id="contained-modal-title">
-									Patients Assignment
-								</Modal.Title>
-					      </Modal.Header>
-					      <Modal.Body>
-								<SpecialtyList patients={dayEvent.meetingA.specialtyA} meeting={this.state.interestedMeeting} specialty="A" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-								<SpecialtyList patients={dayEvent.meetingA.specialtyB} meeting={this.state.interestedMeeting} specialty="B" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-								<SpecialtyList patients={dayEvent.meetingA.specialtyC} meeting={this.state.interestedMeeting} specialty="C" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-						</Modal.Body>
-					      <Modal.Footer>
-					        	<Button className={styles.btn_marg} onClick={this.toggleModal}>Close</Button>
-					      </Modal.Footer>
-						</Modal>
-						</div>
-						);
+//DONE
+		var specialtyButtonList = function(addPatientsToGrid, currentPatient, currentMeeting, year, month, day){
+			var list = [];
+			if(currentMeeting != undefined && currentMeeting != null){
+				for(const key of Object.keys(currentMeeting.specialty)){
+					list.push(<span><Button className={styles.btn_marg} bsStyle="primary" onClick={()=>addPatientsToGrid(currentPatient, currentMeeting, key, year, month, day)}>{key}</Button></span>)
 				}
-				if(!emptyMeeting(dayEvent.meetingB)){
-					modalMeetingB = (
-						<div>
-						<button onClick={()=>this.toggleModal2("B")}>Meeting B</button>
-						<Modal
-					      show={this.state.specialtyModalIsOpen && this.state.interestedMeeting === "B"}
-					      onHide={this.toggleModal}
-					      container={this}
-					      aria-labelledby="contained-modal-title"
-					    >
-					      <Modal.Header closeButton>
-					        	<Modal.Title id="contained-modal-title">
-									Patients Assignment
-								</Modal.Title>
-					      </Modal.Header>
-					      <Modal.Body>
-								<SpecialtyList patients={dayEvent.meetingB.specialtyA} meeting={this.state.interestedMeeting} specialty="A" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-								<SpecialtyList patients={dayEvent.meetingB.specialtyB} meeting={this.state.interestedMeeting} specialty="B" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-								<SpecialtyList patients={dayEvent.meetingB.specialtyC} meeting={this.state.interestedMeeting} specialty="C" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-						  </Modal.Body>
-					      <Modal.Footer>
-					        	<Button onClick={this.toggleModal}>Close</Button>
-					      </Modal.Footer>
-						</Modal>
-						</div>
-						);
-				}
-				if(!emptyMeeting(dayEvent.meetingC)){
-					modalMeetingC = (
-						<div>
-						<button onClick={()=>this.toggleModal2("C")}>Meeting C</button>
-						<Modal
-					      show={this.state.specialtyModalIsOpen && this.state.interestedMeeting === "C"}
-					      onHide={this.toggleModal}
-					      container={this}
-					      aria-labelledby="contained-modal-title"
-					    >
-					      <Modal.Header closeButton>
-					        	<Modal.Title id="contained-modal-title">
-									Patients Assignment
-								</Modal.Title>
-					      </Modal.Header>
-					      <Modal.Body>
-								<SpecialtyList patients={dayEvent.meetingC.specialtyA} meeting={this.state.interestedMeeting} specialty="A" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-								<SpecialtyList patients={dayEvent.meetingC.specialtyB} meeting={this.state.interestedMeeting} specialty="B" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-								<SpecialtyList patients={dayEvent.meetingC.specialtyC} meeting={this.state.interestedMeeting} specialty="C" removeFromGrid={this.props.removeFromGrid} addPatient={this.props.addPatient} year={this.props.year} month={this.props.month} day={this.props.day}/>
-						  </Modal.Body>
-					      <Modal.Footer>
-					        	<Button onClick={this.toggleModal}>Close</Button>
-					      </Modal.Footer>
-						</Modal>
-						</div>
-						);
-				}
+				return list;
+			}
+		}
+//DONE		
+		
+		var fromMeetingToSpecialtyButtons = this.props.dayEvent.meeting.map(function(meet){
+			return (
+				<Button className={styles.btn_marg} bsStyle="primary" onClick={()=>that.fromMeetingToSpecialty(meet)}>{meet.meetingTitle}</Button>
+			);
+		});
 
+		var modalMeeting = this.props.dayEvent.meeting.map((meet, i)=>{
+			return (
+				<div>
+				<button onClick={()=>this.toggleModal2(meet)}>{meet.meetingTitle}</button>
+				<Modal
+					show={this.state.specialtyModalIsOpen && this.state.interestedMeeting === meet}
+					onHide={this.toggleModal}
+					container={this}
+					aria-labelledby="contained-modal-title"
+				>
+				<Modal.Header closeButton>
+					<Modal.Title id="contained-modal-title">
+						Patients Assignment
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					{specialtyListing(meet.specialty, this.state.interestedMeeting, meet.meetingTitle, this.props.removeFromGrid, this.props.addPatient, this.props.year, this.props.month, this.props.day)}
+				</Modal.Body>
+				<Modal.Footer>
+					<Button className={styles.btn_marg} onClick={this.toggleModal}>Close</Button>
+				</Modal.Footer>
+				</Modal>
+				</div>
+			);
+		});
 
 			return (
 				<div>
 					{this.props.children}
 					<div>
-					{modalMeetingA}
-					{modalMeetingB}
-					{modalMeetingC}
+					{modalMeeting}
 					</div>
 					<Modal
 				      show={this.state.meetingChoiceModalIsOpen}
@@ -207,9 +166,7 @@ var Grid = React.createClass({
 							</Modal.Title>
 				      </Modal.Header>
 				      <Modal.Body>
-						  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("A")}>Meeting A</Button>
-						  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("B")}>Meeting B</Button>
-						  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.fromMeetingToSpecialty("C")}>Meeting C</Button>
+				       {fromMeetingToSpecialtyButtons}
 				      </Modal.Body>
 				      <Modal.Footer>
 				        	<Button onClick={this.meetingToggleModal}>Close</Button>
@@ -227,9 +184,7 @@ var Grid = React.createClass({
 								</Modal.Title>
 					      </Modal.Header>
 					      <Modal.Body>
-							  <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "A", this.props.year, this.props.month, this.props.day)}>Specialty A</Button>
-							 <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "B", this.props.year, this.props.month, this.props.day)}>Specialty B</Button>
-							 <Button className={styles.btn_marg} bsStyle="primary" onClick={()=>this.addPatientsToGrid(currentPatient, this.state.currentMeeting, "C", this.props.year, this.props.month, this.props.day)}>Specialty C</Button>
+					      	{specialtyButtonList(this.addPatientsToGrid, currentPatient, this.state.currentMeeting, this.props.year, this.props.month, this.props.day)}
 					 	 </Modal.Body>
 					      <Modal.Footer>
 					        	<Button onClick={this.choiceToggleModal}>Close</Button>

@@ -18,7 +18,7 @@ var SpecialtyList = React.createClass({
 		if(this.props.patients.length === 0){
 			return (
 				<div>
-					<h3>Specialty {this.props.specialty}</h3>
+					<h3>{this.props.specialty}</h3>
 					<ListGroup fill>
 						<ListGroupItem> None </ListGroupItem>
 					</ListGroup>
@@ -41,7 +41,7 @@ var SpecialtyList = React.createClass({
 			});
 			return (
 				<div>
-					<h3>Specialty {this.props.specialty}</h3>
+					<h3>{this.props.specialty}</h3>
 					<ListGroup fill>
 						{patientlisting}
 					</ListGroup>

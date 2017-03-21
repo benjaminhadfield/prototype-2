@@ -3,7 +3,6 @@ var express = require("express");
 var router = express.Router();
 var MeetingOccurence = require("./meetings_occurences");
 var SpecialityAssigment = require("./specialities_assigments");
-var Q = require("q");
 
 
 

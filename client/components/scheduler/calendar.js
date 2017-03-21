@@ -55,7 +55,62 @@ var Calendar = React.createClass({
             monthNamesFull: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             firstOfMonth: null,
             daysInMonth: null,
-            events: []
+            events: [{
+    year: 2017,
+    month: 2,
+    day: 12,
+    meeting: [
+    {
+        meetingTitle: 'Meeting #1',
+        'meeting details': 'ALL OF THEM',
+        'meeting time': '3 AM',
+        'more meeting details': 'ALL OF THEM',
+        specialty: { 
+            heart: [],
+            kidney: []
+        }
+    },
+    {
+        meetingTitle: 'Meeting #2',
+        'meeting details': 'ALL OF THEM',
+        'meeting time': '4 AM',
+        'more meeting details': 'ALL OF THEM',
+        specialty: {
+            leg: [],
+            arm: [],
+        }
+    }
+    ]
+},
+{
+    year: 2017,
+    month: 3,
+    day: 9,
+    meeting: [
+    {
+        meetingTitle: 'Random Meeting Name',
+        'meeting details': 'ALL OF THEM',
+        'meeting time': '3 AM',
+        'more meeting details': 'ALL OF THEM',
+        specialty: { 
+            heart: [],
+            kidney: [],
+            leg: []
+        }
+    },
+    {
+        meetingTitle: 'Another random meeting name',
+        'meeting details': 'ALL OF THEM',
+        'meeting time': '4 AM',
+        'more meeting details': 'ALL OF THEM',
+        specialty: {
+            leg: [],
+            arm: [],
+        }
+    }
+    ]
+}
+]
         };
     },
     getPrev: function () {
@@ -96,169 +151,36 @@ var Calendar = React.createClass({
         });
     },
 
-    addPatients: function(patient, meeting, specialty, year, month, day){
+    addPatients: function(patient, meeting2, specialty2, year, month, day){
         var events = this.state.events;
-        var found = 0;
+                        //map through meeting
+                    //map through specialty
         for(var i = 0; i < events.length; i++){
             if(events[i].year === year && events[i].month === month && events[i].day === day){
-                switch(meeting){
-                    case "A":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingA.specialtyA.push(patient);
-                                break;
-                            case "B":
-                                events[i].meetingA.specialtyB.push(patient);
-                                break;
-                            case "C":
-                                events[i].meetingA.specialtyC.push(patient);
-                                break;
-                        }
-                        break;
-                    case "B":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingB.specialtyA.push(patient);
-                                break;
-                            case "B":
-                                events[i].meetingB.specialtyB.push(patient);
-                                break;
-                            case "C":
-                                events[i].meetingB.specialtyC.push(patient);
-                                break;
-                        }
-                        break;
-                    case "C":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingC.specialtyA.push(patient);
-                                break;
-                            case "B":
-                                events[i].meetingC.specialtyB.push(patient);
-                                break;
-                            case "C":
-                                events[i].meetingC.specialtyC.push(patient);
-                                break;
-                        }
-                        break;
+                for(var j = 0; j < events[i].meeting.length; j++){
+                    if(events[i].meeting[j].specialty.hasOwnProperty(specialty2)){
+                        events[i].meeting[j].specialty[specialty2].push(patient);
+                    }
                 }
-                found = 1;
             }
         }
-        if(found === 0){
-            var newEvent = {
-                year : year,
-                month: month,
-                day: day,
-                meetingA: {
-                    specialtyA: [],
-                    specialtyB: [],
-                    specialtyC: []
-                },
-                meetingB: {
-                    specialtyA: [],
-                    specialtyB: [],
-                    specialtyC: []
-                },
-                meetingC: {
-                    specialtyA: [],
-                    specialtyB: [],
-                    specialtyC: []
-                }
-            };
-            switch(meeting){
-                case "A":
-                    switch(specialty){
-                         case "A":
-                            newEvent.meetingA.specialtyA.push(patient);
-                            break;
-                        case "B":
-                            newEvent.meetingA.specialtyB.push(patient);
-                            break;
-                        case "C":
-                            newEvent.meetingA.specialtyC.push(patient);
-                            break;
-                    }
-                    break;
-                case "B":
-                    switch(specialty){
-                         case "A":
-                            newEvent.meetingB.specialtyA.push(patient);
-                            break;
-                        case "B":
-                            newEvent.meetingB.specialtyB.push(patient);
-                            break;
-                        case "C":
-                            newEvent.meetingB.specialtyC.push(patient);
-                            break;
-                    }
-                    break;
-                case "C":
-                    switch(specialty){
-                        case "A":
-                            newEvent.meetingC.specialtyA.push(patient);
-                            break;
-                        case "B":
-                            newEvent.meetingC.specialtyB.push(patient);
-                            break;
-                        case "C":
-                            newEvent.meetingC.specialtyC.push(patient);
-                            break;
-                    }
-                    break;
-
-            }
-            events.push(newEvent);
-        }
+        //theres no way theres a patient without meeting, REMOVE THIS
         this.setState({
             events : events
         })
     },
 
-    removeFromGrid: function(index, meeting, specialty, year, month, day){
+    removeFromGrid: function(index, meeting2, specialty2, year, month, day){
         var events = this.state.events;
+        //map through events
+            //map through meetings
+                //map through specialty
         for(var i = 0; i < events.length; i++){
             if(events[i].year === year && events[i].month === month && events[i].day === day){
-                switch(meeting){
-                    case "A":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingA.specialtyA.splice(index,1);
-                                break;
-                            case "B":
-                                events[i].meetingA.specialtyB.splice(index,1);
-                                break;
-                            case "C":
-                                events[i].meetingA.specialtyC.splice(index,1);
-                                break;
-                        }
-                        break;
-                    case "B":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingB.specialtyA.splice(index,1);
-                                break;
-                            case "B":
-                                events[i].meetingB.specialtyB.splice(index,1);
-                                break;
-                            case "C":
-                                events[i].meetingB.specialtyC.splice(index,1);
-                                break;
-                        }
-                        break;
-                    case "C":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingC.specialtyA.splice(index,1);
-                                break;
-                            case "B":
-                                events[i].meetingC.specialtyB.splice(index,1);
-                                break;
-                            case "C":
-                                events[i].meetingC.specialtyC.splice(index,1);
-                                break;
-                        }
-                        break;
+                for(var j = 0; j < events[i].meeting.length; j++){
+                    if(events[i].meeting[j].specialty.hasOwnProperty(specialty2)){
+                        events[i].meeting[j].specialty[specialty2].splice(index,1);
+                    }
                 }
             }
         }
@@ -370,26 +292,12 @@ var MonthDates = React.createClass({
                             } else if (that.props.minDate !== null && current < that.props.minDate) {
                                 className += " " + styles.rpast;
                             }
-
+                            //change meetingA/B/C to meetings array
                             var dayEvent = {
                                 year : 0,
                                 month: 0,
                                 day: 0,
-                                meetingA: {
-                                    specialtyA: [],
-                                    specialtyB: [],
-                                    specialtyC: []
-                                },
-                                meetingB: {
-                                    specialtyA: [],
-                                    specialtyB: [],
-                                    specialtyC: []
-                                },
-                                meetingC: {
-                                    specialtyA: [],
-                                    specialtyB: [],
-                                    specialtyC: []
-                                }
+                                meeting: []
                             };
                             var events = that.props.events;
                             for(var i = 0; i < events.length; i++){
