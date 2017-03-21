@@ -1,8 +1,6 @@
 var db = require('../database');
 var express = require("express");
 var router = express.Router();
-var MeetingOccurence = require("./meetings_occurences");
-var SpecialityAssigment = require("./specialities_assigments");
 var Q = require("q");
 
 
@@ -19,7 +17,7 @@ var Scheduler = {
 
 // Get all meetings in a month with specialities
 router.get('/:month/:year?',function(req,res,next){
-
+    console.log('hey')
     var callback = function(rows) {
         console.log("\n\nend "+JSON.stringify(rows));
         res.json(rows);

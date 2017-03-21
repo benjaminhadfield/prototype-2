@@ -15,9 +15,7 @@ const navigationItems = [
   'Jobs'
 ]
 
-const makeLink = (name) => {
-  return name.toLowerCase().replace(' ', '-')
-}
+const makeLink = (name) => name.toLowerCase() !== 'home' ? name.toLowerCase().replace(' ', '-') : '';
 
 class Navigation extends React.Component {
   constructor(props) {

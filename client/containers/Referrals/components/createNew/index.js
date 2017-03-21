@@ -2,25 +2,29 @@ import React from 'react';
 import styles from './styles.css';
 import {FormGroup,ControlLabel,FormControl,Button, Col} from 'react-bootstrap';
 var data = require('./data.json');
+import axios from 'axios';
 
 export class CreateNew extends React.Component {
     constructor(props) {
       super(props);
       this.initialState = {
-        mdt_meeting: ''
+        mdt_meeting: '',
       }
       this.state = this.initialState;
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+      console.log('name', e.target.name)
+      this.setState({[e.target.name]: e.target.value});
     }
 
     handleSubmit(e) {
-      console.log('test');
-      console.log("before- " + JSON.stringify(data));
       e.preventDefault();
-      let {mdt_meeting} = this.state;
-      // post to API..
-      data["mdt_referral/general/cancer_mdt_-_urology_referral/request:0/mdt_meeting"] = mdt_meeting;
-      console.log("after- " + JSON.stringify(data));
+      console.log(this.state)
+      console.log({...data, ...this.state})
+      // axios.post('/api', {...data, ...this.state})
     }
 
     render() {
@@ -28,12 +32,15 @@ export class CreateNew extends React.Component {
         <form onSubmit={this.handleSubmit}>
 
             <Col xs={12} smOffset={1} sm={10} className={styles.pad_top_bottom}>
-
                 <h2>Request</h2>
 
                 <FormGroup controlId="mdt_meeting">
                   <ControlLabel>* MDT meeting</ControlLabel>
-                  <FormControl  name="mdt_meeting" type="text" placeholder="Identification of the service requested, by name."  />
+                  <FormControl
+                    onChange={this.handleChange}
+                    name="mdt_meeting"
+                    type="text"
+                    placeholder="Identification of the service requested, by name."/>
                 </FormGroup>
 
                 <FormGroup controlId="specific_questions_for_mdt">
