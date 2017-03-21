@@ -27,6 +27,9 @@ router.get('/:month/:year?',function(req,res,next){
         res.json(err);
       } else {
             var pending = rows.length;
+            if (pending==0 || rows = []){
+                callback([]);
+            }
 
             var clearSpecialities = function (specialities){
                 for (var speciality of specialities){
@@ -35,6 +38,7 @@ router.get('/:month/:year?',function(req,res,next){
                 }
                 return specialities;
             }
+
 
             var getSpecialities = function(row) {
 
