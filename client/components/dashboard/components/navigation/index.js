@@ -16,6 +16,9 @@ const navigationItems = [
 ]
 
 const makeLink = (name) => {
+    if(name === "Home"){
+        return "";
+    }
   return name.toLowerCase().replace(' ', '-')
 }
 
@@ -36,6 +39,8 @@ class Navigation extends React.Component {
   render() {
     let {userMenuOpen} = this.state;
     const {firstName, lastName, role} = this.props;
+
+
 
     return (
       <nav className={styles.nav}>
