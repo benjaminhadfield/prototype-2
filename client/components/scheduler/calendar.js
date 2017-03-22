@@ -11,6 +11,9 @@
 import React from 'react';
 import Grid from './Grid';
 import styles from './calendar.css';
+import axios from 'axios';
+import isEqual from 'lodash.isequal';
+var _ = require('underscore');
 
 var Calendar = React.createClass({
     calc: function (year, month) {
@@ -28,9 +31,68 @@ var Calendar = React.createClass({
     },
     componentWillMount: function () {
         this.setState(this.calc.call(null, this.state.year, this.state.month));
+        var events = this.state.events;
+        var meetings;
+        var month2 = this.state.month === 12 ? 1 : this.state.month + 1
+        var urlmonth = month2 > 9 ? month2 : "0" + month2;
+        var urlyear = this.state.year 
+        var url = '/api/scheduler/' + urlmonth + '/' + urlyear;
+        var compareMeetings = function(meeting1, meeting2){
+            return (meeting1["meeting_occurence_id"] === meeting2["meeting_occurence_id"] && meeting1["meeting_id"] === meeting2["meeting_id"] && meeting1["occurence_date"] === meeting2["occurence_date"] && meeting1["title"] === meeting2["title"] && meeting1["starting_time"] === meeting2["starting_time"] && meeting1["ending_time"] === meeting2["ending_time"] && meeting1["created_at"] === meeting2["created_at"])
+        }
+        axios.get(url).then(function(response){
+            meetings = response.data;
+            for(var i = 0; i < meetings.length; i++){
+                var found = 0;
+                var d = new Date(meetings[i]["occurence_date"]);
+                if(events.length === 0){
+                    var newEventTest = {
+                        date: d,
+                        year: d.getFullYear(),
+                        month: d.getMonth(),
+                        day: d.getDate()-1,
+                        meeting: []
+                    };
+                    newEventTest.meeting.push(meetings[i]);
+                    events.push(newEventTest);
+                }
+                else{
+                    for(var j = 0; j < events.length; j++){
+                        if(d.getFullYear() === events[j].year && d.getMonth() === events[j].month && d.getDate()-1 === events[j].day){
+                            found = 1;
+                            var alreadyExists = false
+                            for(var k = 0; k < events[j].meeting.length; k++){
+                                if(compareMeetings(meetings[i],events[j].meeting[k])){
+                                    alreadyExists = true;
+                                }
+                            }
+                            if(!alreadyExists){
+                                events[j].meeting.push(meetings[i]);
+                            }
+                        }
+                    }
+                    if(found === 0){
+                        var newEventTest = {
+                            date: d,
+                            year: d.getFullYear(),
+                            month: d.getMonth(),
+                            day: d.getDate()-1,
+                            meeting: []
+                        };
+                        newEventTest.meeting.push(meetings[i]);
+                        events.push(newEventTest);
+                    }
+                    found = 0;               
+                }
+            }
+        })
+        this.setState({
+            events : events
+        })
+        
     },
     componentDidMount: function () {
-
+        
     },
     componentDidUpdate: function (prevProps, prevState) {
         if (this.props.onSelect && prevState.selectedDt != this.state.selectedDt) {
@@ -67,6 +129,65 @@ var Calendar = React.createClass({
             state.month = 11;
             state.year = this.state.year - 1;
         }
+        var meetings;
+        var month2 = state.month === 12 ? 1 : state.month + 1
+        var urlmonth = month2 > 9 ? month2 : "0" + month2;
+        var urlyear = state.year 
+        var url = '/api/scheduler/' + urlmonth + '/' + urlyear;
+        var that = this;
+        var events = this.state.events;
+        var compareMeetings = function(meeting1, meeting2){
+            return (meeting1["meeting_occurence_id"] === meeting2["meeting_occurence_id"] && meeting1["meeting_id"] === meeting2["meeting_id"] && meeting1["occurence_date"] === meeting2["occurence_date"] && meeting1["title"] === meeting2["title"] && meeting1["starting_time"] === meeting2["starting_time"] && meeting1["ending_time"] === meeting2["ending_time"] && meeting1["created_at"] === meeting2["created_at"])
+        }
+        axios.get(url).then(function(response){
+            meetings = response.data;
+            for(var i = 0; i < meetings.length; i++){
+                var found = 0;
+                var d = new Date(meetings[i]["occurence_date"]);
+                if(events.length === 0){
+                    var newEventTest = {
+                        date: d,
+                        year: d.getFullYear(),
+                        month: d.getMonth(),
+                        day: d.getDate()-1,
+                        meeting: []
+                    };
+                    newEventTest.meeting.push(meetings[i]);
+                    events.push(newEventTest);
+                }
+                else{
+                    for(var j = 0; j < events.length; j++){
+                        if(d.getFullYear() === events[j].year && d.getMonth() === events[j].month && d.getDate()-1 === events[j].day){
+                            found = 1;
+                            var alreadyExists = false
+                            for(var k = 0; k < events[j].meeting.length; k++){
+                                if(compareMeetings(meetings[i],events[j].meeting[k])){
+                                    alreadyExists = true;
+                                }
+                            }
+                            if(!alreadyExists){
+                                events[j].meeting.push(meetings[i]);
+                            }
+                        }
+                    }
+                    if(found === 0){
+                        var newEventTest = {
+                            date: d,
+                            year: d.getFullYear(),
+                            month: d.getMonth(),
+                            day: d.getDate()-1,
+                            meeting: []
+                        };
+                        newEventTest.meeting.push(meetings[i]);
+                        events.push(newEventTest);
+                    }
+                    found = 0;               
+                }
+            }
+            that.setState({
+                events : events
+            })
+        })
         Object.assign(state, this.calc.call(null, state.year, state.month));
         this.setState(state);
     },
@@ -79,9 +200,69 @@ var Calendar = React.createClass({
             state.month = 0;
             state.year = this.state.year + 1;
         }
+        var meetings;
+        var month2 = state.month === 12 ? 1 : state.month + 1
+        var urlmonth = month2 > 9 ? month2 : "0" + month2;
+        var urlyear = state.year 
+        var url = '/api/scheduler/' + urlmonth + '/' + urlyear;
+        var that = this;
+        var events = this.state.events;
+        var compareMeetings = function(meeting1, meeting2){
+            return (meeting1["meeting_occurence_id"] === meeting2["meeting_occurence_id"] && meeting1["meeting_id"] === meeting2["meeting_id"] && meeting1["occurence_date"] === meeting2["occurence_date"] && meeting1["title"] === meeting2["title"] && meeting1["starting_time"] === meeting2["starting_time"] && meeting1["ending_time"] === meeting2["ending_time"] && meeting1["created_at"] === meeting2["created_at"])
+        }
+        axios.get(url).then(function(response){
+            meetings = response.data;
+            for(var i = 0; i < meetings.length; i++){
+                var found = 0;
+                var d = new Date(meetings[i]["occurence_date"]);
+                if(events.length === 0){
+                    var newEventTest = {
+                        date: d,
+                        year: d.getFullYear(),
+                        month: d.getMonth(),
+                        day: d.getDate()-1,
+                        meeting: []
+                    };
+                    newEventTest.meeting.push(meetings[i]);
+                    events.push(newEventTest);
+                }
+                else{
+                    for(var j = 0; j < events.length; j++){
+                        if(d.getFullYear() === events[j].year && d.getMonth() === events[j].month && d.getDate()-1 === events[j].day){
+                            found = 1;
+                            var alreadyExists = false
+                            for(var k = 0; k < events[j].meeting.length; k++){
+                                if(compareMeetings(meetings[i],events[j].meeting[k])){
+                                    alreadyExists = true;
+                                }
+                            }
+                            if(!alreadyExists){
+                                events[j].meeting.push(meetings[i]);
+                            }
+                        }
+                    }
+                    if(found === 0){
+                        var newEventTest = {
+                            date: d,
+                            year: d.getFullYear(),
+                            month: d.getMonth(),
+                            day: d.getDate()-1,
+                            meeting: []
+                        };
+                        newEventTest.meeting.push(meetings[i]);
+                        events.push(newEventTest);
+                    }
+                    found = 0;               
+                }
+            }
+            that.setState({
+                events : events
+            })
+        })
         Object.assign(state, this.calc.call(null, state.year, state.month));
         this.setState(state);
     },
+
     selectDate: function (year, month, date, element) {
         if (this.state.selectedElement) {
             this.state.selectedElement.classList.remove('r-selected');
@@ -96,169 +277,52 @@ var Calendar = React.createClass({
         });
     },
 
-    addPatients: function(patient, meeting, specialty, year, month, day){
+    addPatients: function(patient, meeting2, specialty2, year, month, day){
         var events = this.state.events;
-        var found = 0;
+        console.log(events);
+                        //map through meeting
+                    //map through specialty
         for(var i = 0; i < events.length; i++){
             if(events[i].year === year && events[i].month === month && events[i].day === day){
-                switch(meeting){
-                    case "A":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingA.specialtyA.push(patient);
-                                break;
-                            case "B":
-                                events[i].meetingA.specialtyB.push(patient);
-                                break;
-                            case "C":
-                                events[i].meetingA.specialtyC.push(patient);
-                                break;
-                        }
-                        break;
-                    case "B":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingB.specialtyA.push(patient);
-                                break;
-                            case "B":
-                                events[i].meetingB.specialtyB.push(patient);
-                                break;
-                            case "C":
-                                events[i].meetingB.specialtyC.push(patient);
-                                break;
-                        }
-                        break;
-                    case "C":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingC.specialtyA.push(patient);
-                                break;
-                            case "B":
-                                events[i].meetingC.specialtyB.push(patient);
-                                break;
-                            case "C":
-                                events[i].meetingC.specialtyC.push(patient);
-                                break;
-                        }
-                        break;
-                }
-                found = 1;
-            }
-        }
-        if(found === 0){
-            var newEvent = {
-                year : year,
-                month: month,
-                day: day,
-                meetingA: {
-                    specialtyA: [],
-                    specialtyB: [],
-                    specialtyC: []
-                },
-                meetingB: {
-                    specialtyA: [],
-                    specialtyB: [],
-                    specialtyC: []
-                },
-                meetingC: {
-                    specialtyA: [],
-                    specialtyB: [],
-                    specialtyC: []
-                }
-            };
-            switch(meeting){
-                case "A":
-                    switch(specialty){
-                         case "A":
-                            newEvent.meetingA.specialtyA.push(patient);
-                            break;
-                        case "B":
-                            newEvent.meetingA.specialtyB.push(patient);
-                            break;
-                        case "C":
-                            newEvent.meetingA.specialtyC.push(patient);
-                            break;
+                for(var j = 0; j < events[i].meeting.length; j++){
+                    if(_.isEqual(meeting2,events[i].meeting[j])){
+                        for(var k = 0; k < events[i].meeting[j]["specialities"].length; k++){
+                            if(events[i].meeting[j]["specialities"][k]["name"] === specialty2){
+                                if(events[i].meeting[j]["specialities"][k].hasOwnProperty("patients")){
+                                    events[i].meeting[j]["specialities"][k]["patients"].push(patient);
+                                }
+                                else{
+                                    events[i].meeting[j]["specialities"][k]["patients"] = [];
+                                    events[i].meeting[j]["specialities"][k]["patients"].push(patient);
+                                }
+                            }
+                        }                        
                     }
-                    break;
-                case "B":
-                    switch(specialty){
-                         case "A":
-                            newEvent.meetingB.specialtyA.push(patient);
-                            break;
-                        case "B":
-                            newEvent.meetingB.specialtyB.push(patient);
-                            break;
-                        case "C":
-                            newEvent.meetingB.specialtyC.push(patient);
-                            break;
-                    }
-                    break;
-                case "C":
-                    switch(specialty){
-                        case "A":
-                            newEvent.meetingC.specialtyA.push(patient);
-                            break;
-                        case "B":
-                            newEvent.meetingC.specialtyB.push(patient);
-                            break;
-                        case "C":
-                            newEvent.meetingC.specialtyC.push(patient);
-                            break;
-                    }
-                    break;
 
+                }
             }
-            events.push(newEvent);
         }
+        //theres no way theres a patient without meeting, REMOVE THIS
         this.setState({
             events : events
         })
     },
 
-    removeFromGrid: function(index, meeting, specialty, year, month, day){
+    removeFromGrid: function(index, meeting2, specialty2, year, month, day){
         var events = this.state.events;
+        //map through events
+            //map through meetings
+                //map through specialty
         for(var i = 0; i < events.length; i++){
             if(events[i].year === year && events[i].month === month && events[i].day === day){
-                switch(meeting){
-                    case "A":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingA.specialtyA.splice(index,1);
-                                break;
-                            case "B":
-                                events[i].meetingA.specialtyB.splice(index,1);
-                                break;
-                            case "C":
-                                events[i].meetingA.specialtyC.splice(index,1);
-                                break;
-                        }
-                        break;
-                    case "B":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingB.specialtyA.splice(index,1);
-                                break;
-                            case "B":
-                                events[i].meetingB.specialtyB.splice(index,1);
-                                break;
-                            case "C":
-                                events[i].meetingB.specialtyC.splice(index,1);
-                                break;
-                        }
-                        break;
-                    case "C":
-                        switch(specialty){
-                            case "A":
-                                events[i].meetingC.specialtyA.splice(index,1);
-                                break;
-                            case "B":
-                                events[i].meetingC.specialtyB.splice(index,1);
-                                break;
-                            case "C":
-                                events[i].meetingC.specialtyC.splice(index,1);
-                                break;
-                        }
-                        break;
+                for(var j = 0; j < events[i].meeting.length; j++){
+                    if(_.isEqual(meeting2,events[i].meeting[j])){
+                        for(var k = 0; k < events[i].meeting[j]["specialities"].length; k++){
+                            if(events[i].meeting[j]["specialities"][k]["name"] === specialty2){
+                                events[i].meeting[j]["specialities"][k]["patients"].splice(index,1);
+                            }
+                        }                        
+                    }
                 }
             }
         }
@@ -268,6 +332,7 @@ var Calendar = React.createClass({
     },
 
     render: function () {
+        console.log(this.state.events);
         return (
             <div className={styles.rcalendar}>
                 <div className={styles.rinner}>
@@ -370,26 +435,12 @@ var MonthDates = React.createClass({
                             } else if (that.props.minDate !== null && current < that.props.minDate) {
                                 className += " " + styles.rpast;
                             }
-
+                            //change meetingA/B/C to meetings array
                             var dayEvent = {
                                 year : 0,
                                 month: 0,
                                 day: 0,
-                                meetingA: {
-                                    specialtyA: [],
-                                    specialtyB: [],
-                                    specialtyC: []
-                                },
-                                meetingB: {
-                                    specialtyA: [],
-                                    specialtyB: [],
-                                    specialtyC: []
-                                },
-                                meetingC: {
-                                    specialtyA: [],
-                                    specialtyB: [],
-                                    specialtyC: []
-                                }
+                                meeting: []
                             };
                             var events = that.props.events;
                             for(var i = 0; i < events.length; i++){
