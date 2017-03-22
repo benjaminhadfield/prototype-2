@@ -15,7 +15,7 @@ var SpecialtyList = React.createClass({
 	},
 
 	render: function(){
-		if(this.props.patients.length === 0){
+		if(this.props.patients.length === 0 || this.props.patients == undefined){
 			return (
 				<div>
 					<h3>{this.props.specialty}</h3>
