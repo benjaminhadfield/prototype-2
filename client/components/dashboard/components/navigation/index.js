@@ -19,7 +19,8 @@ const makeLink = (name) => name.toLowerCase() !== 'home' ? name.toLowerCase().re
 
 class Navigation extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.toggleUserMenu = this.toggleUserMenu.bind(this);
     this.state = {
       userMenuOpen: false
     };
@@ -35,19 +36,17 @@ class Navigation extends React.Component {
     let {userMenuOpen} = this.state;
     const {firstName, lastName, role} = this.props;
 
-
-
     return (
       <nav className={styles.nav}>
         <div className={styles.masthead}>
           <div className={styles.separater}></div>
           <h1 className={styles.brand}><img src={brandImg} width="120px"/></h1>
           <div className={styles.user}>
-            <button className={styles.button} onClick={this.toggleUserMenu.bind(this)}>
-              {`${firstName} ${lastName} (${role})`}
+            <button className={styles.button} onClick={this.toggleUserMenu}>
+              {role ? `${firstName} ${lastName} (${role})` : 'Click to login'}
               <i className="fa fa-caret-down" aria-hidden="true"></i>
             </button>
-            <UserMenu open={userMenuOpen}/>
+            <UserMenu onClick={this.toggleUserMenu} open={userMenuOpen}/>
           </div>
         </div>
 

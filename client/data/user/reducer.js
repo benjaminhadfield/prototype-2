@@ -5,10 +5,10 @@ import * as actionTypes from './actions';
  */
 const initialState = {
   id: null,
+  role: null,
+  openEHRSessionId: '',
   firstName: '',
   lastName: '',
-  role: '',
-  openEHRSessionId: '',
   loading: false,
   error: false,
 }
