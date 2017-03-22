@@ -12,7 +12,6 @@ class Home extends React.Component {
   render() {
     const {role} = this.props;
 
-
     return (
       <div>
           {
@@ -25,7 +24,7 @@ class Home extends React.Component {
             ) : (
                 <div>
                     <h1>Home</h1>
-                    <p>To connect as an admin, simply click on the dropdown menu in the navigation bar. </p>
+                    <p>To connect as an admin, simply click on the dropdown menu in the navigation bar.</p>
                 </div>
             )
         }
