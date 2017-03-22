@@ -3,8 +3,6 @@ var express = require("express");
 var router = express.Router();
 
 
-
-
 // ---------Scheduler CRUD Functions-----------
 
 var Scheduler = {
@@ -17,7 +15,7 @@ var Scheduler = {
 
 // Get all meetings in a month with specialities
 router.get('/:month/:year?',function(req,res,next){
-
+    console.log('hey')
     var callback = function(rows) {
         console.log("\n\nend "+JSON.stringify(rows));
         res.json(rows);
@@ -28,6 +26,9 @@ router.get('/:month/:year?',function(req,res,next){
         res.json(err);
       } else {
             var pending = rows.length;
+            if (pending==0 || rows == []){
+                callback([]);
+            }
 
             var clearSpecialities = function (specialities){
                 for (var speciality of specialities){
@@ -36,6 +37,7 @@ router.get('/:month/:year?',function(req,res,next){
                 }
                 return specialities;
             }
+
 
             var getSpecialities = function(row) {
 

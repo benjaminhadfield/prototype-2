@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.css';
 import {connect} from 'react-redux';
 import {Tabs,Tab, Col} from 'react-bootstrap';
-import {CreateNew} from './components/createNew';
+import CreateNew from './components/createNew';
 import {ReviewPrevious} from './components/reviewPrevious';
 
 const sections = [

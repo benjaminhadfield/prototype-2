@@ -6,8 +6,9 @@ import styles from './styles.css';
 import UserMenuItem from './components/userMenuItem'
 
 const UserMenu = ({open, setUser, ...props}) => {
-  const handleAdminClick = (e) => setUser({role: 'admin', firstName: 'First', lastName: 'Last'})
-  const handleNormalClick = (e) => setUser({role: 'normal', firstName: 'First', lastName: 'Last'})
+  const handleAdminClick = (e) => setUser({role: 'admin', firstName: 'Navin', lastName: 'Ramachandran'})
+  const handleNormalClick = (e) => setUser({role: 'normal', firstName: 'Basic', lastName: 'User'})
+
 
   return (
     <div className={classNames(styles.userMenu, {[styles.open]: open})}>
