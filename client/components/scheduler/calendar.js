@@ -12,6 +12,8 @@ import React from 'react';
 import Grid from './Grid';
 import styles from './calendar.css';
 import axios from 'axios';
+import isEqual from 'lodash.isequal';
+var _ = require('underscore');
 
 var Calendar = React.createClass({
     calc: function (year, month) {
@@ -35,7 +37,9 @@ var Calendar = React.createClass({
         var urlmonth = month2 > 9 ? month2 : "0" + month2;
         var urlyear = this.state.year 
         var url = '/api/scheduler/' + urlmonth + '/' + urlyear;
-        console.log(url)
+        var compareMeetings = function(meeting1, meeting2){
+            return (meeting1["meeting_occurence_id"] === meeting2["meeting_occurence_id"] && meeting1["meeting_id"] === meeting2["meeting_id"] && meeting1["occurence_date"] === meeting2["occurence_date"] && meeting1["title"] === meeting2["title"] && meeting1["starting_time"] === meeting2["starting_time"] && meeting1["ending_time"] === meeting2["ending_time"] && meeting1["created_at"] === meeting2["created_at"])
+        }
         axios.get(url).then(function(response){
             meetings = response.data;
             for(var i = 0; i < meetings.length; i++){
@@ -54,9 +58,17 @@ var Calendar = React.createClass({
                 }
                 else{
                     for(var j = 0; j < events.length; j++){
-                        if(d.getFullYear() === events[j].date.getFullYear() && d.getMonth() === events[j].date.getMonth() && d.getDate()-1 === events[j].date.getDate()){
+                        if(d.getFullYear() === events[j].year && d.getMonth() === events[j].month && d.getDate()-1 === events[j].day){
                             found = 1;
-                            events[j].meeting.push(meetings[i]);
+                            var alreadyExists = false
+                            for(var k = 0; k < events[j].meeting.length; k++){
+                                if(compareMeetings(meetings[i],events[j].meeting[k])){
+                                    alreadyExists = true;
+                                }
+                            }
+                            if(!alreadyExists){
+                                events[j].meeting.push(meetings[i]);
+                            }
                         }
                     }
                     if(found === 0){
@@ -77,6 +89,7 @@ var Calendar = React.createClass({
         this.setState({
             events : events
         })
+        
     },
     componentDidMount: function () {
         
@@ -116,14 +129,16 @@ var Calendar = React.createClass({
             state.month = 11;
             state.year = this.state.year - 1;
         }
-        var events = this.state.events;
         var meetings;
         var month2 = state.month === 12 ? 1 : state.month + 1
         var urlmonth = month2 > 9 ? month2 : "0" + month2;
         var urlyear = state.year 
         var url = '/api/scheduler/' + urlmonth + '/' + urlyear;
         var that = this;
-        console.log(url)
+        var events = this.state.events;
+        var compareMeetings = function(meeting1, meeting2){
+            return (meeting1["meeting_occurence_id"] === meeting2["meeting_occurence_id"] && meeting1["meeting_id"] === meeting2["meeting_id"] && meeting1["occurence_date"] === meeting2["occurence_date"] && meeting1["title"] === meeting2["title"] && meeting1["starting_time"] === meeting2["starting_time"] && meeting1["ending_time"] === meeting2["ending_time"] && meeting1["created_at"] === meeting2["created_at"])
+        }
         axios.get(url).then(function(response){
             meetings = response.data;
             for(var i = 0; i < meetings.length; i++){
@@ -142,9 +157,17 @@ var Calendar = React.createClass({
                 }
                 else{
                     for(var j = 0; j < events.length; j++){
-                        if(d.getFullYear() === events[j].date.getFullYear() && d.getMonth() === events[j].date.getMonth() && d.getDate()-1 === events[j].date.getDate()){
+                        if(d.getFullYear() === events[j].year && d.getMonth() === events[j].month && d.getDate()-1 === events[j].day){
                             found = 1;
-                            events[j].meeting.push(meetings[i]);
+                            var alreadyExists = false
+                            for(var k = 0; k < events[j].meeting.length; k++){
+                                if(compareMeetings(meetings[i],events[j].meeting[k])){
+                                    alreadyExists = true;
+                                }
+                            }
+                            if(!alreadyExists){
+                                events[j].meeting.push(meetings[i]);
+                            }
                         }
                     }
                     if(found === 0){
@@ -165,7 +188,6 @@ var Calendar = React.createClass({
                 events : events
             })
         })
-        
         Object.assign(state, this.calc.call(null, state.year, state.month));
         this.setState(state);
     },
@@ -178,14 +200,16 @@ var Calendar = React.createClass({
             state.month = 0;
             state.year = this.state.year + 1;
         }
-        var events = this.state.events;
         var meetings;
         var month2 = state.month === 12 ? 1 : state.month + 1
         var urlmonth = month2 > 9 ? month2 : "0" + month2;
         var urlyear = state.year 
         var url = '/api/scheduler/' + urlmonth + '/' + urlyear;
         var that = this;
-        console.log(url)
+        var events = this.state.events;
+        var compareMeetings = function(meeting1, meeting2){
+            return (meeting1["meeting_occurence_id"] === meeting2["meeting_occurence_id"] && meeting1["meeting_id"] === meeting2["meeting_id"] && meeting1["occurence_date"] === meeting2["occurence_date"] && meeting1["title"] === meeting2["title"] && meeting1["starting_time"] === meeting2["starting_time"] && meeting1["ending_time"] === meeting2["ending_time"] && meeting1["created_at"] === meeting2["created_at"])
+        }
         axios.get(url).then(function(response){
             meetings = response.data;
             for(var i = 0; i < meetings.length; i++){
@@ -204,9 +228,17 @@ var Calendar = React.createClass({
                 }
                 else{
                     for(var j = 0; j < events.length; j++){
-                        if(d.getFullYear() === events[j].date.getFullYear() && d.getMonth() === events[j].date.getMonth() && d.getDate()-1 === events[j].date.getDate()){
+                        if(d.getFullYear() === events[j].year && d.getMonth() === events[j].month && d.getDate()-1 === events[j].day){
                             found = 1;
-                            events[j].meeting.push(meetings[i]);
+                            var alreadyExists = false
+                            for(var k = 0; k < events[j].meeting.length; k++){
+                                if(compareMeetings(meetings[i],events[j].meeting[k])){
+                                    alreadyExists = true;
+                                }
+                            }
+                            if(!alreadyExists){
+                                events[j].meeting.push(meetings[i]);
+                            }
                         }
                     }
                     if(found === 0){
@@ -229,57 +261,6 @@ var Calendar = React.createClass({
         })
         Object.assign(state, this.calc.call(null, state.year, state.month));
         this.setState(state);
-    },
-
-    getRequest: function(){
-        var events = this.state.events;
-        var meetings;
-        var month2 = this.state.month === 12 ? 1 : this.state.month + 1
-        var urlmonth = month2 > 9 ? month2 : "0" + month2;
-        var urlyear = this.state.year 
-        var url = '/api/scheduler/' + urlmonth + '/' + urlyear;
-        console.log(url)
-        axios.get(url).then(function(response){
-            meetings = response.data;
-            for(var i = 0; i < meetings.length; i++){
-                var found = 0;
-                var d = new Date(meetings[i]["occurence_date"]);
-                if(events.length === 0){
-                    var newEventTest = {
-                        date: d,
-                        year: d.getFullYear(),
-                        month: d.getMonth(),
-                        day: d.getDate()-1,
-                        meeting: []
-                    };
-                    newEventTest.meeting.push(meetings[i]);
-                    events.push(newEventTest);
-                }
-                else{
-                    for(var j = 0; j < events.length; j++){
-                        if(d.getFullYear() === events[j].date.getFullYear() && d.getMonth() === events[j].date.getMonth() && d.getDate()-1 === events[j].date.getDate()){
-                            found = 1;
-                            events[j].meeting.push(meetings[i]);
-                        }
-                    }
-                    if(found === 0){
-                        var newEventTest = {
-                            date: d,
-                            year: d.getFullYear(),
-                            month: d.getMonth(),
-                            day: d.getDate()-1,
-                            meeting: []
-                        };
-                        newEventTest.meeting.push(meetings[i]);
-                        events.push(newEventTest);
-                    }
-                    found = 0;               
-                }
-            }
-        })
-        this.setState({
-            events : events
-        })
     },
 
     selectDate: function (year, month, date, element) {
@@ -298,22 +279,26 @@ var Calendar = React.createClass({
 
     addPatients: function(patient, meeting2, specialty2, year, month, day){
         var events = this.state.events;
+        console.log(events);
                         //map through meeting
                     //map through specialty
         for(var i = 0; i < events.length; i++){
             if(events[i].year === year && events[i].month === month && events[i].day === day){
                 for(var j = 0; j < events[i].meeting.length; j++){
-                    for(var k = 0; k < events[i].meeting[j]["specialities"].length; k++){
-                        if(events[i].meeting[j]["specialities"][k]["name"] === specialty2){
-                            if(events[i].meeting[j]["specialities"][k].hasOwnProperty("patients")){
-                                events[i].meeting[j]["specialities"][k]["patients"].push(patient);
+                    if(_.isEqual(meeting2,events[i].meeting[j])){
+                        for(var k = 0; k < events[i].meeting[j]["specialities"].length; k++){
+                            if(events[i].meeting[j]["specialities"][k]["name"] === specialty2){
+                                if(events[i].meeting[j]["specialities"][k].hasOwnProperty("patients")){
+                                    events[i].meeting[j]["specialities"][k]["patients"].push(patient);
+                                }
+                                else{
+                                    events[i].meeting[j]["specialities"][k]["patients"] = [];
+                                    events[i].meeting[j]["specialities"][k]["patients"].push(patient);
+                                }
                             }
-                            else{
-                                events[i].meeting[j]["specialities"][k]["patients"] = [];
-                                events[i].meeting[j]["specialities"][k]["patients"].push(patient);
-                            }
-                        }
+                        }                        
                     }
+
                 }
             }
         }
@@ -331,10 +316,12 @@ var Calendar = React.createClass({
         for(var i = 0; i < events.length; i++){
             if(events[i].year === year && events[i].month === month && events[i].day === day){
                 for(var j = 0; j < events[i].meeting.length; j++){
-                    for(var k = 0; k < events[i].meeting[j]["specialities"].length; k++){
-                        if(events[i].meeting[j]["specialities"][k]["name"] === specialty2){
-                            events[i].meeting[j]["specialities"][k]["patients"].splice(index,1);
-                        }
+                    if(_.isEqual(meeting2,events[i].meeting[j])){
+                        for(var k = 0; k < events[i].meeting[j]["specialities"].length; k++){
+                            if(events[i].meeting[j]["specialities"][k]["name"] === specialty2){
+                                events[i].meeting[j]["specialities"][k]["patients"].splice(index,1);
+                            }
+                        }                        
                     }
                 }
             }
@@ -345,7 +332,7 @@ var Calendar = React.createClass({
     },
 
     render: function () {
-        console.log(this.state.events)
+        console.log(this.state.events);
         return (
             <div className={styles.rcalendar}>
                 <div className={styles.rinner}>
