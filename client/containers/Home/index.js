@@ -39,4 +39,4 @@ const mapStateToProps = (state) => ({
   role: state.data.user.role
 })
 
-export default connect()(Home)
+export default connect(mapStateToProps)(Home)
