@@ -1,6 +1,6 @@
 "use strict";
 
-const defaultListenPort = 3000;
+const defaultListenPort = 8080;
 
 const portFromEnv = () => {
   const x = parseInt(process.env.PORT, 10);
@@ -23,7 +23,7 @@ module.exports = {
     "webapp": {
       "module": "electrode-react-webapp/lib/express",
       "options": {
-        "pageTitle": "prototype-2",
+        "pageTitle": "Peach",
         "paths": {
           "*": {
             "content": {

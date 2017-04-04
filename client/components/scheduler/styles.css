@@ -36,3 +36,11 @@
     right: 0px;
     top: 0px;
 }
+
+.btn_meeting{
+    border: none;
+    border-radius: 3px;
+    background-color: #1abc9c;
+    color: white;
+    margin: 2px;
+}
