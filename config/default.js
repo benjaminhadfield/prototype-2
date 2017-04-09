@@ -36,8 +36,7 @@ module.exports = {
   },
   "connections": {
     "default": {
-      "host": process.env.HOST,
-      "address": process.env.HOST_IP || "0.0.0.0",
+      "address":   "0.0.0.0",
       "port": portFromEnv(),
       "routes": {
         "cors": true

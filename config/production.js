@@ -14,10 +14,39 @@ const serveStaticFiles = () => {
 module.exports = {
   "plugins": {
     "inert": {
-      "enable": serveStaticFiles()
+      "enable": true
     },
     "electrodeStaticPaths": {
-      "enable": serveStaticFiles()
+      "enable": true,
+      "options": {
+        "pathPrefix": "dist"
+      }
+    },
+    "./server/plugins/pwa": {},
+    "webapp": {
+      "module": "electrode-react-webapp/lib/express",
+      "options": {
+        "pageTitle": "Peach",
+        "paths": {
+          "*": {
+            "content": {
+              "module": "./server/views/index-view"
+            }
+          }
+        }
+      }
+    }
+  },
+  "connections": {
+    "default": {
+      "address":   "0.0.0.0",
+      "port": portFromEnv(),
+      "routes": {
+        "cors": true
+      },
+      "state": {
+        "ignoreErrors":true
+      }
     }
   }
 };
