@@ -10,32 +10,18 @@ class Home extends React.Component {
     }
 
   render() {
-    const {role} = this.props;
+    const {name} = this.props;
 
     return (
       <div>
-          {
-          isAdminOrAbove(role)
-            ? (
-                <div>
-                    <h1>Home</h1>
-                    <p>You are connected!</p>
-                </div>
-            ) : (
-                <div>
-                    <h1>Home</h1>
-                    <p>To connect as an admin, simply click on the dropdown menu in the navigation bar.</p>
-                </div>
-            )
-        }
-       </div>
-
+        <p>Welcome to PEACH Cancer, {name}!</p>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  role: state.data.user.role
-})
+  name: state.data.user.firstName
+});
 
-export default connect()(Home)
+export default connect(mapStateToProps)(Home);
