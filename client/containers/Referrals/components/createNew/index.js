@@ -38,8 +38,6 @@ class CreateNew extends React.Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      console.log('POST THIS:', {...data, ...this.state})
-      console.log('openEHRSessionId', this.props.openEHRSessionId)
 
       axios.post(`https://ehrscape.code4health.org//rest/v1/composition?ehrId=64effb89-9b52-4614-8cad-b11a4dad0e5a&templateId=OpenCancer+Urology+MDT+Referral+Form.v0&committerName=uclpeach&format=FLAT`, {...data, ...this.state}, {
         headers: {
