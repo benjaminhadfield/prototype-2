@@ -20,10 +20,7 @@ class Dashboard extends React.Component {
       <div>
         <Notifications/>
         <Navigation/>
-        <div className={styles.page}>
-          <h1 className={styles.title}>{ucFirst(title)}</h1>
-          <div children={children}/>
-        </div>
+        <div className={styles.page} children={children}/>
       </div>
     );
   }
@@ -31,6 +28,6 @@ class Dashboard extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   getOpenEhrSessionId: () => dispatch(getOpenEhrSessionId())
-})
+});
 
 export default connect(() => ({}), mapDispatchToProps)(Dashboard);
