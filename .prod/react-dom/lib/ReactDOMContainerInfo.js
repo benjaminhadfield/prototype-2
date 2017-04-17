@@ -1,0 +1,1 @@
+"use strict";function ReactDOMContainerInfo(e,n){var t={_topLevelWrapper:e,_idCounter:1,_ownerDocument:n?n.nodeType===DOC_NODE_TYPE?n:n.ownerDocument:null,_node:n,_tag:n?n.nodeName.toLowerCase():null,_namespaceURI:n?n.namespaceURI:null};return t}var validateDOMNesting=require("./validateDOMNesting"),DOC_NODE_TYPE=9;module.exports=ReactDOMContainerInfo;

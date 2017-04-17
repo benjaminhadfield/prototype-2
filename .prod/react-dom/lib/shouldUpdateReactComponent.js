@@ -1,0 +1,1 @@
+"use strict";function shouldUpdateReactComponent(e,t){var n=null===e||e===!1,o=null===t||t===!1;if(n||o){return n===o}var r=typeof e,u=typeof t;return"string"===r||"number"===r?"string"===u||"number"===u:"object"===u&&e.type===t.type&&e.key===t.key}module.exports=shouldUpdateReactComponent;

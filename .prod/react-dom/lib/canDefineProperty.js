@@ -1,0 +1,1 @@
+"use strict";var canDefineProperty=!1;module.exports=canDefineProperty;

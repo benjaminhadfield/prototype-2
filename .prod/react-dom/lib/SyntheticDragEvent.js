@@ -1,0 +1,1 @@
+"use strict";function SyntheticDragEvent(t,e,n,r){return SyntheticMouseEvent.call(this,t,e,n,r)}var SyntheticMouseEvent=require("./SyntheticMouseEvent"),DragEventInterface={dataTransfer:null};SyntheticMouseEvent.augmentClass(SyntheticDragEvent,DragEventInterface);module.exports=SyntheticDragEvent;

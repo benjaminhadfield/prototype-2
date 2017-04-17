@@ -1,0 +1,1 @@
+"use strict";function SyntheticTransitionEvent(t,n,e,i){return SyntheticEvent.call(this,t,n,e,i)}var SyntheticEvent=require("./SyntheticEvent"),TransitionEventInterface={propertyName:null,elapsedTime:null,pseudoElement:null};SyntheticEvent.augmentClass(SyntheticTransitionEvent,TransitionEventInterface);module.exports=SyntheticTransitionEvent;

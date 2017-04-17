@@ -1,0 +1,1 @@
+"use strict";var DefaultEventPluginOrder=["ResponderEventPlugin","SimpleEventPlugin","TapEventPlugin","EnterLeaveEventPlugin","ChangeEventPlugin","SelectEventPlugin","BeforeInputEventPlugin"];module.exports=DefaultEventPluginOrder;

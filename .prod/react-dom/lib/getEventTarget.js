@@ -1,0 +1,1 @@
+"use strict";function getEventTarget(e){var t=e.target||e.srcElement||window;t.correspondingUseElement&&(t=t.correspondingUseElement);return 3===t.nodeType?t.parentNode:t}module.exports=getEventTarget;

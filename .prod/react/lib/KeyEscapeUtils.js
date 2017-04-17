@@ -1,0 +1,1 @@
+"use strict";function escape(e){var n=/[=:]/g,r={"=":"=0",":":"=2"},s=(""+e).replace(n,function(e){return r[e]});return"$"+s}function unescape(e){var n=/(=0|=2)/g,r={"=0":"=","=2":":"},s="."===e[0]&&"$"===e[1]?e.substring(2):e.substring(1);return(""+s).replace(n,function(e){return r[e]})}var KeyEscapeUtils={escape:escape,unescape:unescape};module.exports=KeyEscapeUtils;

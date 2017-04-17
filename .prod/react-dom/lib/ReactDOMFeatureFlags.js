@@ -1,0 +1,1 @@
+"use strict";var ReactDOMFeatureFlags={useCreateElement:!0,useFiber:!1};module.exports=ReactDOMFeatureFlags;

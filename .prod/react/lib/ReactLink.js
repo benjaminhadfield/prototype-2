@@ -1,0 +1,1 @@
+"use strict";function ReactLink(e,r){this.value=e;this.requestChange=r}function createLinkTypeChecker(e){var r={value:void 0===e?React.PropTypes.any.isRequired:e.isRequired,requestChange:React.PropTypes.func.isRequired};return React.PropTypes.shape(r)}var React=require("./React");ReactLink.PropTypes={link:createLinkTypeChecker};module.exports=ReactLink;

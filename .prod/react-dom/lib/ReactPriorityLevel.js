@@ -1,0 +1,1 @@
+"use strict";module.exports={NoWork:0,SynchronousPriority:1,AnimationPriority:2,HighPriority:3,LowPriority:4,OffscreenPriority:5};

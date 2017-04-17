@@ -56,7 +56,7 @@ class CreateNew extends React.Component {
 
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className={styles.bg_white}>
 
             <Col xs={12} smOffset={1} sm={10} className={styles.pad_top_bottom}>
                 <h2>Request</h2>

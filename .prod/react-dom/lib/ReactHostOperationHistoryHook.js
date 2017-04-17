@@ -1,0 +1,1 @@
+"use strict";var history=[],ReactHostOperationHistoryHook={onHostOperation:function(o){history.push(o)},clearHistory:function(){ReactHostOperationHistoryHook._preventClearing||(history=[])},getHistory:function(){return history}};module.exports=ReactHostOperationHistoryHook;

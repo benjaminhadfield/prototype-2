@@ -1,0 +1,1 @@
+"use strict";function SyntheticCompositionEvent(t,n,e,i){return SyntheticEvent.call(this,t,n,e,i)}var SyntheticEvent=require("./SyntheticEvent"),CompositionEventInterface={data:null};SyntheticEvent.augmentClass(SyntheticCompositionEvent,CompositionEventInterface);module.exports=SyntheticCompositionEvent;

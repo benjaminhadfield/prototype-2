@@ -1,0 +1,1 @@
+"use strict";function adler32(r){for(var e=1,t=0,a=0,o=r.length,d=o&-4;a<d;){for(var c=Math.min(a+4096,d);a<c;a+=4){t+=(e+=r.charCodeAt(a))+(e+=r.charCodeAt(a+1))+(e+=r.charCodeAt(a+2))+(e+=r.charCodeAt(a+3))}e%=MOD;t%=MOD}for(;a<o;a++){t+=e+=r.charCodeAt(a)}e%=MOD;t%=MOD;return e|t<<16}var MOD=65521;module.exports=adler32;

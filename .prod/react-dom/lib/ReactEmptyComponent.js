@@ -1,0 +1,1 @@
+"use strict";var emptyComponentFactory,ReactEmptyComponentInjection={injectEmptyComponentFactory:function(t){emptyComponentFactory=t}},ReactEmptyComponent={create:function(t){return emptyComponentFactory(t)}};ReactEmptyComponent.injection=ReactEmptyComponentInjection;module.exports=ReactEmptyComponent;

@@ -1,0 +1,1 @@
+"use strict";module.exports={IndeterminateComponent:0,FunctionalComponent:1,ClassComponent:2,HostContainer:3,HostComponent:4,CoroutineComponent:5,CoroutineHandlerPhase:6,YieldComponent:7};

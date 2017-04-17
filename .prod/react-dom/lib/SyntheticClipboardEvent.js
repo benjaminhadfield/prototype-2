@@ -1,0 +1,1 @@
+"use strict";function SyntheticClipboardEvent(t,e,n,a){return SyntheticEvent.call(this,t,e,n,a)}var SyntheticEvent=require("./SyntheticEvent"),ClipboardEventInterface={clipboardData:function(t){return"clipboardData"in t?t.clipboardData:window.clipboardData}};SyntheticEvent.augmentClass(SyntheticClipboardEvent,ClipboardEventInterface);module.exports=SyntheticClipboardEvent;

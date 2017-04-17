@@ -1,0 +1,1 @@
+"use strict";var ReactInstanceMap={remove:function(n){n._reactInternalInstance=void 0},get:function(n){return n._reactInternalInstance},has:function(n){return void 0!==n._reactInternalInstance},set:function(n,t){n._reactInternalInstance=t}};module.exports=ReactInstanceMap;

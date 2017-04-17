@@ -1,0 +1,1 @@
+"use strict";function SyntheticAnimationEvent(t,n,e,i){return SyntheticEvent.call(this,t,n,e,i)}var SyntheticEvent=require("./SyntheticEvent"),AnimationEventInterface={animationName:null,elapsedTime:null,pseudoElement:null};SyntheticEvent.augmentClass(SyntheticAnimationEvent,AnimationEventInterface);module.exports=SyntheticAnimationEvent;

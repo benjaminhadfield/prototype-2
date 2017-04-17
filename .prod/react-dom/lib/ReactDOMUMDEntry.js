@@ -1,0 +1,1 @@
+"use strict";var React=require("react/lib/React"),ReactDOM=require("./ReactDOM"),ReactDOMUMDEntry=ReactDOM;React.addons&&(React.__SECRET_INJECTED_REACT_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=ReactDOMUMDEntry);module.exports=ReactDOMUMDEntry;

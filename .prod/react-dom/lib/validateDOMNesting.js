@@ -1,0 +1,1 @@
+"use strict";var _assign=require("object-assign"),emptyFunction=require("fbjs/lib/emptyFunction"),warning=require("fbjs/lib/warning"),validateDOMNesting=emptyFunction,specialTags,inScopeTags,buttonScopeTags,impliedEndTags,emptyAncestorInfo,updatedAncestorInfo,isTagValidWithParent,findInvalidAncestorForTag,findOwnerStack,didWarn;module.exports=validateDOMNesting;

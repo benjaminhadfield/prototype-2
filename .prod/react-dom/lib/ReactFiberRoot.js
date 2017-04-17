@@ -1,0 +1,1 @@
+"use strict";var _require=require("./ReactFiber"),createHostContainerFiber=_require.createHostContainerFiber;exports.createFiberRoot=function(e){var r=createHostContainerFiber(),t={current:r,containerInfo:e,isScheduled:!1,nextScheduledRoot:null};r.stateNode=t;return t};

@@ -1,0 +1,1 @@
+"use strict";var warning=require("fbjs/lib/warning"),processingChildContext,warnInvalidSetState,ReactInvalidSetStateWarningHook={onBeginProcessingChildContext:function(){processingChildContext=!0},onEndProcessingChildContext:function(){processingChildContext=!1},onSetState:function(){warnInvalidSetState()}};module.exports=ReactInvalidSetStateWarningHook;

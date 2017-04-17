@@ -1,0 +1,1 @@
+"use strict";function shallowCompare(l,a,o){return!shallowEqual(l.props,a)||!shallowEqual(l.state,o)}var shallowEqual=require("fbjs/lib/shallowEqual");module.exports=shallowCompare;

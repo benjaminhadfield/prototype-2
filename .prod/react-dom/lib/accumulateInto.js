@@ -1,0 +1,1 @@
+"use strict";function accumulateInto(r,a){null==a?_prodInvariant("30"):void 0;if(null==r){return a}if(Array.isArray(r)){if(Array.isArray(a)){r.push.apply(r,a);return r}r.push(a);return r}return Array.isArray(a)?[r].concat(a):[r,a]}var _prodInvariant=require("./reactProdInvariant"),invariant=require("fbjs/lib/invariant");module.exports=accumulateInto;

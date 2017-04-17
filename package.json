@@ -10,7 +10,7 @@
     "client",
     "test"
   ],
-  "main": "index.js",
+  "main": "server/index.js",
   "keywords": [
     "electrode",
     "node",

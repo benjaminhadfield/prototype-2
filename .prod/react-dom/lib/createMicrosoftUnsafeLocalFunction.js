@@ -1,0 +1,1 @@
+"use strict";var createMicrosoftUnsafeLocalFunction=function(n){return"undefined"!=typeof MSApp&&MSApp.execUnsafeLocalFunction?function(e,c,o,t){MSApp.execUnsafeLocalFunction(function(){return n(e,c,o,t)})}:n};module.exports=createMicrosoftUnsafeLocalFunction;

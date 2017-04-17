@@ -1,0 +1,1 @@
+"use strict";function getReactDOM(){if(!ReactDOM){var t=require("./ReactWithAddonsUMDEntry");ReactDOM=t.__SECRET_INJECTED_REACT_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED}return ReactDOM}var ReactDOM;exports.getReactDOM=getReactDOM;

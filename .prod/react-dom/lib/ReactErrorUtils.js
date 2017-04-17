@@ -1,0 +1,1 @@
+"use strict";function invokeGuardedCallback(r,a,t){try{a(t)}catch(r){null===caughtError&&(caughtError=r)}}var caughtError=null,ReactErrorUtils={invokeGuardedCallback:invokeGuardedCallback,invokeGuardedCallbackWithCatch:invokeGuardedCallback,rethrowCaughtError:function(){if(caughtError){var r=caughtError;caughtError=null;throw r}}},fakeNode;module.exports=ReactErrorUtils;

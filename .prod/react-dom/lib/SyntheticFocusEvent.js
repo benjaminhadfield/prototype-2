@@ -1,0 +1,1 @@
+"use strict";function SyntheticFocusEvent(t,e,n,c){return SyntheticUIEvent.call(this,t,e,n,c)}var SyntheticUIEvent=require("./SyntheticUIEvent"),FocusEventInterface={relatedTarget:null};SyntheticUIEvent.augmentClass(SyntheticFocusEvent,FocusEventInterface);module.exports=SyntheticFocusEvent;

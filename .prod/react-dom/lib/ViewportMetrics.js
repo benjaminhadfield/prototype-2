@@ -1,0 +1,1 @@
+"use strict";var ViewportMetrics={currentScrollLeft:0,currentScrollTop:0,refreshScrollValues:function(r){ViewportMetrics.currentScrollLeft=r.x;ViewportMetrics.currentScrollTop=r.y}};module.exports=ViewportMetrics;

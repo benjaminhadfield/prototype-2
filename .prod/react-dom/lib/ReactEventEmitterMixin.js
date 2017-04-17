@@ -1,0 +1,1 @@
+"use strict";function runEventQueueInBatch(e){EventPluginHub.enqueueEvents(e);EventPluginHub.processEventQueue(!1)}var EventPluginHub=require("./EventPluginHub"),ReactEventEmitterMixin={handleTopLevel:function(e,n,t,u){var i=EventPluginHub.extractEvents(e,n,t,u);runEventQueueInBatch(i)}};module.exports=ReactEventEmitterMixin;

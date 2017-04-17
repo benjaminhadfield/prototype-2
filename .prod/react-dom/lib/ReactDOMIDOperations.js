@@ -1,0 +1,1 @@
+"use strict";var DOMChildrenOperations=require("./DOMChildrenOperations"),ReactDOMComponentTree=require("./ReactDOMComponentTree"),ReactDOMIDOperations={dangerouslyProcessChildrenUpdates:function(e,r){var t=ReactDOMComponentTree.getNodeFromInstance(e);DOMChildrenOperations.processUpdates(t,r)}};module.exports=ReactDOMIDOperations;

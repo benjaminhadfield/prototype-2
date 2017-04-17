@@ -1,0 +1,1 @@
+"use strict";function getTestDocument(t){document.open();document.write(t||"<!doctype html><html><meta charset=utf-8><title>test doc</title>");document.close();return document}module.exports=getTestDocument;

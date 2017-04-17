@@ -1,0 +1,1 @@
+"use strict";function getEventCharCode(e){var r,t=e.keyCode;if("charCode"in e){r=e.charCode;0===r&&13===t&&(r=13)}else{r=t}return r>=32||13===r?r:0}module.exports=getEventCharCode;

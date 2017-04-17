@@ -1,0 +1,1 @@
+"use strict";var REACT_ELEMENT_TYPE="function"==typeof Symbol&&Symbol.for&&Symbol.for("react.element")||60103;module.exports=REACT_ELEMENT_TYPE;

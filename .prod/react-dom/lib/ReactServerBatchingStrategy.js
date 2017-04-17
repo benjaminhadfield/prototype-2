@@ -1,0 +1,1 @@
+"use strict";var ReactServerBatchingStrategy={isBatchingUpdates:!1,batchedUpdates:function(t){}};module.exports=ReactServerBatchingStrategy;

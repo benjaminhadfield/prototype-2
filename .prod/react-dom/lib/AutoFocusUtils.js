@@ -1,0 +1,1 @@
+"use strict";var ReactDOMComponentTree=require("./ReactDOMComponentTree"),focusNode=require("fbjs/lib/focusNode"),AutoFocusUtils={focusDOMComponent:function(){focusNode(ReactDOMComponentTree.getNodeFromInstance(this))}};module.exports=AutoFocusUtils;

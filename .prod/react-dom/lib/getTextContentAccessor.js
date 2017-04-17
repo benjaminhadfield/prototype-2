@@ -1,0 +1,1 @@
+"use strict";function getTextContentAccessor(){!contentKey&&ExecutionEnvironment.canUseDOM&&(contentKey="textContent"in document.documentElement?"textContent":"innerText");return contentKey}var ExecutionEnvironment=require("fbjs/lib/ExecutionEnvironment"),contentKey=null;module.exports=getTextContentAccessor;

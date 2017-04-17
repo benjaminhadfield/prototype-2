@@ -1,0 +1,1 @@
+"use strict";function ResponderSyntheticEvent(e,t,n,r){return SyntheticEvent.call(this,e,t,n,r)}var SyntheticEvent=require("./SyntheticEvent"),ResponderEventInterface={touchHistory:function(e){return null}};SyntheticEvent.augmentClass(ResponderSyntheticEvent,ResponderEventInterface);module.exports=ResponderSyntheticEvent;
