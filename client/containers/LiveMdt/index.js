@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 class LiveMdt extends React.Component {
   render() {
     return (
-      <div>Live MDT Page</div>
+      <div>To be done by another team.</div>
     )
   }
 }

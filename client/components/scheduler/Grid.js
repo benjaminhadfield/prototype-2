@@ -13,7 +13,7 @@ var gridTarget = {
 	  // item = Patient
 		var index = item.id;
 		if(component.props.dayEvent.meeting.length !== 0){
-			
+
 			item.removeFromList(index);
 			component.setState({
 				meetingChoiceModalIsOpen: true,
@@ -99,7 +99,7 @@ var Grid = React.createClass({
 		var that = this;
 //here
 		var specialtyListing = function(specialities, interestedMeeting, meetingTitle, removeFromGrid, addPatient, year2, month2, day2){
-			var list = specialities.map((specialty, i)=> 
+			var list = specialities.map((specialty, i)=>
 				<SpecialtyList patients={specialty["patients"]} meeting={interestedMeeting} specialty={specialty["name"]} removeFromGrid={removeFromGrid} addPatient={addPatient} year={year2} month={month2} day={day2}/>
 			);
 			return list;
@@ -111,11 +111,11 @@ var Grid = React.createClass({
 				list = currentMeeting["specialities"].map((specialty, i)=>
 					<Button className={styles.btn_marg} bsStyle="primary" onClick={()=>addPatientsToGrid(currentPatient, currentMeeting, specialty["name"], year, month, day)}>{specialty["name"]}</Button>
 				);
-			}	
+			}
 			return list;
 		}
-		
-		
+
+
 		var fromMeetingToSpecialtyButtons = this.props.dayEvent.meeting.map(function(meet){
 			return (
 				<Button className={styles.btn_marg} bsStyle="primary" onClick={()=>that.fromMeetingToSpecialty(meet)}>{meet["title"]}</Button>
@@ -125,7 +125,7 @@ var Grid = React.createClass({
 		var modalMeeting = this.props.dayEvent.meeting.map((meet, i)=>{
 			return (
 				<div>
-				<button onClick={()=>this.toggleModal2(meet)}>{meet["title"]}</button>
+				<button className={styles.btn_meeting + " center-block"} onClick={()=>this.toggleModal2(meet)}>{meet["title"].substring(0,8) + "..."}</button>
 				<Modal
 					show={this.state.specialtyModalIsOpen && this.state.interestedMeeting === meet}
 					onHide={this.toggleModal}

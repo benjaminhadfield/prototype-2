@@ -5,3 +5,7 @@
   align-content: stretch;
   margin: 0 0 10px;
 }
+
+.btn-left-mrg{
+    margin-left: 10px;
+}

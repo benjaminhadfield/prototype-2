@@ -1,6 +1,6 @@
 "use strict";
 
-const defaultListenPort = 3000;
+const defaultListenPort = 8080;
 
 const portFromEnv = () => {
   const x = parseInt(process.env.PORT, 10);
@@ -23,7 +23,7 @@ module.exports = {
     "webapp": {
       "module": "electrode-react-webapp/lib/express",
       "options": {
-        "pageTitle": "prototype-2",
+        "pageTitle": "Peach",
         "paths": {
           "*": {
             "content": {
@@ -36,8 +36,7 @@ module.exports = {
   },
   "connections": {
     "default": {
-      "host": process.env.HOST,
-      "address": process.env.HOST_IP || "0.0.0.0",
+      "address":   "0.0.0.0",
       "port": portFromEnv(),
       "routes": {
         "cors": true
